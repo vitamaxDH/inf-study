@@ -16,5 +16,9 @@ public class TestCkServiceImpl implements TestCkService {
 	public int testSave(TestCkVO vo) {
 		return testCkDAO.testSave(vo);
 	}
-
+	
+	@Override
+	public TestCkVO getVO(int id) {
+		return testCkDAO.getVO(id);
+	}
 }

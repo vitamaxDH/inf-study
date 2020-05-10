@@ -18,5 +18,10 @@ public class TestCkDAOImpl implements TestCkDAO {
 	public int testSave(TestCkVO vo) {
 		return session.insert(nameSpace + "save", vo); 
 	}
+	
+	@Override
+	public TestCkVO getVO(int id) {
+		return session.selectOne(nameSpace + "getVO", id);
+	}
 
 }

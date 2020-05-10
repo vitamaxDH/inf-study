@@ -3,9 +3,11 @@ package kr.co.infStudy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.infStudy.model.TestCkVO;
 import kr.co.infStudy.service.TestCkService;
@@ -40,4 +42,12 @@ public class HomeController {
 		return "redirect:test";
 	}
 	
+	@GetMapping("/testShow")
+	public String testShow(@RequestParam int id, Model model) throws Exception {
+		log.info("testShow");
+		
+		model.addAttribute("testCkVO", service.getVO(id));
+		
+		return "content";
+	}
 }

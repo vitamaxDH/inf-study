@@ -6,4 +6,5 @@ public interface TestCkDAO {
 	
 	public int testSave(TestCkVO vo);
 	
+	public TestCkVO getVO(int id);
 }

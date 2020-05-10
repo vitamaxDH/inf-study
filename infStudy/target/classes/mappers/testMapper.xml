@@ -9,4 +9,8 @@
 		(CK_SEQ.NEXTVAL, #{title}, #{content}) 
    </insert>
    
+   <select id="getVO" parameterType="int" resultType="kr.co.infStudy.model.TestCkVO">
+   		SELECT * FROM CK WHERE ID = #{id}
+   </select>
+   
 </mapper>
