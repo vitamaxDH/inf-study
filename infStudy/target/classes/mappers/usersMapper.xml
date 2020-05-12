@@ -8,18 +8,23 @@
    		INSERT INTO USERS VALUES (U_NO_SEQ.NEXTVAL, #{email}, #{password}, #{nickname}, #{img})
    </insert>
    
-   <select id="selectUsers" resultType="kr.co.infStudy.model.UsersVO">
+   <select id="selectUsersList" resultType="kr.co.infStudy.model.UsersVO">
    		SELECT * FROM USERS
-   		<trim prefixOverrides="">
-   		
-   		</trim>
+   </select>
+
+   <select id="selectUser" parameterType="int" resultType="kr.co.infStudy.model.UsersVO">
+   		SELECT * FROM USERS WHERE U_NO = #{u_no}
    </select>
    
    <update id="update" parameterType="kr.co.infStudy.model.UsersVO">
-   
+   		UPDATE TABLE USERS 
+   			SET EMAIL = #{email},
+				PASSWORD = #{password},
+				NICKNAME = #{nickname}
+   			WHERE ID  = #{u_no}	
    </update>
    
-   <delete id="delete" parameterType="kr.co.infStudy.model.UsersVO">
-   
+   <delete id="delete" parameterType="int">
+   		DELETE USERS WHERE U_NO = #{u_no}
    </delete>
 </mapper>
