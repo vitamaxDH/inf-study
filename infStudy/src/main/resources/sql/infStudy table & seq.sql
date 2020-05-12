@@ -12,10 +12,15 @@ create table instructor(
     img varchar2(500) not null
 );
 
+create table category(
+    ctg_no number(3) primary key,
+    name varchar2(100) not null
+);
+
 create table lecture(
     l_no number(5) primary key,
     i_no number(5) not null,
-    category varchar(10) not null,
+    ctg_no varchar(10) not null,
     title varchar2(50) not null,
     price number(10) not null,
     rank number(1,1) default 0,
@@ -23,9 +28,10 @@ create table lecture(
     img varchar2(500) not null,
     rel_dt date default sysdate,
     CONSTRAINT FK_I_NO FOREIGN KEY(i_no)
-    REFERENCES instructor(i_no)
+    REFERENCES instructor(i_no),
+    FOREIGN KEY(ctg_no)
+    REFERENCES category(ctg_no)
 );
-
 
 create table curriculum (
     c_no number(5) primary key,
@@ -38,9 +44,6 @@ create table curriculum (
     FOREIGN KEY(l_no)
     REFERENCES lecture(l_no)
 );
-
-
-
 
 create table paid_lec(
     p_no number(5) primary key,
@@ -117,9 +120,8 @@ create table wish_list(
 create table finish(
     u_no number(5) not null,
     c_no number(5) not null,
-    
     finish number(1) default 0,
-    finish_time 
+    finish_time date default sysdate,
     FOREIGN KEY(u_no)
     REFERENCES users(u_no),
     FOREIGN KEY(c_no)

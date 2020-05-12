@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class LectureVO {
 	private int l_no;
 	private int i_no;
-	private String category;
+	private int ctg_no;
 	private String title;
 	private int price;
 	private int rank;
