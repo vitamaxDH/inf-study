@@ -5,9 +5,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class PaidLecVO {
-	private int p_no;
+public class FinishVO {
 	private int u_no;
-	private int l_no;
-
+	private int c_no;
+	private int finish;
 }

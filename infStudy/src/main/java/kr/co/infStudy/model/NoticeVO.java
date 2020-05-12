@@ -7,12 +7,10 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class QnaReplyVO {
-	private int qr_no;
-	private int q_no;
+public class NoticeVO {
+	private int n_no;
 	private int u_no;
-	private Date reg_dt;
+	private String title;
 	private String content;
-
-
+	private Date reg_dt;
 }

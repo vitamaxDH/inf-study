@@ -24,4 +24,6 @@ public class TestCkDAOImpl implements TestCkDAO {
 		return session.selectOne(nameSpace + "getVO", id);
 	}
 
+	
+	
 }

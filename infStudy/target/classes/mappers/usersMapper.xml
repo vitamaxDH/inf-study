@@ -2,6 +2,24 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.infStudy.testMapper">
+<mapper namespace="kr.co.infStudy.usersMapper">
    
+   <insert id="insertUser" parameterType="kr.co.infStudy.model.UsersVO">
+   		INSERT INTO USERS VALUES (U_NO_SEQ.NEXTVAL, #{email}, #{password}, #{nickname}, #{img})
+   </insert>
+   
+   <select id="selectUsers" resultType="kr.co.infStudy.model.UsersVO">
+   		SELECT * FROM USERS
+   		<trim prefixOverrides="">
+   		
+   		</trim>
+   </select>
+   
+   <update id="update" parameterType="kr.co.infStudy.model.UsersVO">
+   
+   </update>
+   
+   <delete id="delete" parameterType="kr.co.infStudy.model.UsersVO">
+   
+   </delete>
 </mapper>

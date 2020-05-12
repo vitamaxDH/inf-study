@@ -2,6 +2,21 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.infStudy.testMapper">
+<mapper namespace="kr.co.infStudy.Mapper">
    
+   <insert id="insert" parameterType="kr.co.infStudy.model">
+   
+   </insert>
+   
+   <select id="select" resultType="kr.co.infStudy.model">
+   
+   </select>
+   
+   <update id="update" parameterType="kr.co.infStudy.model">
+   
+   </update>
+   
+   <delete id="delete" parameterType="kr.co.infStudy.model">
+   
+   </delete>
 </mapper>

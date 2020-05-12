@@ -1,14 +1,11 @@
 package kr.co.infStudy.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @NoArgsConstructor
-@ToString
 public class TestCkVO {
 
 	private int id;
