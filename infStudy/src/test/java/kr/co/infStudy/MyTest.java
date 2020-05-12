@@ -30,7 +30,7 @@ public class MyTest {
     public void test() throws Exception{
 
         try(Connection conn = ds.getConnection()){
-        	logger.info("\n MySQL 연결 : {}", conn);
+        	logger.info("\n MySQL 테스트 : {}", conn);
         } catch(Exception e){
             e.printStackTrace();
         }
@@ -47,7 +47,7 @@ public class MyTest {
     public void sessionTest() throws Exception{
       
         try(SqlSession session = sqlFactory.openSession()) {
-        	logger.info("\n MySQL 연결 : {}", session);
+        	logger.info("\n MySQL 테스트 : {}", session);
         }catch(Exception e) {
             e.printStackTrace();
         }

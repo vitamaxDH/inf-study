@@ -15,7 +15,7 @@ create table instructor(
 create table lecture(
     l_no number(5) primary key,
     i_no number(5) not null,
-    categories varchar(10) not null,
+    category varchar(10) not null,
     title varchar2(50) not null,
     price number(10) not null,
     rank number(1,1) default 0,
@@ -158,8 +158,6 @@ create sequence notice_seq;
 create sequence notice_reply_seq;
 
 
--- curriculum 외래키 미싱부분 추가 (본 테이블에도 내용 수정)--
-ALTER TABLE CURRICULUM ADD FOREIGN KEY(l_no) REFERENCES lecture(l_no);
 
 
 
