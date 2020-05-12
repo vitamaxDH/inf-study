@@ -21,6 +21,7 @@ create table lecture(
     rank number(1,1) default 0,
     difficulty varchar(10) not null,
     img varchar2(500) not null,
+    url varchar2(500) not null,
     rel_dt date default sysdate,
     CONSTRAINT FK_I_NO FOREIGN KEY(i_no)
     REFERENCES instructor(i_no)
@@ -156,10 +157,6 @@ create sequence review_reply_seq;
 create sequence wish_list_seq;
 create sequence notice_seq;
 create sequence notice_reply_seq;
-
-
-
-
 
 
 
