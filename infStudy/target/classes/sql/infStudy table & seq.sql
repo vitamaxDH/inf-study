@@ -20,7 +20,7 @@ create table category(
 create table lecture(
     l_no number(5) primary key,
     i_no number(5) not null,
-    ctg_no varchar(10) not null,
+    ctg_no number(5) not null,
     title varchar2(50) not null,
     price number(10) not null,
     rank number(1,1) default 0,
@@ -29,7 +29,7 @@ create table lecture(
     rel_dt date default sysdate,
     CONSTRAINT FK_I_NO FOREIGN KEY(i_no)
     REFERENCES instructor(i_no),
-    FOREIGN KEY(ctg_no)
+    constraint FK_CTG_NO FOREIGN KEY(ctg_no)
     REFERENCES category(ctg_no)
 );
 
@@ -161,8 +161,9 @@ create sequence review_reply_seq;
 create sequence wish_list_seq;
 create sequence notice_seq;
 create sequence notice_reply_seq;
+create sequence category_seq;
 
 
-
-
+alter table curriculum drop column content;
+alter table lecture add(content clob);
 
