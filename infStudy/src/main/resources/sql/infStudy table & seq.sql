@@ -21,7 +21,6 @@ create table lecture(
     rank number(1,1) default 0,
     difficulty varchar(10) not null,
     img varchar2(500) not null,
-    url varchar2(500) not null,
     rel_dt date default sysdate,
     CONSTRAINT FK_I_NO FOREIGN KEY(i_no)
     REFERENCES instructor(i_no)
@@ -34,6 +33,7 @@ create table curriculum (
     section varchar2(100) not null,
     title varchar2(100) not null,
     content CLOB not null,
+    url varchar2(500) not null,
     playtime number(10) not NULL,
     FOREIGN KEY(l_no)
     REFERENCES lecture(l_no)
@@ -117,7 +117,9 @@ create table wish_list(
 create table finish(
     u_no number(5) not null,
     c_no number(5) not null,
-    finish number(1) default 0 not null,
+    
+    finish number(1) default 0,
+    finish_time 
     FOREIGN KEY(u_no)
     REFERENCES users(u_no),
     FOREIGN KEY(c_no)
@@ -157,9 +159,6 @@ create sequence review_reply_seq;
 create sequence wish_list_seq;
 create sequence notice_seq;
 create sequence notice_reply_seq;
-
-
-
 
 
 
