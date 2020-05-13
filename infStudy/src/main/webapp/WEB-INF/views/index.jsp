@@ -13,7 +13,7 @@
 		<form:input path="title"/>
 		<form:textarea path="content" id="content"/>
 		<input type="submit" value="실험!">
-		<button id="saveBtn">알림창 띄우기 버튼</button>
+		<button id="saveBtn">알림창 띄우기 버튼 연습</button>
 	</form:form>
 	
 	
