@@ -1,0 +1,19 @@
+INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'hellonewtry1@gmail.com', '1111', '코딩하실분', ' ');
+INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'anhongyong@gmail.com', '2222', '안홍용', ' ');
+INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'parkchanju@gmail.com', '3333', '박찬주', ' ');
+INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'kimwonsik@gmail.com', '4444', '김원식', ' ');
+
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'HTML/CSS');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, '웹 개발');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'JavaScript');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Java');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Front-End');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Python');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Back-End');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, '웹 퍼블리싱');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Spring');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Node.js');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'React');
+
+SELECT * FROM USERS;
+commit;
