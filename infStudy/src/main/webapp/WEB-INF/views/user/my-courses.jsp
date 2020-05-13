@@ -2,10 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@include file="/WEB-INF/views/layout/header.jsp"%> 
+<%@include file="/WEB-INF/views/layout/header.jsp"%>
 
+<ul>
+	<c:forEach var="list" items="${myCoursesList }">
+		<li>
+			<h2>${list.progress }</h2>
+		</li>
+	</c:forEach>
+</ul>
 
-	
-	
 <script	src="resources/common/js/ckeditor.js"></script>
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>

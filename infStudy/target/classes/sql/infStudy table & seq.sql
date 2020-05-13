@@ -155,7 +155,6 @@ create table finish(
     u_no number(5) not null,
     l_no number(5) not null,
     c_no number(5) not null,
-    finish number(1) default 0,
     finish_time date default sysdate,
     FOREIGN KEY(u_no)
     REFERENCES users(u_no),
@@ -200,6 +199,5 @@ create sequence wish_list_seq;
 create sequence notice_seq;
 create sequence notice_reply_seq;
 create sequence category_seq;
-
 
 
