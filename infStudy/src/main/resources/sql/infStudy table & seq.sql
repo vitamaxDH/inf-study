@@ -26,6 +26,7 @@ drop sequence wish_list_seq;
 drop sequence notice_seq;
 drop sequence notice_reply_seq;
 drop sequence category_seq;
+drop sequence lecture_seq;
 
 
 
@@ -81,6 +82,7 @@ create table paid_lec(
     p_no number(5) primary key,
     u_no number(5) not null,
     l_no number(5) not null,
+    paid_dt date default sysdate,
     CONSTRAINT FK_U_NO FOREIGN KEY(u_no)
     REFERENCES users(u_no),
     CONSTRAINT FK_L_NO FOREIGN KEY(l_no)
@@ -151,8 +153,8 @@ create table wish_list(
 
 create table finish(
     u_no number(5) not null,
-    c_no number(5) not null,
     l_no number(5) not null,
+    c_no number(5) not null,
     finish number(1) default 0,
     finish_time date default sysdate,
     FOREIGN KEY(u_no)
@@ -186,6 +188,7 @@ create table notice_reply(
 
 
 create sequence users_seq;
+create sequence lecture_seq;
 create sequence instructor_seq;
 create sequence curriculum_seq;
 create sequence paid_lec_seq;
