@@ -9,7 +9,7 @@
    </insert>
    
    <!-- get Paid_lec by users -->
-   <select id="selectPaidLec" parameterType="int" resultType="kr.co.infStudy.model.PaidLecVO">
+   <select id="getPaidLecList" parameterType="int" resultType="kr.co.infStudy.model.PaidLecVO">
    		SELECT * FROM PAID_LEC
    			WHERE U_NO = #{u_no}
    </select>

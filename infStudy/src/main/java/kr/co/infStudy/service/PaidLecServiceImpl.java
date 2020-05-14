@@ -16,7 +16,7 @@ public class PaidLecServiceImpl implements PaidLecService {
 	private PaidLecDAO dao;
 	
 	@Override
-	public List<PaidLecVO> selectPaidLecList(int u_no) throws Exception {
-		return dao.selectPaidLecList(u_no);
+	public List<PaidLecVO> getPaidLecList(int u_no) throws Exception {
+		return dao.getPaidLecList(u_no);
 	}
 }

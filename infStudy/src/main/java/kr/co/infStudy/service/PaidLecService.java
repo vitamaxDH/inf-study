@@ -6,6 +6,6 @@ import kr.co.infStudy.model.PaidLecVO;
 import kr.co.infStudy.model.UsersVO;
 
 public interface PaidLecService {
-	public List<PaidLecVO> selectPaidLecList(int u_no) throws Exception;
+	public List<PaidLecVO> getPaidLecList(int u_no) throws Exception;
 
 }

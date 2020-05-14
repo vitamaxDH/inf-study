@@ -8,11 +8,11 @@
    		INSERT INTO USERS VALUES (U_NO_SEQ.NEXTVAL, #{email}, #{password}, #{nickname}, #{img})
    </insert>
    
-   <select id="selectUsersList" resultType="kr.co.infStudy.model.UsersVO">
+   <select id="getUsersList" resultType="kr.co.infStudy.model.UsersVO">
    		SELECT * FROM USERS
    </select>
 
-   <select id="selectUser" parameterType="java.util.HashMap" resultType="kr.co.infStudy.model.UsersVO">
+   <select id="getUser" parameterType="java.util.HashMap" resultType="kr.co.infStudy.model.UsersVO">
    		SELECT * FROM USERS WHERE U_NO = #{u_no}
    </select>
    
@@ -33,7 +33,7 @@
 
 
    <!-- my-courses -->
-   <select id="selectMyCourse" parameterType="kr.co.infStudy.model.PaidLecVO" resultType="kr.co.infStudy.dto.user.MyCoursesDTO">
+   <select id="getMyCourse" parameterType="kr.co.infStudy.model.PaidLecVO" resultType="kr.co.infStudy.dto.user.MyCoursesDTO">
 		SELECT l.title title, l.img img, c.url url, 
 		    ROUND((SELECT count(*) FROM FINISH
 		            WHERE 1 = 1

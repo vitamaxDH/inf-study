@@ -7,5 +7,5 @@ import kr.co.infStudy.model.UsersVO;
 
 public interface PaidLecDAO {
 
-	public List<PaidLecVO> selectPaidLecList(int u_no) throws Exception;
+	public List<PaidLecVO> getPaidLecList(int u_no) throws Exception;
 }

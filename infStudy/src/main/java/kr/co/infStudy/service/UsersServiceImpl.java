@@ -33,8 +33,8 @@ public class UsersServiceImpl implements UsersService {
 	}
 	
 	@Override
-	public List<MyCoursesDTO> selectMyCoursesList(UsersVO usersVO) throws Exception {
-		List<PaidLecVO> paidLecList = paidLecDAO.selectPaidLecList(usersVO.getU_no());
+	public List<MyCoursesDTO> getMyCoursesList(UsersVO usersVO) throws Exception {
+		List<PaidLecVO> paidLecList = paidLecDAO.getPaidLecList(usersVO.getU_no());
 		List<MyCoursesDTO> myCoursesList = new ArrayList<MyCoursesDTO>();
 		for(PaidLecVO vo : paidLecList) {
 			myCoursesList.add(userDAO.selectMyCoursesDTO(vo));

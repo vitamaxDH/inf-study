@@ -158,11 +158,11 @@ body {
 	padding-left: 10px;
 }
 
-.commu_list ul, .lecture_list ul {
+.menu_list ul {
 	display: none;
 }
 
-.commu_list:hover ul, .lecture_list:hover ul {
+.menu_list:hover ul {
 	display: block;
 	padding: 0;
 	margin-left: -10px;
@@ -176,18 +176,18 @@ body {
 	box-shadow: 1px 1px 3px 1px rgb(150, 150, 150);
 }
 
-.commu_list:hover ul {
+.menu_list:first-child:hover ul {
 	height: 115px;
 }
 
-.commu_list li, .lecture_list li {
+.menu_list li {
 	height: 35px;
 	width: auto;
 	line-height: 35px;
 	margin-left: 15px;
 }
 
-.commu_list a, .lecture_list a {
+.menu_list a {
 	font-size: 13px;
 	color: gray;
 	padding: 10px 0;
@@ -195,7 +195,7 @@ body {
 	text-decoration: none;
 }
 
-.commu_list a:hover, .lecture_list a:hover {
+.menu_list a:hover {
 	color: rgb(0, 196, 113);
 }
 

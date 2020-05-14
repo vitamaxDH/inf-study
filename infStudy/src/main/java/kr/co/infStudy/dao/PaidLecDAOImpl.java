@@ -17,7 +17,7 @@ public class PaidLecDAOImpl implements PaidLecDAO {
 	private String nameSpace = "kr.co.infStudy.paidLecMapper.";
 	
 	@Override
-	public List<PaidLecVO> selectPaidLecList(int u_no) throws Exception {
-		return session.selectList(nameSpace + "selectPaidLec", u_no);
+	public List<PaidLecVO> getPaidLecList(int u_no) throws Exception {
+		return session.selectList(nameSpace + "getPaidLecList", u_no);
 	}
 }

@@ -21,7 +21,7 @@
     <header class="head">
         <div class="header_div">
             <div class="box icon"><a href="home.html">InfStudy</a></div>
-            <div class="box text_hover lecture_list">강의들
+            <div class="box text_hover menu_list"><a href="/courses" style="font-size:15px !important;font-weight: 700;">강의들</a>
                 <ul>
                     <li><a href="#">HTML/CSS</a></li>
                     <li><a href="#">웹 개발</a></li>
@@ -37,7 +37,7 @@
                 </ul>
                 <div class="arrow"></div>
             </div>
-            <div class="box text_hover commu_list">커뮤니티
+            <div class="box text_hover menu_list">커뮤니티
                 <ul>
                     <li><a href="#"><span class="glyphicon glyphicon-comment" /> 묻고답하기</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-star" /> 수강평모아보기</a></li>

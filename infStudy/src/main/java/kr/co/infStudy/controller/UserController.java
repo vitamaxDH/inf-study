@@ -20,13 +20,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class userController {
+public class UserController {
 
 	private UsersService usersService;
 	private PaidLecService padiLecService;
 
 	@Autowired
-	public userController(UsersService usersService, PaidLecService padiLecService) {
+	public UserController(UsersService usersService, PaidLecService padiLecService) {
 		this.usersService = usersService;
 		this.padiLecService = padiLecService;
 	}
@@ -43,7 +43,7 @@ public class userController {
 	public String myCourses(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UsersVO usersVO = (UsersVO) session.getAttribute("usersVO");
-		List<MyCoursesDTO> myCoursesList = usersService.selectMyCoursesList(usersVO);
+		List<MyCoursesDTO> myCoursesList = usersService.getMyCoursesList(usersVO);
 		model.addAttribute("myCoursesList", myCoursesList);
 		return "user/my-courses";
 	}
