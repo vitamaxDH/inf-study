@@ -8,6 +8,7 @@
 
 				<h2>대시보드 수정</h2>
 				<h2>대시보드 수정 first commit & push</h2>
+				<h2>대시보드 수정 second commit & push</h2>
 
 <%@include file="../layout/userLayout/userFooter.jsp"%>	
 <script	src="resources/common/js/ckeditor.js"></script>
