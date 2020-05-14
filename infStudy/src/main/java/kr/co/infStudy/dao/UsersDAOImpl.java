@@ -21,12 +21,12 @@ public class UsersDAOImpl implements UsersDAO {
 	@Override
 	public UsersVO selectUser(HashMap<String, Integer> map) throws Exception {
 		System.out.println("daoimpl u_no = " + map);
-		return session.selectOne(nameSpace + "selectUser", map);
+		return session.selectOne(nameSpace + "getUser", map);
 	}
 	
 	@Override
 	public MyCoursesDTO selectMyCoursesDTO(PaidLecVO paidLecVO) throws Exception {
-		return session.selectOne(nameSpace + "selectMyCourse", paidLecVO);
+		return session.selectOne(nameSpace + "getMyCourse", paidLecVO);
 	}
 	
 }
