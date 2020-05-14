@@ -15,7 +15,6 @@
     <script src="js/bootstrap.min.js"></script>
     <link href="resources/common/css/header.css" rel="stylesheet">
     <link href="resources/common/css/footer.css" rel="stylesheet">
-    <link href="resources/common/css/myPageAside.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">

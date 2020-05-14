@@ -20,13 +20,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class MyPageController {
+public class userController {
 
 	private UsersService usersService;
 	private PaidLecService padiLecService;
 
 	@Autowired
-	public MyPageController(UsersService usersService, PaidLecService padiLecService) {
+	public userController(UsersService usersService, PaidLecService padiLecService) {
 		this.usersService = usersService;
 		this.padiLecService = padiLecService;
 	}
