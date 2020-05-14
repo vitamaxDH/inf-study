@@ -39,7 +39,7 @@ public class LectureController {
 		/**
 		 * 뷰 단에서 뿌려주는 방식은 아래와 같이
 		 */
-		/*
+		/*ㅇㅇ
 		for(int i = 1; i < result.size(); i++) {
 			
 			if(i == 1) {
