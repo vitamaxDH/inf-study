@@ -15,6 +15,7 @@
     <script src="js/bootstrap.min.js"></script>
     <link href="resources/common/css/header.css" rel="stylesheet">
     <link href="resources/common/css/footer.css" rel="stylesheet">
+    <link href="resources/common/css/myPageAside.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -53,7 +54,7 @@
                 </form>
                 <div class="glass"></div>
             </div>
-            <div class="box profile profile_list"><a href="#"><span class="glyphicon glyphicon-user" />
+            <div class="box profile profile_list"><a href="dashboard"><span class="glyphicon glyphicon-user" />
                     <div class="profile_list_div">
                         <div class="profile_list_div_div1"><a href="#"><span class="glyphicon glyphicon-user">ChanJu</a>
                         </div>

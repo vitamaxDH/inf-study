@@ -1,5 +1,14 @@
 package kr.co.infStudy.service;
 
-public interface UsersService {
+import java.util.List;
 
+import kr.co.infStudy.dto.user.MyCoursesDTO;
+import kr.co.infStudy.model.UsersVO;
+
+public interface UsersService {
+	
+	public UsersVO selectUser(int u_no) throws Exception;
+	
+	public List<MyCoursesDTO> selectMyCoursesList(UsersVO usersVO) throws Exception;
+	
 }
