@@ -6,7 +6,7 @@
 <%@include file="../layout/userLayout/userHeader.jsp"%> 
 
 
-				<h2>대시보드</h2>
+				<h2>대시보드 수정</h2>
 
 <%@include file="../layout/userLayout/userFooter.jsp"%>	
 <script	src="resources/common/js/ckeditor.js"></script>
