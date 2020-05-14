@@ -7,6 +7,50 @@
    <insert id="insert" parameterType="kr.co.infStudy.model.LectureVO">
    
    </insert>
+
+   <select id="getAllLectureInfo" parameterType = "java.lang.String" resultType="kr.co.infStudy.dto.lecture.LectureDTO">
+		
+			select lec_t.title, lec_t.content, lec_t.price, lec_t.img, lec_t.rank
+			,ins_t.name as teacher, ctg_t.name as category
+			from lecture lec_t, instructor ins_t, category ctg_t
+			where lec_t.i_no = ins_t.i_no and lec_t.ctg_no = ctg_t.ctg_no 
+		
+			<if test= "sort =='rank'">
+				order by lec_t.rank
+			</if>
+			<if test= "sort == 'price'">
+				order by lec_t.price
+			</if>
+		
+   </select>
+   
+	<select id="getLectureInfo" parameterType="java.util.HashMap" resultType="kr.co.infStudy.dto.lecture.LectureDTO">
+		
+			select lec_t.title, lec_t.content, lec_t.price, lec_t.img, lec_t.rank, ctg_t.name as category, ins_t.name as teacher
+			from lecture lec_t, instructor ins_t, category ctg_t
+			where lec_t.i_no = ins_t.i_no and lec_t.ctg_no = ctg_t.ctg_no 
+			
+			<if test="category_name != null">
+				and ctg_t.name = #{category_name}
+			</if>
+			
+			<if test="sort == 'rank'">
+				order by lec_t.rank
+			</if>
+			<if test="sort == 'price'">
+				order by lec_t.price
+			</if>
+   </select>
+
+	<select id="getLectureDetail" parameterType="java.lang.String" resultType="kr.co.infStudy.dto.lecture.LectureDetailDTO">
+		
+			select ins_t.name as teacher, ctg_t.name as category, lec_t.title as lecture_title, cur_t.section,  
+			cur_t.title as curriculum_title, cur_t.url, cur_t.playtime, lec_t.img
+			from lecture lec_t, instructor ins_t, curriculum cur_t, category ctg_t
+			where lec_t.l_no = cur_t.l_no and lec_t.ctg_no = ctg_t.ctg_no and lec_t.i_no = ins_t.i_no
+			and lec_t.title = #{lecture_title}
+			
+   </select>
    
    <select id="select" resultType="kr.co.infStudy.model.LectureVO">
    

@@ -27,11 +27,14 @@ kr\co\infStudy\dao\CurriculumDAO.class
 kr\co\infStudy\model\ReviewVO.class
 kr\co\infStudy\dao\FinishDAOImpl.class
 kr\co\infStudy\service\WishListService.class
+kr\co\infStudy\controller\testController.class
 kr\co\infStudy\service\CurriculumService.class
 kr\co\infStudy\dao\UsersDAOImple.class
+kr\co\infStudy\controller\LectureController.class
 kr\co\infStudy\service\QnaService.class
 kr\co\infStudy\dao\QnaDAOImple.class
 kr\co\infStudy\dao\PaidLecDAOImple.class
+kr\co\infStudy\dto\lecture\LectureDTO.class
 kr\co\infStudy\model\LectureVO.class
 kr\co\infStudy\service\PaidLecService.class
 kr\co\infStudy\dao\LectureDAOImpl.class
