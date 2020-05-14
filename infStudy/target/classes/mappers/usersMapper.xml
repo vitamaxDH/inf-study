@@ -39,7 +39,7 @@
 		            WHERE 1 = 1
 		                AND  U_NO = #{u_no}
 		                AND L_NO = #{l_no}) * 100 /
-		        (SELECT count(*) FROM CURRICULUM WHERE L_NO = #{l_no}),2)
+	        (SELECT count(*) FROM CURRICULUM WHERE L_NO = #{l_no}),2)
 		     progress, f.finish_time finishTime
 		    FROM LECTURE l, FINISH f, CURRICULUM c
 		    WHERE l.l_no = c.l_no

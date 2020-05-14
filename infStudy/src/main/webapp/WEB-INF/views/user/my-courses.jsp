@@ -3,14 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="/WEB-INF/views/layout/header.jsp"%>
+<%@include file="../layout/userLayout/userHeader.jsp"%> 
 
-<ul>
-	<c:forEach var="list" items="${myCoursesList }">
-		<li>
-			<h2>${list.progress }</h2>
-		</li>
-	</c:forEach>
-</ul>
 
+				<h2>마이 코스</h2>
+
+<%@include file="../layout/userLayout/userFooter.jsp"%>
 <script	src="resources/common/js/ckeditor.js"></script>
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>

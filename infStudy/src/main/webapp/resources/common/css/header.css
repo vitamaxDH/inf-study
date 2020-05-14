@@ -1,4 +1,12 @@
 /******************************************* header ************************************************/
+/* 모든 페이지 폰트 */
+* {
+	font-family: Noto Sans KR, -apple-system, "system-ui",
+		BlinkMacSystemFont, Apple SD Gothic Neo, Segoe UI, Roboto,
+		Helvetica Neue, Arial, sans-serif, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica;
+}
+
 body {
 	margin-top: 60px;
 	padding-top: 10px;

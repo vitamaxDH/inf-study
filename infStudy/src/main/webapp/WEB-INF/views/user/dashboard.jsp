@@ -3,8 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="/WEB-INF/views/layout/header.jsp"%> 
+<%@include file="../layout/userLayout/userHeader.jsp"%> 
 
-	<a href="/my-courses">마이 코스로 가기</a>
-	
+
+				<h2>대시보드</h2>
+
+<%@include file="../layout/userLayout/userFooter.jsp"%>	
 <script	src="resources/common/js/ckeditor.js"></script>
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>
