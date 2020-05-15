@@ -1,6 +1,9 @@
 # Dependency #
-.jar
+*.jar
 
 # version Information #
 # MANIFEST.MF #
-.MF
+*.MF
+
+# etc
+*.class

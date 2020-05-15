@@ -1,9 +1,20 @@
 @charset "UTF-8";
 
+ul li{
+	list-style: none;
+}
+
 aside.sidebar_left a{
 	font-size: 20px;
 	text-decoration: none;
 	color:black;
+}
+
+.courses_body{
+	position: absolute;
+	right: 0;
+	top:0;
+	width: 100%;
 }
 
 .container{
@@ -12,11 +23,15 @@ aside.sidebar_left a{
     background: #fff;
     position: relative;
     width: auto;
+    height: 100vh;
 }
 
 .container aside.column.is-2{
+	position: absolute;
+	height: 100vh;
+	width : 200px;
     padding: 0;
-    width: 16.66667%;
+    
 }
 
 nav.accordions>.accordion>a.accordion-header{
@@ -46,11 +61,37 @@ aside.column > nav.accordions > .accordion, aside.column > nav.accordions .accor
 	border: 3px soild #000000;
 } 
 
+.container > .columns > .courses_body{
+	position: absolute;
+	left : 210px;
+	height: 100%;
+	width: 80%;
+}
 
+header.courses_header{
+	
+	position: absolute;
+	width: 100%;
+	height: 50px;
+}
 
+header.courses_header > .search{
+	position: absolute;
+	width: 250px;
+	height: 60px;
+	margin-bottom: 20px;
 
+	right : 20px;
+	top : 10px;
+}
 
-
+div.courses_body  main.courses_main{
+	
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	border-top: 1px solid #aaaaaa;
+}
 
 
 

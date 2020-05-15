@@ -26,15 +26,7 @@ public class LectureController {
 												Model model) {
 		
 		ArrayList<LectureDTO> lectureList = lectureService.getLectureInfo(category_name, order);
-		ArrayList<String> asideLectureList = new ArrayList<String>();
 		
-		for(int i=0;i<lectureList.size();i++) {
-			if(!asideLectureList.contains(lectureList.get(i).getCategory())) {
-				asideLectureList.add(lectureList.get(i).getCategory());
-			}
-		}
-		
-		model.addAttribute("asideLectureList", asideLectureList);
 		model.addAttribute("lectureList", lectureList);
 		
 		return "course/courseList";

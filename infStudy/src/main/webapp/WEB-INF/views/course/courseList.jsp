@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="/WEB-INF/views/layout/header.jsp"%> 
+<c:set var="root" value="${pageContext.request.contextPath }"/>
 
 
 <div id="root">
@@ -13,37 +14,19 @@
 					<aside class="column is-2 sidebar_left">
 						<nav class="accordions category_accordions">
 							<div class="accordion">
-								<a href="#" class="accordion-header">전체 강의</a>
+								<a href="${root }/courses" class="accordion-header">전체 강의</a>
 							</div>
 							<div class="accordion-header">
-								 
-								<c:forEach var="asideList" items="${asideLectureList }">
+								<c:forEach var="asideList" items="${categoryList }">
 								<div class="accordion-body">
-									<a href="#" class="accordion-content">${asideList }</a>
+									<a href="${root }/courses?category_name=${asideList.name}" class="accordion-content">${asideList.name }</a>
 								</div>
 								</c:forEach>
-							
-								<!-- 
-								<div class="accordion-body">
-									<a href="#" class="accordion-content">Javascript</a>
-								</div>
-								<div class="accordion-body">
-									<a href="#" class="accordion-content">Java</a>
-								</div>
-								<div class="accordion-body">
-									<a href="#" class="accordion-content">JSP</a>
-								</div>
-								<div class="accordion-body">
-									<a href="#" class="accordion-content">Spring</a>
-								</div>
-								<div class="accordion-body">
-									<a href="#" class="accordion-content">Spring-boot</a>
-								</div>
-								 -->
 							</div>
 						</nav>
 					</aside>
-					<!-- 
+					
+				
 					<div class="column courses_body">
 						<header class="courses_header">
 							<div class="search">
@@ -51,6 +34,8 @@
 								<button type="button" class="button">검색</button>
 							</div>
 						</header>
+						
+						
 						<main class="courses_main">
 							<nav class="breadcrumb">
 								<ul>
@@ -58,7 +43,8 @@
 									<li><a href="#" class="category_link">개발 프로그래밍</a></li>
 									<li><a href="#" class="category_link">웹 개발</a></li>
 								</ul>
-								<div class="select coures_order_select"><select name="order_select" id="courses_order_selector">
+								<div class="select coures_order_select">
+									<select name="order_select" id="courses_order_selector">
 										<option value="seq" selected>추천순</option>
 										<option value="popular">인기순</option>
 										<option value="recent">최신순</option>
@@ -68,8 +54,8 @@
 								</div>
 							</nav>
 						</main>
+					 	
 					</div>
-					 -->
 				</div>
 			</div>
 		</section>
