@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,13 +21,23 @@ public class LectureController {
 	private LectureService lectureService;
 	
 	@GetMapping(value = "/courses", produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public ArrayList<LectureDTO> getLectureInfo(@RequestParam(required = false) String category_name,
-												@RequestParam(required = false, defaultValue = "price") String order) {
+	public String getLectureInfo(@RequestParam(required = false) String category_name,
+												@RequestParam(required = false, defaultValue = "price") String order,
+												Model model) {
 		
-		ArrayList<LectureDTO> LectureList = lectureService.getLectureInfo(category_name, order);
+		ArrayList<LectureDTO> lectureList = lectureService.getLectureInfo(category_name, order);
+		ArrayList<String> asideLectureList = new ArrayList<String>();
 		
-		return LectureList;
+		for(int i=0;i<lectureList.size();i++) {
+			if(!asideLectureList.contains(lectureList.get(i).getCategory())) {
+				asideLectureList.add(lectureList.get(i).getCategory());
+			}
+		}
+		
+		model.addAttribute("asideLectureList", asideLectureList);
+		model.addAttribute("lectureList", lectureList);
+		
+		return "course/courseList";
 	}
 	
 	@GetMapping(value = "/course/{lecture_title}", produces = "application/json; charset=utf-8")
