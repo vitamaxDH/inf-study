@@ -64,7 +64,48 @@ local.properties
 
 .sts4-cache/
 
-# git ignore test
-test.txt
-
 # End of https://www.gitignore.io/api/eclipse
+
+# Spring project .gitignore
+
+*.java.hsp
+*.sonarj
+*.sw*
+.DS_Store
+.settings
+.springBeans
+bin
+build.sh
+integration-repo
+ivy-cache
+jxl.log
+jmx.log
+derby.log
+spring-test/test-output/
+.gradle
+argfile*
+activemq-data/
+
+classes/
+/build
+buildSrc/build
+/spring-*/build
+/spring-core/kotlin-coroutines/build
+/framework-bom/build
+/integration-tests/build
+/src/asciidoc/build
+target/
+
+# Eclipse artifacts, including WTP generated manifests
+
+*/META-INF/MANIFEST.MF
+infStudy/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+# IDEA artifacts and output dirs
+*.iml
+*.ipr
+*.iws
+.idea
+out
+test-output
+atlassian-ide-plugin.xml
+.gradletasknamecache
