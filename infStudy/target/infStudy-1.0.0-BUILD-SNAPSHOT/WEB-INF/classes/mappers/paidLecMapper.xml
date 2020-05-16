@@ -8,8 +8,10 @@
    
    </insert>
    
-   <select id="select" resultType="kr.co.infStudy.model.PaidLecVO">
-   
+   <!-- get Paid_lec by users -->
+   <select id="getPaidLecList" parameterType="int" resultType="kr.co.infStudy.model.PaidLecVO">
+   		SELECT * FROM PAID_LEC
+   			WHERE U_NO = #{u_no}
    </select>
    
    <update id="update" parameterType="kr.co.infStudy.model.PaidLecVO">

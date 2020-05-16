@@ -28,13 +28,13 @@ public class LectureController {
 		ArrayList<LectureDTO> lectureList = lectureService.getLectureInfo(category_name, order);
 		
 		model.addAttribute("lectureList", lectureList);
+		model.addAttribute("category_name", category_name);
 		
 		return "course/courseList";
 	}
 	
 	@GetMapping(value = "/course/{lecture_title}", produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public ArrayList<LectureDetailDTO> getLectureDetail(@PathVariable String lecture_title) throws Exception{
+	public String getLectureDetail(@PathVariable String lecture_title) throws Exception{
 		
 		
 		ArrayList<LectureDetailDTO> result = lectureService.getLectureDetail(lecture_title);
@@ -53,10 +53,10 @@ public class LectureController {
 			if(!result.get(i-1).getSection().equals(result.get(i).getSection())) {
 				System.out.println(result.get(i).getSection());
 			}
-			System.out.println(result.get(i+2));
+			System.out.println(result.get(i));
 		}
 		*/	
-		return result;
+		return "course/courseDetail";
 	}
 	
 }

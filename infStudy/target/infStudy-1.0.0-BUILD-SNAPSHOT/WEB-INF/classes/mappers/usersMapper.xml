@@ -8,11 +8,11 @@
    		INSERT INTO USERS VALUES (U_NO_SEQ.NEXTVAL, #{email}, #{password}, #{nickname}, #{img})
    </insert>
    
-   <select id="selectUsersList" resultType="kr.co.infStudy.model.UsersVO">
+   <select id="getUsersList" resultType="kr.co.infStudy.model.UsersVO">
    		SELECT * FROM USERS
    </select>
 
-   <select id="selectUser" parameterType="int" resultType="kr.co.infStudy.model.UsersVO">
+   <select id="getUser" parameterType="java.util.HashMap" resultType="kr.co.infStudy.model.UsersVO">
    		SELECT * FROM USERS WHERE U_NO = #{u_no}
    </select>
    
@@ -27,4 +27,27 @@
    <delete id="delete" parameterType="int">
    		DELETE USERS WHERE U_NO = #{u_no}
    </delete>
+   
+   
+   
+
+
+   <!-- my-courses -->
+   <select id="getMyCourse" parameterType="kr.co.infStudy.model.PaidLecVO" resultType="kr.co.infStudy.dto.user.MyCoursesDTO">
+		SELECT l.title title, l.img img, c.url url, 
+		    ROUND((SELECT count(*) FROM FINISH
+		            WHERE 1 = 1
+		                AND  U_NO = #{u_no}
+		                AND L_NO = #{l_no}) * 100 /
+	        (SELECT count(*) FROM CURRICULUM WHERE L_NO = #{l_no}),2)
+		     progress, f.finish_time finishTime
+		    FROM LECTURE l, FINISH f, CURRICULUM c
+		    WHERE l.l_no = c.l_no
+			        AND c.c_no = f.c_no 
+			         AND F.U_NO = #{u_no}
+			         AND F.L_NO = #{l_no}
+        group by l.title, l.img, c.url, f.finish_time
+   </select>
+   
+   
 </mapper>
