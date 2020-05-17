@@ -17,7 +17,7 @@ public class QnaReplyDAOImpl implements QnaReplyDAO {
 	
 	@Override
 	public List<QnaReplyDTO> getQnaReplyList(String q_no) {
-		System.out.println("so What??");
+		
 		return session.selectList(nameSpace + "getQnaReplyList", q_no);
 	}
 }

@@ -56,8 +56,11 @@ public class LectureController {
 			System.out.println(result.get(i));
 		}
 		*/	
+		
+		
 		return "course/courseDetail";
 	}
+	
 	
 }
 
