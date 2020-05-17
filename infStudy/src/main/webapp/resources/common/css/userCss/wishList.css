@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.label {
+	font-size: .85rem;
+	font-weight: 400;
+	color: #929292;
+}
+
+.select select {
+	background-color: #fff;
+	border-color: #dbdbdb;
+	color: #363636;
+	cursor: pointer;
+	display: block;
+	font-size: 1em;
+	max-width: 100%;
+	outline: none;
+	align-items: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: none;
+    height: 2.25em;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding: calc(.375em - 1px) calc(.625em - 1px);
+    position: relative;
+    vertical-align: top;
+}

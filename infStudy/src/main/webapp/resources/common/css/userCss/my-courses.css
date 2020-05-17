@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+
+
+.control_container {
+	margin-top: 1rem;
+	margin-left: .75rem;
+	display: flex;
+}
+
+.control_container .control {
+	margin-right: 1rem;
+}
+
+.control {
+	box-sizing: border-box;
+	clear: both;
+	font-size: 1.75rem;
+	position: relative;
+	text-align: left;
+}
+
+.field {
+	padding-top: 20px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.control_container>div.search {
+	justify-content: flex-end;
+}
