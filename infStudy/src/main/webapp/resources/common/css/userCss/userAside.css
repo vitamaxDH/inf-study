@@ -1,9 +1,15 @@
 @charset "UTF-8";
 
+.user-aside ul li {
+	padding: 8px 0px;
+}
+
 li {
 	list-style: none;
 	font-size: 16px;
-	padding: 8px 12px;
+	font-weight: 600;
+	padding: 8px 0px;
+	list-style: none;
 }
 
 aside ul {
@@ -12,10 +18,19 @@ aside ul {
 }
 aside>ul:first-child {
 	padding-left: 0px;
-	padding-top: 25px;
+	padding-top: 0px;
 	margin: 0px auto;
 }
 
-aside {
+aside a {
+	color: rgb(49, 49, 49);
+	text-decoration: none;
+}
+
+ul>li {
+	padding-top: 10px;
+}
+
+aside.user-aside a>li.is-active {
 	
 }
