@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class LectureDetailDTO {
 	
-//	private int c_no;			// 커리큘럼 idx (강의 정렬하기)
-//	private int l_no;			// lecture idx 
+	private int c_no;			// 커리큘럼 idx (강의 정렬하기)
+	private int l_no;			// lecture idx 
 	private String teacher;		// l_no로 join해서 teacher이름 가져오기
 	private String category;
 	private String lecture_title;

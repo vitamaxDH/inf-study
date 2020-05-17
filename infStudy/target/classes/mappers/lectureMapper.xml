@@ -25,7 +25,7 @@
 
 	<select id="getLectureDetail" parameterType="java.lang.String" resultType="kr.co.infStudy.dto.lecture.LectureDetailDTO">
 		
-			select ins_t.name as teacher, ctg_t.name as category, lec_t.title as lecture_title, cur_t.section,  
+			select cur_t.c_no, lec_t.l_no, ins_t.name as teacher, ctg_t.name as category, lec_t.title as lecture_title, cur_t.section,  
 			cur_t.title as curriculum_title, cur_t.url, cur_t.playtime, lec_t.img
 			from lecture lec_t, instructor ins_t, curriculum cur_t, category ctg_t
 			where lec_t.l_no = cur_t.l_no and lec_t.ctg_no = ctg_t.ctg_no and lec_t.i_no = ins_t.i_no

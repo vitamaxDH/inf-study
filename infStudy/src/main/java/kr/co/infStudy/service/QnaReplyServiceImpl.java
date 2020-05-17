@@ -15,7 +15,7 @@ public class QnaReplyServiceImpl implements QnaReplyService {
 	private QnaReplyDAO dao;
 	
 	@Override
-	public ArrayList<QnaReplyDTO> getQnaReplyList(String q_no) {
+	public ArrayList<QnaReplyDTO> getQnaReplyList(int q_no) {
 		
 		return (ArrayList<QnaReplyDTO>) dao.getQnaReplyList(q_no);
 	}

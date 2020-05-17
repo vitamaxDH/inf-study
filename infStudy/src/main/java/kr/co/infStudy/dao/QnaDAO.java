@@ -9,6 +9,6 @@ public interface QnaDAO {
 
 	List<QnaDTO> getQnaList(HashMap<String, String> hmap);
 
-	QnaDTO getQnaDetail(String q_no);
+	QnaDTO getQnaDetail(int q_no);
 
 }

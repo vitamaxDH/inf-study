@@ -22,7 +22,7 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 	
 	@Override
-	public QnaDTO getQnaDetail(String q_no) {
+	public QnaDTO getQnaDetail(int q_no) {
 		
 		return session.selectOne(nameSpace + "getQnaDetail", q_no);
 	}

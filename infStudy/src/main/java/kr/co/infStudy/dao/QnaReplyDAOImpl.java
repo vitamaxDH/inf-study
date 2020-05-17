@@ -16,7 +16,7 @@ public class QnaReplyDAOImpl implements QnaReplyDAO {
 	private String nameSpace = "kr.co.infStudy.qnaReplyMapper.";
 	
 	@Override
-	public List<QnaReplyDTO> getQnaReplyList(String q_no) {
+	public List<QnaReplyDTO> getQnaReplyList(int q_no) {
 		
 		return session.selectList(nameSpace + "getQnaReplyList", q_no);
 	}

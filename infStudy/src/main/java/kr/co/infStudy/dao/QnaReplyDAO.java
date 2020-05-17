@@ -6,6 +6,6 @@ import kr.co.infStudy.dto.qna.QnaReplyDTO;
 
 public interface QnaReplyDAO {
 
-	List<QnaReplyDTO> getQnaReplyList(String q_no);
+	List<QnaReplyDTO> getQnaReplyList(int q_no);
 
 }

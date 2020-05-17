@@ -26,7 +26,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 	
 	@Override
-	public QnaDTO getQnaDetail(String q_no) {
+	public QnaDTO getQnaDetail(int q_no) {
 		
 		return dao.getQnaDetail(q_no);
 	}

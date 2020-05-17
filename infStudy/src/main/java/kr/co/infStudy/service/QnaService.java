@@ -8,7 +8,7 @@ public interface QnaService {
 
 	ArrayList<QnaDTO> getQnaList(String lecture_title, String search);
 
-	QnaDTO getQnaDetail(String q_no);
+	QnaDTO getQnaDetail(int q_no);
 
 
 }

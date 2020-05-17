@@ -212,18 +212,10 @@ article.curriculum .curriculum_accordion .section_cover .unit_item .unit_item_ri
 	margin-right: 60px;
 } 
 
-.lecture_cover{
-	transition: 1s;
-    transform-origin: top;
-}
 
-.section_header.open+.lecture_cover{
-   	height: 0px;
-    transform-origin: top;
-    transition: 1s;
-    
-    overflow: hidden;
-}
+
+
+
 
 
 

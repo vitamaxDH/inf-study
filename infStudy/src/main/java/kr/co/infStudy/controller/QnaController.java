@@ -39,7 +39,7 @@ public class QnaController {
 	
 	@GetMapping(value = "/questions/{q_no}", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ArrayList<QnaReplyDTO> getQnaDetail(@PathVariable String q_no){
+	public QnaDTO getQnaDetail(@PathVariable int q_no){
 		
 
 		/**
@@ -49,7 +49,7 @@ public class QnaController {
 		ArrayList<QnaReplyDTO> qnaReplyList = qnaReplyService.getQnaReplyList(q_no);
 
 		
-		return qnaReplyList;
+		return qna;
 	}
 	
 
