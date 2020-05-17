@@ -17,15 +17,14 @@ public class QnaDAOImpl implements QnaDAO {
 	private String nameSpace = "kr.co.infStudy.qnaMapper.";
 	
 	@Override
-	public QnaDTO getQnaDetail(String q_no) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<QnaDTO> getQnaList(HashMap<String, String> hmap) {
+		return session.selectList(nameSpace + "getQnaList", hmap);
 	}
 	
 	@Override
-	public List<QnaDTO> getQnaList(HashMap<String, String> hmap) {
-		// TODO Auto-generated method stub
-		return null;
+	public QnaDTO getQnaDetail(String q_no) {
+		
+		return session.selectOne(nameSpace + "getQnaDetail", q_no);
 	}
 	
 }

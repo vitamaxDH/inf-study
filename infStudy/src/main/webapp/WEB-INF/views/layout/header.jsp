@@ -13,27 +13,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link href="resources/common/css/header.css" rel="stylesheet">
-    <link href="resources/common/css/footer.css" rel="stylesheet">
+    <link href="${contextPath }/resources/common/css/header.css" rel="stylesheet">
+    <link href="${contextPath }/resources/common/css/footer.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
     <header class="head">
         <div class="header_div">
-            <div class="box icon"><a href="home.html">InfStudy</a></div>
+            <div class="box icon"><a href="/">InfStudy</a></div>
             <div class="box text_hover menu_list"><a href="/courses" style="font-size:15px !important;font-weight: 700;">강의들</a>
                 <ul>
-                    <li><a href="#">HTML/CSS</a></li>
-                    <li><a href="#">웹 개발</a></li>
-                    <li><a href="#">JavaScript</a></li>
-                    <li><a href="#">Java</a></li>
-                    <li><a href="#">Front-End</a></li>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">Back-End</a></li>
-                    <li><a href="#">웹 퍼블리싱</a></li>
-                    <li><a href="#">Spring</a></li>
-                    <li><a href="#">Node.js</a></li>
-                    <li><a href="#">React</a></li>
+                <c:forEach var="asideList" items="${categoryList }">
+                    <li><a href="${root }/courses?category_name=${asideList.name}" class="accordion-content">${asideList.name }</a></li>						
+				</c:forEach>
                 </ul>
                 <div class="arrow"></div>
             </div>

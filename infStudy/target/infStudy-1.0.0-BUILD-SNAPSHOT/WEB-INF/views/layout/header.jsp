@@ -20,24 +20,16 @@
 <div class="container">
     <header class="head">
         <div class="header_div">
-            <div class="box icon"><a href="home.html">InfStudy</a></div>
-            <div class="box text_hover lecture_list">강의들
+            <div class="box icon"><a href="/">InfStudy</a></div>
+            <div class="box text_hover menu_list"><a href="/courses" style="font-size:15px !important;font-weight: 700;">강의들</a>
                 <ul>
-                    <li><a href="#">HTML/CSS</a></li>
-                    <li><a href="#">웹 개발</a></li>
-                    <li><a href="#">JavaScript</a></li>
-                    <li><a href="#">Java</a></li>
-                    <li><a href="#">Front-End</a></li>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">Back-End</a></li>
-                    <li><a href="#">웹 퍼블리싱</a></li>
-                    <li><a href="#">Spring</a></li>
-                    <li><a href="#">Node.js</a></li>
-                    <li><a href="#">React</a></li>
+                <c:forEach var="asideList" items="${categoryList }">
+                    <li><a href="${root }/courses?category_name=${asideList.name}" class="accordion-content">${asideList.name }</a></li>						
+				</c:forEach>
                 </ul>
                 <div class="arrow"></div>
             </div>
-            <div class="box text_hover commu_list">커뮤니티
+            <div class="box text_hover menu_list">커뮤니티
                 <ul>
                     <li><a href="#"><span class="glyphicon glyphicon-comment" /> 묻고답하기</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-star" /> 수강평모아보기</a></li>
@@ -53,7 +45,7 @@
                 </form>
                 <div class="glass"></div>
             </div>
-            <div class="box profile profile_list"><a href="#"><span class="glyphicon glyphicon-user" />
+            <div class="box profile profile_list"><a href="dashboard"><span class="glyphicon glyphicon-user" />
                     <div class="profile_list_div">
                         <div class="profile_list_div_div1"><a href="#"><span class="glyphicon glyphicon-user">ChanJu</a>
                         </div>

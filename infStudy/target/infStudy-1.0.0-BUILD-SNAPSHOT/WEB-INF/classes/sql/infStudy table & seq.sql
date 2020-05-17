@@ -1,10 +1,44 @@
+drop table qna_reply;
+drop table notice_reply;
+drop table review_reply;
+drop table qna;
+drop table notice;
+drop table wish_list;
+drop table review;
+drop table paid_lec;
+drop table finish;
+drop table curriculum;
+drop table users;
+drop table lecture;
+drop table category;
+drop table instructor;
+
+
+drop sequence users_seq;
+drop sequence instructor_seq;
+drop sequence curriculum_seq;
+drop sequence paid_lec_seq;
+drop sequence qna_seq;
+drop sequence qna_reply_seq;
+drop sequence review_seq;
+drop sequence review_reply_seq;
+drop sequence wish_list_seq;
+drop sequence notice_seq;
+drop sequence notice_reply_seq;
+drop sequence category_seq;
+drop sequence lecture_seq;
+
+
+
+
 create table users(
     u_no number(5) primary key,
-    email varchar2(30) not null unique,
+    email varchar2(100) not null unique,
     password varchar2(30) not null,
-    nickname varchar2(10) not null,
+    nickname varchar2(50) not null,
     img varchar2(500) not null
 );
+
 
 create table instructor(
     i_no number(5) primary key,
@@ -22,8 +56,8 @@ create table lecture(
     i_no number(5) not null,
     ctg_no number(5) not null,
     title varchar2(50) not null,
+    content CLOB not null,
     price number(10) not null,
-    rank number(1,1) default 0,
     difficulty varchar(10) not null,
     img varchar2(500) not null,
     rel_dt date default sysdate,
@@ -38,7 +72,6 @@ create table curriculum (
     l_no number(5) not null,
     section varchar2(100) not null,
     title varchar2(100) not null,
-    content CLOB not null,
     url varchar2(500) not null,
     playtime number(10) not NULL,
     FOREIGN KEY(l_no)
@@ -49,6 +82,7 @@ create table paid_lec(
     p_no number(5) primary key,
     u_no number(5) not null,
     l_no number(5) not null,
+    paid_dt date default sysdate,
     CONSTRAINT FK_U_NO FOREIGN KEY(u_no)
     REFERENCES users(u_no),
     CONSTRAINT FK_L_NO FOREIGN KEY(l_no)
@@ -119,13 +153,15 @@ create table wish_list(
 
 create table finish(
     u_no number(5) not null,
+    l_no number(5) not null,
     c_no number(5) not null,
-    finish number(1) default 0,
     finish_time date default sysdate,
     FOREIGN KEY(u_no)
     REFERENCES users(u_no),
     FOREIGN KEY(c_no)
-    REFERENCES curriculum(c_no)
+    REFERENCES curriculum(c_no),
+    FOREIGN KEY(l_no)
+    REFERENCES lecture(l_no)
 );
 
 create table notice(
@@ -151,6 +187,7 @@ create table notice_reply(
 
 
 create sequence users_seq;
+create sequence lecture_seq;
 create sequence instructor_seq;
 create sequence curriculum_seq;
 create sequence paid_lec_seq;
@@ -163,7 +200,4 @@ create sequence notice_seq;
 create sequence notice_reply_seq;
 create sequence category_seq;
 
-
-alter table curriculum drop column content;
-alter table lecture add(content clob);
 

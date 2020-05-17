@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,18 +21,20 @@ public class LectureController {
 	private LectureService lectureService;
 	
 	@GetMapping(value = "/courses", produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public ArrayList<LectureDTO> getLectureInfo(@RequestParam(required = false) String category_name,
-												@RequestParam(required = false, defaultValue = "price") String order) {
+	public String getLectureInfo(@RequestParam(required = false) String category_name,
+												@RequestParam(required = false, defaultValue = "price") String order,
+												Model model) {
 		
-		ArrayList<LectureDTO> LectureList = lectureService.getLectureInfo(category_name, order);
+		ArrayList<LectureDTO> lectureList = lectureService.getLectureInfo(category_name, order);
 		
-		return LectureList;
+		model.addAttribute("lectureList", lectureList);
+		model.addAttribute("category_name", category_name);
+		
+		return "course/courseList";
 	}
 	
 	@GetMapping(value = "/course/{lecture_title}", produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public ArrayList<LectureDetailDTO> getLectureDetail(@PathVariable String lecture_title) throws Exception{
+	public String getLectureDetail(@PathVariable String lecture_title) throws Exception{
 		
 		
 		ArrayList<LectureDetailDTO> result = lectureService.getLectureDetail(lecture_title);
@@ -50,11 +53,14 @@ public class LectureController {
 			if(!result.get(i-1).getSection().equals(result.get(i).getSection())) {
 				System.out.println(result.get(i).getSection());
 			}
-			System.out.println(result.get(i+2));
+			System.out.println(result.get(i));
 		}
 		*/	
-		return result;
+		
+		
+		return "course/courseDetail";
 	}
+	
 	
 }
 
