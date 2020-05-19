@@ -1,6 +1,5 @@
 package kr.co.infStudy.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,9 +25,9 @@ public class LectureDAOImpl implements LectureDAO {
 	}
 	
 	@Override
-	public List<LectureDetailDTO> getLectureDetail(String lecture_title) {
+	public LectureDetailDTO getLectureDetail(String lecture_title) {
 		
-		return session.selectList(nameSpace + "getLectureDetail", lecture_title);
+		return session.selectOne(nameSpace + "getLectureDetail", lecture_title);
 	}
 	
 }

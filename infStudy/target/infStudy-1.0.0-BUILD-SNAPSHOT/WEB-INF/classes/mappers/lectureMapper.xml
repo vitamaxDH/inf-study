@@ -24,13 +24,18 @@
    </select>
 
 	<select id="getLectureDetail" parameterType="java.lang.String" resultType="kr.co.infStudy.dto.lecture.LectureDetailDTO">
-		
-			select ins_t.name as teacher, ctg_t.name as category, lec_t.title as lecture_title, cur_t.section,  
-			cur_t.title as curriculum_title, cur_t.url, cur_t.playtime, lec_t.img
-			from lecture lec_t, instructor ins_t, curriculum cur_t, category ctg_t
-			where lec_t.l_no = cur_t.l_no and lec_t.ctg_no = ctg_t.ctg_no and lec_t.i_no = ins_t.i_no
-			and lec_t.title = #{lecture_title}
-			
+	<![CDATA[	
+	SELECT L_T.L_NO, L_T.TITLE AS LECTURE_TITLE, I_T.NAME AS TEACHER, L_T.IMG, 
+	      (SELECT AVG(RANK) FROM REVIEW WHERE L_NO =(SELECT L_NO FROM LECTURE WHERE TITLE = #{lecture_title})) AS RANK_AVG,
+	      (SELECT COUNT(*) FROM REVIEW WHERE L_NO = (SELECT L_NO FROM LECTURE WHERE TITLE = #{lecture_title})) AS REVIEW_CNT, 
+	      (SELECT COUNT(*) FROM PAID_LEC WHERE L_NO = (SELECT L_NO FROM LECTURE WHERE TITLE = #{lecture_title})) AS STUDENT_CNT,
+	      CTG_T.NAME AS CATEGORY, L_T.PRICE, L_T.DIFFICULTY,
+	      (SELECT COUNT(*) FROM CURRICULUM WHERE L_NO = (SELECT L_NO FROM LECTURE WHERE TITLE = #{lecture_title})) AS CURRICULUM_CNT, 
+	      (SELECT SUM(PLAYTIME) FROM CURRICULUM WHERE L_NO = (SELECT L_NO FROM LECTURE WHERE TITLE = #{lecture_title})) AS TOTAL_RUNTIME,
+	      (SELECT COUNT(*) FROM WISH_LIST WHERE L_NO = (SELECT L_NO FROM LECTURE WHERE TITLE = #{lecture_title})) AS WISHLIST_CNT
+	FROM LECTURE L_T, INSTRUCTOR I_T, CATEGORY CTG_T 
+	WHERE L_T.I_NO = I_T.I_NO AND L_T.CTG_NO = CTG_T.CTG_NO AND L_T.TITLE = #{lecture_title}
+	]]>
    </select>
    
    <select id="select" resultType="kr.co.infStudy.model.LectureVO">

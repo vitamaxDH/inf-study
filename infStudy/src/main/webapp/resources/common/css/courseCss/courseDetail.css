@@ -195,6 +195,8 @@ article.curriculum .curriculum_accordion .section_cover .section_header .section
 article.curriculum .curriculum_accordion .section_cover .unit_item{
 	border-bottom: 1px solid #aaa;
 	overflow: hidden;
+	height: 30px;
+
 }
 
 article.curriculum .curriculum_accordion .section_cover .unit_item div{
@@ -211,6 +213,112 @@ article.curriculum .curriculum_accordion .section_cover .unit_item .unit_item_ri
 	text-align: right;
 	margin-right: 60px;
 } 
+
+
+.course_description .content article.course_date{
+	position: relative;
+	margin-top: 50px;
+}
+
+.course_description .content article.course_date h4.sub_heading{
+	font-size: 1.25rem;
+	margin-bottom: 10px;
+}
+
+
+.course_description .content article.reviews{
+	position: relative;
+	margin-top: 50px;
+}
+
+.course_description .content article.reviews h4.sub_heading{
+	font-size: 1.25rem;
+	margin-bottom: 10px;
+}
+
+.course_description .content article.reviews .review_summary{
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+	text-align: center;
+	margin-right: 150px;	
+	margin-left: 150px;	
+	margin-bottom: 50px;
+}
+
+.course_description .content article.reviews .review_summary div{
+	float: left;
+}
+
+.course_description .content article.reviews .review_summary .average{
+	width: 200px;
+}
+
+.course_description .content article.reviews .review_summary .progress_bars{
+	width: 300px;
+}
+
+.course_description .content article.reviews .review_summary .article_container{
+	clear: both;
+	
+}
+
+.course_description .content article.reviews .review_summary .average{
+	margin-top: 10px;
+}
+
+
+.course_description .content article.reviews .review_summary .average_num{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.course_description .content article.reviews .review_summary .review_total{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.course_description .content article.reviews .review_summary .article_list{
+	position: relative;
+}
+
+
+.course_description .content article.reviews .review_summary .article_container{
+	position: absolute;
+}
+
+.course_description .content article.reviews .article_list .review_item{
+	overflow: hidden;
+}
+
+.course_description .content article.reviews .article_list figure.image{
+	position: absolute;
+	width: 60px;
+	height: 60px;
+}
+
+.course_description .content article.reviews .article_list figure.image img{
+	
+}	
+
+
+.course_description .content article.reviews .article_list .media-content{
+	position: relative;
+	width: 300px;
+	margin-left: 100px;
+	
+}
+
+.course_description .content article.reviews .article_list .media-content .content{
+	margin-bottom: 50px;	
+}
+
+
+
+
+
+
 
 .lecture_cover{
 	transition: 1s;

@@ -5,11 +5,14 @@ import java.util.HashMap;
 
 import kr.co.infStudy.dto.lecture.LectureDTO;
 import kr.co.infStudy.dto.lecture.LectureDetailDTO;
+import kr.co.infStudy.dto.lecture.UploadLectureDTO;
 
 public interface LectureService {
 
 	ArrayList<LectureDTO> getLectureInfo(String category_name, String sort);
 
-	ArrayList<LectureDetailDTO> getLectureDetail(String lecture_title);
+	LectureDetailDTO getLectureDetail(String lecture_title);
+
+	void addLecture(UploadLectureDTO addLecture);
 
 }

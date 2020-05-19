@@ -36,12 +36,14 @@ kr\co\infStudy\service\WishListService.class
 kr\co\infStudy\controller\testController.class
 kr\co\infStudy\dto\user\MyCoursesDTO.class
 kr\co\infStudy\service\CurriculumService.class
+kr\co\infStudy\dto\lecture\LectureReplyDTO.class
 kr\co\infStudy\controller\LectureController.class
 kr\co\infStudy\service\QnaService.class
 kr\co\infStudy\dto\qna\QnaReplyDTO.class
 kr\co\infStudy\dto\lecture\LectureDTO.class
 kr\co\infStudy\model\LectureVO.class
 kr\co\infStudy\service\PaidLecService.class
+kr\co\infStudy\dto\lecture\LectureReviewDTO.class
 kr\co\infStudy\dto\lecture\LectureDetailDTO.class
 kr\co\infStudy\dao\LectureDAOImpl.class
 kr\co\infStudy\dao\UsersDAO.class
@@ -74,6 +76,7 @@ kr\co\infStudy\dao\LectureDAO.class
 kr\co\infStudy\service\ReviewReplyServiceImpl.class
 kr\co\infStudy\model\QnaReplyVO.class
 kr\co\infStudy\service\QnaServiceImpl.class
+kr\co\infStudy\dto\lecture\LecturesCurriculumDTO.class
 kr\co\infStudy\dao\NoticeDAOImpl.class
 kr\co\infStudy\service\ReviewServiceImpl.class
 kr\co\infStudy\model\CategoryVO.class

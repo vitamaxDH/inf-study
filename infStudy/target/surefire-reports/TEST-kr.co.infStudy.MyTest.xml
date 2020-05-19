@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="kr.co.infStudy.MyTest" time="0.865" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="kr.co.infStudy.MyTest" time="0.823" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_241\jre\bin"/>
@@ -27,7 +27,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\wonsik_folder\programming\practice\workspace08_TeamProject\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1536954541107932114.tmp"/>
+    <property name="classworlds.conf" value="C:\wonsik_folder\programming\practice\workspace08_TeamProject\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4872781649578498566.tmp"/>
     <property name="jansi.force" value="true"/>
     <property name="sun.jnu.encoding" value="MS949"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_241\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\app\hydes\product\11.2.0\dbhome_1\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\wonsik_folder\programming\H2\bin;C:\Program Files\Java\jdk1.8.0_241\bin;C:\Program Files (x86)\Brackets\command;C:\Users\hydes\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Bandizip\;C:\Users\hydes\AppData\Local\Programs\Microsoft VS Code\bin;."/>
@@ -64,7 +64,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="kr.co.infStudy.MyTest" name="sessionTest" time="0.023"/>
-  <testcase classname="kr.co.infStudy.MyTest" name="test" time="0.841"/>
+  <testcase classname="kr.co.infStudy.MyTest" name="sessionTest" time="0.019"/>
+  <testcase classname="kr.co.infStudy.MyTest" name="test" time="0.803"/>
   <testcase classname="kr.co.infStudy.MyTest" name="factoryTest" time="0.001"/>
 </testsuite>

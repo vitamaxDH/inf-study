@@ -8,8 +8,11 @@
    
    </insert>
    
-   <select id="select" resultType="kr.co.infStudy.model.CurriculumVO">
-   
+   <select id="getCurriculumList" parameterType="java.lang.String" resultType="kr.co.infStudy.dto.lecture.LecturesCurriculumDTO">
+   		select c_no, section, title as curriculum_title, playtime, url
+		from curriculum
+ 		where l_no = (select l_no from lecture where title = #{lecture_title})
+   		
    </select>
    
    <update id="update" parameterType="kr.co.infStudy.model.CurriculumVO">

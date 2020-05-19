@@ -10,6 +10,6 @@ public interface LectureDAO {
 
 	List<LectureDTO> getLectureInfo(HashMap<String, String> hmap);
 
-	List<LectureDetailDTO> getLectureDetail(String lecture_title);
+	LectureDetailDTO getLectureDetail(String lecture_title);
 
 }

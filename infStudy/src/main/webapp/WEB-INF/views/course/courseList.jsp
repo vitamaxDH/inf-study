@@ -22,6 +22,7 @@
 									<a href="${root }/courses?category_name=${asideList.name}" class="accordion-content">${asideList.name }</a>
 								</div>
 								</c:forEach>
+								<div class="insert_lecture"><a href="${root }/course/gotoAddLecturePg">강의 넣기</a></div>
 							</div>
 						</nav>
 					</aside>

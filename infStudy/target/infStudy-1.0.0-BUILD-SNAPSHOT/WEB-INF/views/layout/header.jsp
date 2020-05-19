@@ -13,8 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link href="resources/common/css/header.css" rel="stylesheet">
-    <link href="resources/common/css/footer.css" rel="stylesheet">
+    <link href="${contextPath }/resources/common/css/header.css" rel="stylesheet">
+    <link href="${contextPath }/resources/common/css/footer.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">

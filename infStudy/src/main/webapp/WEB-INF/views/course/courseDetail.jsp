@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%> 
@@ -17,13 +18,13 @@
 						<img alt="강의 이미지" src="https://i.gifer.com/72wX.gif">	
 					</div>
 					<div class="column course_title">
-						<h1>강의 제목</h1>
+						<h1>${lectureDetail.lecture_title }</h1>
 						<span>
-							<div class="rating_star">별점</div>
-							<small>(OO개의 수강평)</small> <br />
+							<div class="rating_star">별점 : ${lectureDetail.rank_avg }</div>
+							<small>(${lectureDetail.review_cnt }개의 수강평)</small> <br />
 						</span>
-						<small class="student_cnt">OOO명의 수강생</small> <br />
-						<small class="course_skills">카테고리명</small> <br />
+						<small class="student_cnt">${lectureDetail.student_cnt }명의 수강생</small> <br />
+						<small class="course_skills">${lectureDetail.category }</small> <br />
 					</div>
 				</div>
 			</div>
@@ -31,8 +32,8 @@
 		<section class="course_description_container">
 			<div class="tabs">
 				<ul class="container">
-					<li class="curriculum reviews"><a href="#">강의소개</a></li>
-					<li class="questions"><a href="#">질문 & 답변</a></li>
+					<li class="curriculum reviews"><a href="${root }/course/${lecture_title}">강의소개</a></li>
+					<li class="questions"><a href="${root }/course/${lecture_title}/questions">질문 & 답변</a></li>
 				</ul>
 			</div>
 			
@@ -47,8 +48,10 @@
 								<h3>교육 과정</h3>
 								<div class="curriculum_accordion">
 									<div class="curriculm_header">
-										<span class="curriculum_runtime"> 강의 시간 : <i class="fa fa-clock-o" aria-hidden="true"></i> OO시간OO분</span>
-										<span class="curriculum_length">강의 수 : OO</span>
+										<span class="curriculum_runtime">
+										 	강의 시간 : <i class="fa fa-clock-o" aria-hidden="true"></i> ${lectureDetail.total_runtime }
+										 </span>
+										<span class="curriculum_length">강의 수 : ${lectureDetail.curriculum_cnt }</span>
 										<span class="select_all">모두 펼치기</span>
 									</div>
 									
@@ -76,7 +79,7 @@
 													<div class="unit_item_right"><i class="fa fa-clock-o" aria-hidden="true"></i> ${curriculum_list[0].playtime }</div>
 												</div>
 												</a>							
-				<!-- 							</div>		 -->
+			
 										</c:if>
 										
 										<c:if test="${status.count ne fn:length(curriculum_list)}">
@@ -87,7 +90,7 @@
 													<div class="section_header_right">${curriculum_list[status.count].section }</div>
 													<div class="section_header_left">
 														<span class="unit_length">강의수</span>
-														<span class="unit_runtime">강의시간</span>
+														<span class="unit_runtime"><i class="fa fa-clock-o" aria-hidden="true"></i> 강의시간</span>
 													</div>
 												</div>
 												</div><div class="lecture_cover">
@@ -113,6 +116,105 @@
 									</div>
 								</div>	 
 							</article>
+							
+							<article class="course_date">
+								<h4 class="sub_heading">공개일자</h4>
+								<div>
+									OOOO년 OO월 OO일<span class="last_update_date">(마지막 업데이트 일자 : OOOO년 OO월 OO일)</span>
+								</div>
+							</article>
+							
+							<article class="reviews" id="reviews">
+								<h4 class="sub_heading">수강 후기</h4>
+								<div class="review_summary">
+									<div class="average">
+										<span class="average_num">평점</span>
+										<span class="average_star"></span>
+										<h5 class="review_total">${fn:length(lectureReview) }개의 수강평</h5>
+									</div>
+									
+									<!-- max에는 수강평 개수 value에는 해당 점수의 평점 개수 -->
+									<!-- for문으로 돌리면 될 듯 -->
+									<div class="progress_bars">
+										<div class="review_counting">
+											<label>5점</label>
+											<progress class="progress link" max="7" value="6"></progress>
+										</div>
+										<div class="review_counting">
+											<label>4점</label>
+											<progress class="progress link" max="7" value="1"></progress>
+										</div>
+										<div class="review_counting">
+											<label>3점</label>
+											<progress class="progress link" max="7" value="0"></progress>
+										</div>
+										<div class="review_counting">
+											<label>2점</label>
+											<progress class="progress link" max="7" value="0"></progress>
+										</div>
+										<div class="review_counting">
+											<label>1점</label>
+											<progress class="progress link" max="7" value="0"></progress>
+										</div>
+									</div>
+								</div>
+								<div class="article_list">
+								
+									
+									<c:forEach var="reviews" items="${lectureReview }">
+									
+									<div class="article_container">
+										<article class="review_item">
+											<figure class="image">
+												<img src="#" alt="유저 이미지" />
+											</figure>
+											<div class="media-content">
+												<div class="content">
+													<span class="rating_star">${reviews.reviewer_img }</span>
+													<strong>${reviews.r_no} : ${reviews.reviewer }</strong>
+													<small class="updated_at"><span>${reviews.review_reg_dt }</span></small> <br />
+													<div class="review_body">${reviews.review_content }</div>											
+												</div>
+												
+												
+												<c:forEach var="comments" items="${reviews.replies }">
+												<div class="review_comments">
+													<div class="article_container">
+														<article class="comment">
+															<figure class="image">
+																<img src="#" alt="강사 이미지" />
+															</figure>
+															<div class="media-content">
+																<div class="content">
+																	<p>
+																		<small>
+																			<span class="author">${comments.rr_no} : ${comments.replier }</span>
+																			<span class="updated_at">${comments.reply_reg_dt }</span>
+																		</small> <br />
+																		<span class="article_body">${comments.reply_content }</span>
+																	</p>
+																</div>
+															</div>
+														</article>
+													</div>
+												</div>
+												</c:forEach>
+												
+												
+												
+											</div>
+										</article>
+									</div>
+									
+									
+									</c:forEach>
+									
+									
+									
+								</div>
+																
+							</article>
+							
 						</div>
 					</div>
 				</div>
@@ -123,6 +225,8 @@
 </div>
 
 
+
+
 <script>
 
 var section_elem = document.querySelectorAll(".section_header");
@@ -130,10 +234,13 @@ var section_elem = document.querySelectorAll(".section_header");
 Array.from(section_elem).forEach(elem => {
     elem.addEventListener("click", function(){
         elem.classList.toggle("open");
-
+        
+    	
     })
-    
 })
+
+
+
 
 /*
   querySelectorAll() 함수는 유사배열을 반환한다.
@@ -151,15 +258,5 @@ Array.from(section_elem).forEach(elem => {
 <%-- 
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>
  --%>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
  
