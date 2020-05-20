@@ -166,11 +166,11 @@
 									<div class="article_container">
 										<article class="review_item">
 											<figure class="image">
-												<img src="#" alt="유저 이미지" />
+												<img src="/uploadFile/${reviews.reviewer_img }" alt="유저 이미지" />
 											</figure>
 											<div class="media-content">
 												<div class="content">
-													<span class="rating_star">${reviews.reviewer_img }</span>
+													<span class="rating_star">별점</span>
 													<strong>${reviews.r_no} : ${reviews.reviewer }</strong>
 													<small class="updated_at"><span>${reviews.review_reg_dt }</span></small> <br />
 													<div class="review_body">${reviews.review_content }</div>											
@@ -182,7 +182,7 @@
 													<div class="article_container">
 														<article class="comment">
 															<figure class="image">
-																<img src="#" alt="강사 이미지" />
+																<img src="/uploadFile/${reviews.reviewer_img }" alt="강사 이미지" />
 															</figure>
 															<div class="media-content">
 																<div class="content">

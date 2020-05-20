@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.infStudy.dto.lecture.LectureDTO;
 import kr.co.infStudy.dto.lecture.LectureDetailDTO;
+import kr.co.infStudy.model.LectureVO;
 
 @Repository
 public class LectureDAOImpl implements LectureDAO {
@@ -28,6 +29,12 @@ public class LectureDAOImpl implements LectureDAO {
 	public LectureDetailDTO getLectureDetail(String lecture_title) {
 		
 		return session.selectOne(nameSpace + "getLectureDetail", lecture_title);
+	}
+	
+	@Override
+	public void addLecture(LectureVO lectureVO) {
+		
+		session.insert(nameSpace + "addLecture", lectureVO);
 	}
 	
 }

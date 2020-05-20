@@ -4,8 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.infStudy.lectureMapper">
    
-   <insert id="insert" parameterType="kr.co.infStudy.model.LectureVO">
-   
+   <insert id="addLecture" parameterType="kr.co.infStudy.model.LectureVO">
+   		INSERT INTO LECTURE(L_NO, I_NO, CTG_NO, TITLE, PRICE, RANK, DIFFICULTY, IMG, REL_DT)
+   		VALUES(LECTURE_SEQ.NEXTVAL, #{i_no}, #{ctg_no}, #{title}, #{price}, #{rank}, #{difficulty}, #{img, jdbcType=VARCHAR}, SYSDATE)
    </insert>
    
 	<select id="getLectureInfo" parameterType="java.util.HashMap" resultType="kr.co.infStudy.dto.lecture.LectureDTO">

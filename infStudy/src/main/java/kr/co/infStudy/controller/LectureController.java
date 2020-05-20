@@ -37,12 +37,15 @@ public class LectureController {
 												@RequestParam(required = false) String category_name,
 												@RequestParam(required = false, defaultValue = "price") String order,
 												Model model) {
+		
 		request.getSession().setAttribute("login", new UsersVO(1, "aaa@aaa.aaa", "aaaaaa", "aaaaaa", "aaaaaa"));
 		
 		ArrayList<LectureDTO> lectureList = lectureService.getLectureInfo(category_name, order);
 		
 		model.addAttribute("lectureList", lectureList);
 		model.addAttribute("category_name", category_name);
+		
+		System.out.println(request.getServletContext().getRealPath("/"));
 		
 		return "course/courseList";
 	}
@@ -65,12 +68,11 @@ public class LectureController {
 	}
 	
 	@PostMapping("/course/addLecture")
-	@ResponseBody
 	public String addLecture(@ModelAttribute("addLecture") UploadLectureDTO addLecture) {
 
 		lectureService.addLecture(addLecture);
 		
-		return "fff";
+		return "course/addLectureSuccess";
 	}
 	
 	

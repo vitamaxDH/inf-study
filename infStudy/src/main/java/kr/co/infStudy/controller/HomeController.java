@@ -1,5 +1,7 @@
 package kr.co.infStudy.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +23,13 @@ public class HomeController {
 	private TestCkService service; 
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Model model) throws Exception {
+	public String index(Model model, HttpServletRequest request) throws Exception {
 		log.info("메인 페이지");
 		model.addAttribute("testCkVO", new TestCkVO());
+		
+		
+		System.out.println(request.getSession());
+		
 		return "index";
 	}
 

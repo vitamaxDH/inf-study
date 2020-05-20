@@ -294,30 +294,36 @@ article.curriculum .curriculum_accordion .section_cover .unit_item .unit_item_ri
 
 .course_description .content article.reviews .article_list figure.image{
 	position: absolute;
-	width: 60px;
-	height: 60px;
+	width: 75px;
+	height: 75px;
 }
 
-.course_description .content article.reviews .article_list figure.image img{
-	
+.course_description .content article.reviews .article_list figure.image {
+	overflow: hidden;
 }	
 
+.course_description .content article.reviews .article_list figure.image img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	
+}
 
 .course_description .content article.reviews .article_list .media-content{
 	position: relative;
-	width: 300px;
+	width: 90%;
 	margin-left: 100px;
 	
 }
 
 .course_description .content article.reviews .article_list .media-content .content{
-	margin-bottom: 50px;	
+
+	margin-bottom: 75px;	
+	overflow: hidden;
+	width: 90%;
 }
-
-
-
-
-
 
 
 .lecture_cover{

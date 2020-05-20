@@ -14,5 +14,5 @@ public interface LectureService {
 	LectureDetailDTO getLectureDetail(String lecture_title);
 
 	void addLecture(UploadLectureDTO addLecture);
-
+	
 }

@@ -5,11 +5,14 @@ import java.util.List;
 
 import kr.co.infStudy.dto.lecture.LectureDTO;
 import kr.co.infStudy.dto.lecture.LectureDetailDTO;
+import kr.co.infStudy.model.LectureVO;
 
 public interface LectureDAO {
 
 	List<LectureDTO> getLectureInfo(HashMap<String, String> hmap);
 
 	LectureDetailDTO getLectureDetail(String lecture_title);
+
+	void addLecture(LectureVO lectureVO);
 
 }

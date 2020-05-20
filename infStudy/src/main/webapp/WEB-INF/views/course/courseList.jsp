@@ -64,7 +64,7 @@
 										<div class="course course_card_item">
 											<a href="${root }/course/${lectureList.title}" class="course_card_front">
 												<div class="card_image">
-													${lectureList.img }
+													<img alt="${lectureList.img }" src="/uploadFile/${lectureList.img }">
 												</div>
 												<div class="card_content">
 													<div class="course_title">

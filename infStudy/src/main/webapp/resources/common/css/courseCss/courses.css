@@ -135,9 +135,16 @@ div.courses_container .courses_list_body{
 .courses_container .courses_list_body .course_card_item .card_image{
 	position: relative;
 	height: 50%;
+	overflow: hidden;
 }
 
-
+.courses_container .courses_list_body .course_card_item .card_image img{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
 
 
 

@@ -1,15 +1,18 @@
 package kr.co.infStudy.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.infStudy.dao.LectureDAO;
 import kr.co.infStudy.dto.lecture.LectureDTO;
 import kr.co.infStudy.dto.lecture.LectureDetailDTO;
 import kr.co.infStudy.dto.lecture.UploadLectureDTO;
+import kr.co.infStudy.model.LectureVO;
 
 @Service
 public class LectureServiceImpl implements LectureService {
@@ -47,6 +50,24 @@ public class LectureServiceImpl implements LectureService {
 	@Override
 	public void addLecture(UploadLectureDTO addLecture) {
 		
+		String uploadPath = "C:/Teamproject/uploadFile";
+		
+		MultipartFile upload_file = addLecture.getLectureImg();
+		
+		if(upload_file.getSize() > 0) {
+			
+			try {
+				
+				String fileName = upload_file.getOriginalFilename();
+				upload_file.transferTo(new File(uploadPath + "/" + fileName));
+				addLecture.setImg(fileName);
+			}catch (Exception e) {
+				
+				e.printStackTrace();
+			}
+		}
+		
+		dao.addLecture(new LectureVO(addLecture));
 		
 	}
 }

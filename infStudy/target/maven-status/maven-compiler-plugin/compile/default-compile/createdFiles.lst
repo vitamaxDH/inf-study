@@ -36,6 +36,7 @@ kr\co\infStudy\service\WishListService.class
 kr\co\infStudy\controller\testController.class
 kr\co\infStudy\dto\user\MyCoursesDTO.class
 kr\co\infStudy\service\CurriculumService.class
+kr\co\infStudy\dto\lecture\UploadLectureDTO.class
 kr\co\infStudy\dto\lecture\LectureReplyDTO.class
 kr\co\infStudy\controller\LectureController.class
 kr\co\infStudy\service\QnaService.class
