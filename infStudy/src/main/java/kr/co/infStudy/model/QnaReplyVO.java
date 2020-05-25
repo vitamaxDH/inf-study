@@ -4,7 +4,11 @@ import java.sql.Date;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * 
+ * @author hydes
+ * DB의 qna_reply 테이블에 대응하는 VO
+ */
 @Data
 @NoArgsConstructor
 public class QnaReplyVO {

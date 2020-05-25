@@ -23,7 +23,6 @@ aside.sidebar_left a{
     background: #fff;
     position: relative;
     width: 1200px;
-    height: 100vh;
 }
 
 .container aside.column.is-2{
@@ -62,15 +61,14 @@ aside.column > nav.accordions > .accordion, aside.column > nav.accordions .accor
 } 
 
 .container > .columns > .courses_body{
-	position: absolute;
+	position: relative;
 	left : 210px;
-	height: 100vh;
 	width: 1000px;
 }
 
 header.courses_header{
 	
-	position: absolute;
+	position: relative;
 	width: 1000px;
 	height: 50px;
 }
@@ -87,10 +85,11 @@ header.courses_header > .search{
 
 div.courses_body  main.courses_main{
 	
-	position: absolute;
+	position: relative;
 	border-top: 1px solid #aaaaaa;
 	top: 70px;
 	width: 1000px;
+	margin-bottom: 100px;
 }
 
 div.courses_body  main.courses_main > nav.breadcrumb{
@@ -118,6 +117,7 @@ main.courses_main div.courses_order_select > select#courses_order_selector{
 }
 
 div.courses_container .courses_list_body{
+	position: relative;
 	margin-top: 30px;
 	overflow: hidden;
 }
@@ -148,7 +148,10 @@ div.courses_container .courses_list_body{
 
 
 
-
+.container .d-none{
+	position: relative;
+	text-align: center;
+}
 
 
 

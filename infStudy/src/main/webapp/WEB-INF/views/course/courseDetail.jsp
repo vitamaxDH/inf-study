@@ -15,7 +15,7 @@
 			<div class="container">
 				<div class="columns">
 					<div class="column img_container">
-						<img alt="강의 이미지" src="https://i.gifer.com/72wX.gif">	
+						<img alt="강의 이미지" src="/uploadFile/${lectureDetail.img }">	
 					</div>
 					<div class="column course_title">
 						<h1>${lectureDetail.lecture_title }</h1>
@@ -71,7 +71,7 @@
 											
 											<!-- /course/${lecture_title}/lecture/${curriculum_no} -->
 											<div class="lecture_cover">
-												<a href="#">
+												<a href="${root }/course/${lectureDetail.lecture_title}/lecture/${list.c_no}">
 												<div class="unit_item">
 													<div class="unit_item_left"> 
 														<i class="fa fa-play-circle-o" aria-hidden="true"></i> ${curriculum_list[0].curriculum_title }
@@ -98,7 +98,7 @@
 											
 											<!-- /course/${lecture_title}/lecture/${curriculum_no} -->											
 											
-											<a href="#">
+											<a href="${root }/course/${lectureDetail.lecture_title}/lecture/${list.c_no}">
 											<div class="unit_item">
 												<div class="unit_item_left"> 
 													<i class="fa fa-play-circle-o" aria-hidden="true"></i> 
@@ -161,7 +161,7 @@
 								<div class="article_list">
 								
 									
-									<c:forEach var="reviews" items="${lectureReview }">
+									<c:forEach var="reviews" items="${lectureReview }" varStatus="status">
 									
 									<div class="article_container">
 										<article class="review_item">
@@ -175,8 +175,7 @@
 													<small class="updated_at"><span>${reviews.review_reg_dt }</span></small> <br />
 													<div class="review_body">${reviews.review_content }</div>											
 												</div>
-												
-												
+																								
 												<c:forEach var="comments" items="${reviews.replies }">
 												<div class="review_comments">
 													<div class="article_container">
@@ -219,8 +218,35 @@
 					</div>
 				</div>
 			</div>
+		</section>
+		
+		<!-- 사이드 메뉴 -->
+		<nav id="sideMenu">
+			<div class="container">
+				<h2 class="price">${lectureDetail.price }원</h2>
+				<button class="take_lecture">수강신청</button> <br />
+				<button class="wishcnt">${lectureDetail.wishlist_cnt } 위시</button> <br />
+				<div class="lec_summary">
+					<div class="lec_info_row">	
+						<i class="fa fa-user" aria-hidden="true"></i> <span>지식공유자 : <a href="#">${lectureDetail.teacher }</a></span>
+					</div>
+					
+					<div class="lec_info_row">					
+						<span>
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+							${lectureDetail.curriculum_cnt }회 수업 , 총 ${lectureDetail.total_runtime } 수업
+						</span>
+					</div>
+					<div class="lec_info_row">					
+						<span>평생 무제한 시청</span>
+					</div>
+					<div class="lec_info_row">					
+						<span>수강 난이도 :  ${lectureDetail.difficulty }급 &nbsp;이상</span>
+					</div>
+				</div>
+			</div>
+		</nav>
 			
-		</section>	
 	</main>	
 </div>
 
@@ -235,12 +261,18 @@ Array.from(section_elem).forEach(elem => {
     elem.addEventListener("click", function(){
         elem.classList.toggle("open");
         
-    	
     })
 })
 
 
+var sideMenu = document.querySelector("#sideMenu");
 
+window.addEventListener("scroll", function(){
+
+    var yTop = window.pageYOffset;
+    sideMenu.style.top = yTop + 100 + "px";
+
+})
 
 /*
   querySelectorAll() 함수는 유사배열을 반환한다.

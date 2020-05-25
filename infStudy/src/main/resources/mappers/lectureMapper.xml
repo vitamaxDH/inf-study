@@ -9,19 +9,40 @@
    		VALUES(LECTURE_SEQ.NEXTVAL, #{i_no}, #{ctg_no}, #{title}, #{price}, #{rank}, #{difficulty}, #{img, jdbcType=VARCHAR}, SYSDATE)
    </insert>
    
+   <!-- 
+   		강의 목록 가져오기
+    -->
 	<select id="getLectureInfo" parameterType="java.util.HashMap" resultType="kr.co.infStudy.dto.lecture.LectureDTO">
-		
+			<![CDATA[
 			select lec_t.title, lec_t.content, lec_t.price, lec_t.img, ctg_t.name as category, ins_t.name as teacher
-			from lecture lec_t, instructor ins_t, category ctg_t
+				from lecture lec_t, instructor ins_t, category ctg_t
 			where lec_t.i_no = ins_t.i_no and lec_t.ctg_no = ctg_t.ctg_no 
-			
+			]]>
 			<if test="category_name != null">
 				and ctg_t.name = #{category_name}
+			</if>
+						
+			<if test="lecture_title != null">
+				and lec_t.title like '%' || #{lecture_title} || '%'
 			</if>
 			
 			<if test="sort == 'price'">
 				order by lec_t.price
-			</if>
+			</if>			
+   </select>
+   
+      <!-- 
+   		페이징처리
+    -->
+	<select id="getLectureCnt" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		<![CDATA[
+		SELECT COUNT(*) FROM LECTURE LEC
+		]]>
+		
+		<if test="category_name != null">
+		 , CATEGORY CTG WHERE LEC.CTG_NO = CTG.CTG_NO AND CTG.NAME = #{category_name} 
+		</if>
+
    </select>
 
 	<select id="getLectureDetail" parameterType="java.lang.String" resultType="kr.co.infStudy.dto.lecture.LectureDetailDTO">
@@ -39,6 +60,10 @@
 	]]>
    </select>
    
+   <select id="getLectureFileNames" parameterType="java.util.HashMap" resultType="java.lang.String">
+	
+   </select>
+
    <select id="select" resultType="kr.co.infStudy.model.LectureVO">
    
    </select>

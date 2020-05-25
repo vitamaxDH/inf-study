@@ -11,6 +11,11 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import kr.co.infStudy.model.CategoryVO;
 import kr.co.infStudy.service.CategoryService;
 
+/**
+ * @author hydes
+ *	상단 메뉴의 강의 항목 리스트를 뽑아오는 클래스
+ *
+ */
 public class CoursesAsideInterceptor implements HandlerInterceptor{
 
 	@Autowired

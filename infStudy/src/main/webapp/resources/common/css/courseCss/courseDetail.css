@@ -340,6 +340,79 @@ article.curriculum .curriculum_accordion .section_cover .unit_item .unit_item_ri
 }
 
 
+.hidden{
+	display: none;
+}
+
+#sideMenu{
+	position: absolute;
+	top: 150px;
+	right: 400px;
+	background-color: white;
+	border-radius: 0.5rem;
+	transition: 0.2s;
+	width: 300px;	
+}
+
+
+#sideMenu h2.price{
+	position: relative;
+	font-size: 30px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-align: left;
+	margin-left: 25px;
+}
+
+#sideMenu button.take_lecture{
+	position: relative;
+	font-size: 25px;
+	color: white;
+	background-color: rgb(42, 175, 109);
+	border: none;
+	width: 250px;
+	height: 40px;
+	margin: 0 25px 10px 25px;
+	border-radius: 0.3rem;
+	
+}
+
+#sideMenu button.wishcnt{
+	position: relative;
+	width: 100px;
+	height: 40px;
+	font-size: 15px;
+	border: none;
+	margin: 0 100px 20px 100px;	
+	color: rgb(150, 150, 150);
+}
+
+
+#sideMenu .lec_summary .lec_info_row{
+	
+	font-weight: bold;
+	color: rgb(100, 100, 100);
+	margin-bottom: 10px;
+	margin-left: 25px;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

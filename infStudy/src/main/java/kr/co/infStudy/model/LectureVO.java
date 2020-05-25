@@ -7,7 +7,11 @@ import javax.validation.constraints.NotEmpty;
 import kr.co.infStudy.dto.lecture.UploadLectureDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * 
+ * @author hydes
+ * DB의 lecture 테이블에 대응하는 VO
+ */
 @Data
 @NoArgsConstructor
 public class LectureVO {

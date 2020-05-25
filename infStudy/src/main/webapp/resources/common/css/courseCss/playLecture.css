@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+*{
+	color: #ffffff;
+}
+
+#main{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #121212;
+	
+}
+
+section.lecture_container{
+	overflow: hidden;
+	position: fixed;
+	width: 1400px;
+	height: 1000px;
+}
+
+section.lecture_container aside.lecture_nav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 1000px;
+    float: left;
+}
+
+section.lecture_container aside.lecture_nav{
+	background-color: #171f27;
+	transition: width 0.3s;
+}
+
+
+section.lecture_container aside.lecture_nav>div.lecture_nav_header{
+	padding: 32px 16px;
+}
+
+.lecture_nav_header h5{
+	font-size: 20px;
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+section.lecture_container aside.lecture_nav ul{
+	margin: 0px;
+	padding-left: 0px;
+	
+}
+
+section.lecture_container aside.lecture_nav ul{
+	
+	cursor: pointer;
+}
+
+section.lecture_container aside.lecture_nav ul li.unit_section{
+	background-color: #303e4d;
+	font-weight: 700;
+	padding: 4px 0;
+}
+section.lecture_container aside.lecture_nav ul li{
+	transition: 0.2s;
+}
+
+section.lecture_container aside.lecture_nav ul li.unit_lecture:hover{
+    transition: 0.6s;
+    font-weight: 1000;
+    font-size: 30px;
+}
+
+section.lecture_container aside.lecture_nav ul li.unit_section{
+	padding: 8px 16px;
+}
+
+section.lecture_container aside.lecture_nav ul li.unit_lecture{
+	padding: 4px 0;
+}
+
+section.lecture_container aside.lecture_nav ul li.unit_lecture .unit_title{
+	padding: 8px 16px;
+}
+
+
+section.lecture_container div.content_container.center{
+	position: fixed;
+	width: 1200px;
+	height: 1000px;
+	padding-left: 300px;
+	z-index: -100;
+}
+
+.is_opened{
+	border-left: 5px solid chartreuse;
+	font-weight: 700;
+}
+
+.content_container{
+	background-color: #121212;
+}
+
+
+.content_container .content_header_nav h1{
+	text-align: center;
+}
+
+.content_container .content_header_nav .out{
+	position: absolute;
+	right: 30px;
+	top: 20px;
+	border: 2px solid white;
+	border-radius: 0.5rem;
+	padding: 10px 20px;
+	font-weight: bold;
+	cursor: pointer;
+	
+}
+
+.content_container .unit_body{
+	position: relative;
+	margin: 150px 225px;
+}
+
+
+
+
+

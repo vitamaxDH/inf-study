@@ -4,7 +4,7 @@ import lombok.Data;
 
 
 /**
- * 삭제 예정
+ *  강의 상세 내용을 보여주는 DTO
  */
 @Data
 public class LectureDetailDTO {
@@ -24,9 +24,6 @@ public class LectureDetailDTO {
 	private String difficulty;
 	private int wishlist_cnt;
 
-
-	/**
-	 * 	아래에는 로그인했을 때 보여줄 것들에 대한 필드값 정의하기
-	 */
-
+//  아래에는 로그인했을 때 보여줄 것들에 대한 필드값 정의하기
+	 
 }

@@ -5,6 +5,11 @@ import java.sql.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * @author hydes
+ * DB의 paid_lec 테이블에 대응하는 VO
+ */
 @Data
 @NoArgsConstructor
 public class PaidLecVO {

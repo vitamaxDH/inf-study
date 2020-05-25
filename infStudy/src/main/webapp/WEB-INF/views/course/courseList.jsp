@@ -31,11 +31,11 @@
 					<div class="column courses_body">
 						<header class="courses_header">
 							<div class="search">
-								<input type="text" class="input" placeholder="강의 검색하기" />	
-								<button type="button" class="button">검색</button>
+								<input id="searchInput" type="text" class="input" maxlength="11" placeholder="강의 검색하기" />
+								<button type="button" class="button" id="findLec">검색</button> <br />
+								<div id="inputError"></div>	
 							</div>
 						</header>
-						
 						
 						<main class="courses_main">
 							<nav class="breadcrumb">
@@ -86,14 +86,135 @@
 									</c:forEach>
 								</div>
 							</div>
-						</main>
-					 	
+						</main>	
+						
+						<div class="d-none d-md-block">
+							<ul class="pagination justify-content-center">
+								<c:choose>
+									<c:when test="${pageBean.prevPage <= 0 }"></c:when>
+									<c:otherwise>
+										
+										<c:choose>
+											<c:when test="${category_name ne null }">												
+												<li class="page-item">
+													<a href="${root }/courses?category_name=${category_name }&page=${pageBean.prevPage}" class="page-link">이전</a>
+												</li>
+											</c:when>
+											
+											<c:otherwise>
+												<li class="page-item">
+													<a href="${root }/courses?page=${pageBean.prevPage}" class="page-link">이전</a>
+												</li>												
+											</c:otherwise>
+										</c:choose>
+										
+									</c:otherwise>
+								</c:choose>					
+								
+								<c:forEach var='idx' begin="${pageBean.min }" end='${pageBean.max }'>
+									<c:choose>
+										<c:when test="${idx == pageBean.currentPage }">
+											<c:choose>
+												<c:when test="${category_name ne null }">
+													<li class="page-item active">
+														<a href="${root }/courses?category_name=${category_name }&page=${idx}" class="page-link">${idx }</a>
+													</li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item active">
+														<a href="${root }/courses?page=${idx}" class="page-link">${idx }</a>
+													</li>												
+												</c:otherwise>
+											</c:choose>
+										</c:when>
+										<c:otherwise>
+											<c:choose>
+												<c:when test="${category_name ne null }">
+													<li class="page-item">
+														<a href="${root }/courses?category_name=${category_name }&page=${idx}" class="page-link">${idx }</a>
+													</li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item">
+														<a href="${root }/courses?page=${idx}" class="page-link">${idx }</a>
+													</li>												
+												</c:otherwise>
+											</c:choose>
+										</c:otherwise>
+									</c:choose>					
+								</c:forEach>
+								
+								<c:choose>
+									<c:when test="${pageBean.max >= pageBean.pageCnt }"></c:when>
+									<c:otherwise>
+										<c:choose>
+											<c:when test="${category_name ne null }">
+												<li class="page-item">
+													<a href="${root }/courses?category_name=${category_name }&page=${pageBean.nextPage}" class="page-link">다음</a>
+												</li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item">
+													<a href="${root }/courses?page=${pageBean.nextPage}" class="page-link">다음</a>
+												</li>																							
+											</c:otherwise>
+										</c:choose>
+									</c:otherwise>
+								</c:choose>
+								
+							</ul>
+						</div>
+		
 					</div>
+					
 				</div>
 			</div>
 		</section>
+		
 	</main>
 </div>
+
+<script>
+	const searchInput = document.getElementById('searchInput');
+	const inputError = document.getElementById('inputError');
+	
+	searchInput.addEventListener('keyup',function(e){
+	    const inputVal = e.target.value;
+	    if (inputVal.length > 10){
+	    	inputError.innerHTML = '<p style="color:red;">입력값이 10자를 초과했습니다.<br>글자는 10자까지 입력이 가능합니다.</p>';
+	    	      
+	    }else{
+	    	inputError.innerHTML = '';
+	    }
+
+	    if(event.keyCode == 13){
+
+		    const inputVal = searchInput.value;
+
+		    if('${category_name}'.trim().length != 0){
+			    
+			    location.href = "?lecture_title=" + inputVal + "&category_name=${category_name}";
+		    }else{
+		    	location.href = "?lecture_title=" + inputVal;
+		    }	    	
+		}
+	});
+	
+
+	const findLec = document.getElementById("findLec");
+	findLec.addEventListener('click', function(e){
+	    const inputVal = searchInput.value;
+
+	    if('${category_name}'.trim().length != 0){
+		    
+		    location.href = "?lecture_title=" + inputVal + "&category_name=${category_name}";
+	    }else{
+	    	location.href = "?lecture_title=" + inputVal;
+	    }
+
+	})
+	
+</script>
 
 	
 <link href="resources/common/css/courseCss/courses.css" rel="stylesheet">

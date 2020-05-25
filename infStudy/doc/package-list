@@ -1,0 +1,10 @@
+kr.co.infStudy
+kr.co.infStudy.controller
+kr.co.infStudy.dao
+kr.co.infStudy.dto.lecture
+kr.co.infStudy.dto.qna
+kr.co.infStudy.dto.user
+kr.co.infStudy.interceptor
+kr.co.infStudy.model
+kr.co.infStudy.pageBean
+kr.co.infStudy.service

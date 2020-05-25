@@ -16,7 +16,6 @@ import kr.co.infStudy.service.QnaService;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@Slf4j
 public class QnaController {
 	
 	private QnaService qnaService;

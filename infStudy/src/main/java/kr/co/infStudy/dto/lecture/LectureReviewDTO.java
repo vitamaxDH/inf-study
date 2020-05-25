@@ -3,7 +3,11 @@ package kr.co.infStudy.dto.lecture;
 import java.util.ArrayList;
 
 import lombok.Data;
-
+/**
+ * 
+ * @author hydes
+ * 강의 평가를 가져오는 DTO
+ */
 @Data
 public class LectureReviewDTO {
 	

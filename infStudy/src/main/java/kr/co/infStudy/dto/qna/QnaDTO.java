@@ -3,7 +3,11 @@ package kr.co.infStudy.dto.qna;
 import java.sql.Date;
 
 import lombok.Data;
-
+/**
+ * 
+ * @author hydes
+ * 강의 질문 내용
+ */
 @Data
 public class QnaDTO {
 	
