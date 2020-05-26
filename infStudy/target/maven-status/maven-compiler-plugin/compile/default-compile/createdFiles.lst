@@ -39,9 +39,11 @@ kr\co\infStudy\service\CurriculumService.class
 kr\co\infStudy\dto\lecture\UploadLectureDTO.class
 kr\co\infStudy\dto\lecture\LectureReplyDTO.class
 kr\co\infStudy\controller\LectureController.class
+kr\co\infStudy\controller\test.class
 kr\co\infStudy\service\QnaService.class
 kr\co\infStudy\dto\qna\QnaReplyDTO.class
 kr\co\infStudy\dto\lecture\LectureDTO.class
+kr\co\infStudy\aop\LoggingAop.class
 kr\co\infStudy\model\LectureVO.class
 kr\co\infStudy\service\PaidLecService.class
 kr\co\infStudy\dto\lecture\LectureReviewDTO.class
@@ -62,6 +64,7 @@ kr\co\infStudy\model\InstructorVO.class
 kr\co\infStudy\model\FinishVO.class
 kr\co\infStudy\service\CategoryServiceImpl.class
 kr\co\infStudy\service\InstructorService.class
+kr\co\infStudy\pageBean\PageBean.class
 kr\co\infStudy\service\LectureService.class
 kr\co\infStudy\dao\ReviewReplyDAOImpl.class
 kr\co\infStudy\model\PaidLecVO.class

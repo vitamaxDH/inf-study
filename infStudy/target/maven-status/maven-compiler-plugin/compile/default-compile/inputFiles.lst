@@ -38,6 +38,7 @@ C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\jav
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\dao\ReviewDAO.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\model\NoticeReplyVO.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\service\ReviewService.java
+C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\aop\LoggingAop.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\dao\ReviewDAOImpl.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\service\NoticeReplyServiceImpl.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\dto\qna\QnaDTO.java
@@ -67,6 +68,7 @@ C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\jav
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\model\QnaReplyVO.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\model\FinishVO.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\service\NoticeService.java
+C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\controller\test.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\service\CurriculumService.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\model\QnaVO.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\dao\PaidLecDAO.java
@@ -82,6 +84,7 @@ C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\jav
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\service\ReviewServiceImpl.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\service\TestCkServiceImpl.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\service\UsersServiceImpl.java
+C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\pageBean\PageBean.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\dto\lecture\LectureReplyDTO.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\model\LectureVO.java
 C:\wonsik_folder\programming\git_programming\TeamProject01\infStudy\src\main\java\kr\co\infStudy\model\CategoryVO.java
