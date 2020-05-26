@@ -20,11 +20,19 @@
 <div class="container">
     <header class="head">
             <div class="header_div">
+<<<<<<< HEAD
                 <div class="box icon"><a href="/">InfStudy</a></div>
                 <div class="box text_hover lecture_list"><a href="${contextPath }/courses" class="list_a">강의들</a>
                     <ul>
                     	<c:forEach var="list" items="${categoryList }">
                         <li><a href="${contextPath }/courses?category_name=${list.name}">${list.name}</a></li>
+=======
+                <div class="box icon"><a href="${contextPath}">InfStudy</a></div>
+                <div class="box text_hover lecture_list"><a href="${contextPath }/courses" class="list_a">강의들</a>
+                    <ul>
+                    	<c:forEach var="list" items="${categoryList }">
+	                        <li><a href="${contextPath }/courses?category_name=${list.name}">${list.name }</a></li>
+>>>>>>> 352139a99b62a66654aaefded2cb82fcd16de189
                         </c:forEach>
                     </ul>
                     <div class="arrow"></div>

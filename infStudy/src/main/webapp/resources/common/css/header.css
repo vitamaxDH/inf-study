@@ -25,6 +25,10 @@
     grid-template-columns: 12% 9% 9% 46% 0 16% 8%;
     grid-template-rows: 60px;
 }
+body{
+	position: absolute;
+	top: 60px;
+}
 
 /******************************************* 검색창 ************************************************/
 .search_box {
