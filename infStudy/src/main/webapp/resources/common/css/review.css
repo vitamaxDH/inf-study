@@ -1,0 +1,81 @@
+/* 
+<div class="reView_contentList">
+    <div class="reView_contentLeft">
+        <div class="reView_qnaTitle">
+            <a href="#">
+                <span>Q.
+                </span>${}</a>
+        </div>
+        <div class="reView_qnaDetail">
+            <span>글쓴이 : ${}</span>
+            <span>시간 : ${}</span>
+            <span>강의명 : ${}</span>
+        </div>
+    </div>
+    <div class="reView_contentRignt">
+        <div class="reView_ansqered">미답변</div>
+        <div class="reView_qnaLink">
+            <button>질문으로 가기</button>
+        </div>
+    </div>
+</div>
+*/
+
+.contentContainer{
+    top:30px;
+}
+.reView_contentList{
+    width: 100%;
+    height: 110px;
+    border-bottom:1px solid rgb(220,220,220);
+}
+.reView_contentLeft{
+    float:left;
+    width: 80%;
+    height: 100%;
+}
+.reView_qnaTitle{
+    width: 100%;
+    height: 60%;
+    font-size: 30px;
+    line-height: 60px;
+    overflow: hidden;
+    word-break: break-all;
+}
+.reView_qnaTitle a{
+    text-decoration: none;
+    color: black;
+}
+.reView_star{
+    width: 100%;
+    height: 60%;
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    line-height: 35px;
+    color: gold;
+}
+.reView_content{
+    width: 100%;
+    height: 40%;
+    font-size: 25px;
+    line-height: 25px;
+}
+.reView_qnaDetail{
+    width: 100%;
+    height: 40%;
+    font-size: 12px;
+    color: rgb(100,100,100);
+    overflow: hidden;
+    word-break: break-all;
+    line-height: 40px;
+}
+.reView_contentRignt{
+    float: right;
+    width: 15%;
+    height: 80%;
+    margin: 1%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

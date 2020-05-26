@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.infStudy.homeMapper">
+
+	<select id="getHomeList" parameterType="java.util.HashMap" resultType = "kr.co.infStudy.dto.home.HomeDTO">
+   		
+   		<![CDATA[
+   		select
+			l_t.title as main_title,
+			u_t.nickname as main_writer,
+			r_t.rank as main_rank,
+			l_t.content as main_content,
+			l_t.img as main_imageLink,
+			r_t.reg_dt as main_dt,
+			c_t.name as main_category  
+   		from review r_t, users u_t, lecture l_t, category c_t 
+   		where r_t.u_no = u_t.u_no and r_t.l_no = l_t.l_no 
+   		
+   		 ]]>
+   		<if test="order == 'date'">
+	   		order by r_t.reg_dt desc   		
+   		</if>
+   		<if test="order == 'rank'">
+	   		order by r_t.rank desc  		
+   		</if>
+   		<if test="order == 'date_asc'">
+	   		order by r_t.reg_dt		
+   		</if>
+   </select>
+
+</mapper>
