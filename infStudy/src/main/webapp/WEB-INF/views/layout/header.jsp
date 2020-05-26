@@ -21,18 +21,11 @@
     <header class="head">
             <div class="header_div">
                 <div class="box icon"><a href="${contextPath}">InfStudy</a></div>
-                <div class="box text_hover lecture_list"><a href="#" class="list_a">강의들</a>
+                <div class="box text_hover lecture_list"><a href="${contextPath }/courses" class="list_a">강의들</a>
                     <ul>
-                        <li><a href="#">C언어</a></li>
-                        <li><a href="#">Java</a></li>
-                        <li><a href="#">Python</a></li>
-                        <li><a href="#">JSP/Spring</a></li>
-                        <li><a href="#">HTML/CSS</a></li>
-                        <li><a href="#">Vue/React</a></li>
-                        <li><a href="#">JavaScript</a></li>
-                        <li><a href="#">JQuery</a></li>
-                        <li><a href="#">Node.js</a></li>
-                        <li><a href="#">DB/SQL</a></li>
+                    	<c:forEach var="list" items="${categoryList }">
+	                        <li><a href="${contextPath }/courses?category_name=${list.name}">${list.name }</a></li>
+                        </c:forEach>
                     </ul>
                     <div class="arrow"></div>
                 </div>
