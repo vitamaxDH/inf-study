@@ -1,0 +1,286 @@
+@charset "UTF-8";
+
+/**************************************** body **********************************************/
+
+body{
+	position: absolute;
+	width: 100%;
+	height: 1400px;
+	top:60px;
+	left:0;
+}
+/*test code*/
+body div{
+    /* border:1px solid black; */
+} 
+
+/************************************* head *************************************************/
+.qnaBody{
+	position: absolute;
+	margin: 0 auto;
+	padding: 0;
+	width:100%;
+	height:100%;
+	top:0px;
+	left:0;
+	right:0;
+}
+.qnaHeader{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:115px;
+    background-color: rgb(51,59,61);
+}
+.qnaHeader h1{
+    margin:0;
+    padding-top:20px;
+    font-size: 30px;
+    color: white;
+}
+.qnaHeader p{
+    margin:0;
+    padding: 11px 0;
+    height: 20px;   
+    font-size: 15px;
+    color: white;
+}
+.qnaHeaderDiv{
+    position: absolute;
+    margin: 0 auto;
+    top:0;
+    left:0;
+    right:0;
+    width: 1200px;
+    height: 100%;
+}
+.qnaMain{
+    position: absolute;
+    margin: 0 auto;
+    top:115px;
+    left:0;
+    right:0;
+    width: 1200px;
+    height: 1235px;
+    display: grid;
+    grid-template-columns: 18% 82%;
+}
+/************************************** navigation ************************************************/
+.qnaNavi{
+
+}
+.qnaNavi ul{
+    padding: 10px 0;
+    margin-top:10px;
+}
+.qnaNavi li{
+    list-style-type: none;
+    margin:0;
+    height: 40px;
+    font-weight: bold;
+}
+.listContent{
+    font-size:16px;
+    color:rgb(78,83,108);
+    padding:0 20px;
+}
+.listContent_selected{
+    font-size:16px;
+    color:rgb(0,196,113);
+    padding:0 20px;
+}
+.qnaNavi a:hover, a:focus{
+    text-decoration: none !important;
+}
+.listTitle{
+    font-size: 13px;
+    color:rgb(180,180,180);
+    padding:0 10px;
+}
+/************************************** board layout ************************************************/
+.qnaBoard{
+    position: absolute;
+    left: 18%;
+    top:0;
+    width:82%;
+    height: 100%;
+}
+.qnaBoqrdHeader{
+    width: 100%;
+    height: 70px;
+}
+.alignList{
+    position: absolute;
+    width: 50%;
+    height: 70px;
+    top:0;
+    left: 0;
+}
+.alignList_select{
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 35px;
+    padding-left: 5px;
+    outline: none;
+    border-radius: 5px;
+    border:1px solid rgb(220,220,220);
+}
+.alignList_select:focus{
+    box-shadow: 0 0 3px 1px rgb(0,196,113);
+}
+
+.alignList_select:hover{
+    border:1px solid rgb(150,150,150);
+}
+.searchBox{
+    position: absolute;
+    width: 50%;
+    height: 70px;
+    top:0;
+    left:50%;
+}
+.searchBoxDiv{
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    right: 0;
+    bottom: 0;
+    height: 35px;
+    width: 250px;
+}
+.searchBoxDiv input{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color:rgb(240,240,240);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: none;
+    padding:10px;
+    outline: none;
+}
+.searchBoxDiv input:hover{
+    border:1px solid rgb(150,150,150);
+}
+.searchBoxDiv input:focus{
+    box-shadow: 0 0 3px 1px rgb(0,196,113);
+}
+.searchBoxDiv button{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: skyblue;
+    color:white;
+    border:none;
+}
+/************************************ board list **************************************************/
+.contentContainer{
+    position: absolute;
+    width: 100%;
+    height: 1155px;
+    top: 80px;
+    left: 0;
+}
+.contentList{
+    width: 100%;
+    height: 110px;
+    border-bottom:1px solid rgb(220,220,220);
+}
+.contentLeft{
+    float:left;
+    width: 90%;
+    height: 100%;
+}
+.qnaTitle{
+    width: 100%;
+    height: 60%;
+    font-size: 30px;
+    line-height: 60px;
+    overflow: hidden;
+    word-break: break-all;
+}
+.qnaTitle a{
+    text-decoration: none;
+    color: black;
+}
+.qnaTitle span{
+    color: rgb(0,196,113);
+}
+.qnaDetail{
+    width: 100%;
+    height: 40%;
+    font-size: 12px;
+    color: rgb(100,100,100);
+    overflow: hidden;
+    word-break: break-all;
+    line-height: 40px;
+}
+.contentRignt{
+    float: right;
+    width: 10%;
+    height: 100%;
+}
+.ansqered{
+    width: 100%;
+    height: 60%;
+    text-align: center;
+    font-size: 18px;
+    padding-top:10px;
+}
+.qnaLink{
+    width: 100%;
+    height: 40%;
+}
+.qnaLink button{
+    width: 100%;
+    height: 70%;
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid rgb(220,220,220);
+    border-radius: 5px;
+}
+.qnaLink button:hover{
+    border: 1px solid rgb(150,150,150);
+}
+/************************************* pagination *************************************************/
+.qnaBoqrdPaging{
+    width: 100%;
+    height: 50px;
+}
+.qnaBoqrdPaging nav{
+    position: relative;
+}
+.pagination{
+    position: absolute;
+    margin:0 auto;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    width: fit-content;
+}
+.pagination li a{
+    margin:0 5px;
+    border-radius: 5px;
+    color: black;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination li a:focus{
+    background-color: rgb(0,196,113);
+    color: white;
+}
+nav{
+    
+    position: absolute;
+    margin:0 auto;
+    left: 0;
+    right: 0;
+}

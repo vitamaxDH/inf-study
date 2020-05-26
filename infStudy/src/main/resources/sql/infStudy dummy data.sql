@@ -1,29 +1,29 @@
-INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'hellonewtry1@gmail.com', '1111', 'ÄÚµùÇÏ½ÇºÐ', ' ');
-INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'anhongyong@gmail.com', '2222', '¾ÈÈ«¿ë', ' ');
-INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'parkchanju@gmail.com', '3333', '¹ÚÂùÁÖ', ' ');
-INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'kimwonsik@gmail.com', '4444', '±è¿ø½Ä', ' ');
+INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'hellonewtry1@gmail.com', '1111', 'ì½”ë”©í•˜ì‹¤ë¶„', ' ');
+INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'anhongyong@gmail.com', '2222', 'ì•ˆí™ìš©', ' ');
+INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'parkchanju@gmail.com', '3333', 'ë°•ì°¬ì£¼', ' ');
+INSERT INTO USERS VALUES (USERS_SEQ.nextval, 'kimwonsik@gmail.com', '4444', 'ê¹€ì›ì‹', ' ');
 
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'HTML/CSS');
-INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'À¥ °³¹ß');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'ì›¹ ê°œë°œ');
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'JavaScript');
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Java');
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Front-End');
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Python');
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Back-End');
-INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'À¥ ÆÛºí¸®½Ì');
+INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'ì›¹ í¼ë¸”ë¦¬ì‹±');
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Spring');
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'Node.js');
 INSERT INTO CATEGORY VALUES (CATEGORY_SEQ.nextval, 'React');
 
-INSERT INTO INSTRUCTOR VALUES (INSTRUCTOR_SEQ.nextval, 'ÃÖ´ëÇÑ', ' ');
-INSERT INTO INSTRUCTOR VALUES (INSTRUCTOR_SEQ.nextval, '±è¿ø½Ä', ' ');
-INSERT INTO INSTRUCTOR VALUES (INSTRUCTOR_SEQ.nextval, '¾ÈÈ«¿ë', ' ');
-INSERT INTO INSTRUCTOR VALUES (INSTRUCTOR_SEQ.nextval, '¹ÚÂùÁÖ', ' ');
+INSERT INTO INSTRUCTOR VALUES (INSTRUCTOR_SEQ.nextval, 'ìµœëŒ€í•œ', ' ');
+INSERT INTO INSTRUCTOR VALUES (INSTRUCTOR_SEQ.nextval, 'ê¹€ì›ì‹', ' ');
+INSERT INTO INSTRUCTOR VALUES (INSTRUCTOR_SEQ.nextval, 'ì•ˆí™ìš©', ' ');
+INSERT INTO INSTRUCTOR VALUES (INSTRUCTOR_SEQ.nextval, 'ë°•ì°¬ì£¼', ' ');
 
-INSERT INTO LECTURE VALUES (LECTURE_SEQ.nextval, 1, 1, 'ÆÄÀÌ½ãÀ» ¹è¿öº¸ÀÚ', ' ', 5000, 'ÃÊ±Þ', ' ', sysdate);
-INSERT INTO LECTURE VALUES (LECTURE_SEQ.nextval, 2, 2, 'ÀÚ¹Ù¸¦ ¹è¿öº¸ÀÚ', ' ',5000, 'ÃÊ±Þ', ' ', sysdate);
-INSERT INTO LECTURE VALUES (LECTURE_SEQ.nextval, 3, 3, 'JSP¸¦ ¹è¿öº¸ÀÚ', ' ',15000, 'ÃÊ±Þ', ' ', sysdate);
-INSERT INTO LECTURE VALUES (LECTURE_SEQ.nextval, 4, 4, 'SPRINGÀ» ¹è¿öº¸ÀÚ', ' ', 50000, 'ÃÊ±Þ', ' ', sysdate);
+INSERT INTO LECTURE VALUES (LECTURE_SEQ.nextval, 1, 1, 'íŒŒì´ì¬ì„ ë°°ì›Œë³´ìž', ' ', 5000, 'ì´ˆê¸‰', ' ', sysdate);
+INSERT INTO LECTURE VALUES (LECTURE_SEQ.nextval, 2, 2, 'ìžë°”ë¥¼ ë°°ì›Œë³´ìž', ' ',5000, 'ì´ˆê¸‰', ' ', sysdate);
+INSERT INTO LECTURE VALUES (LECTURE_SEQ.nextval, 3, 3, 'JSPë¥¼ ë°°ì›Œë³´ìž', ' ',15000, 'ì´ˆê¸‰', ' ', sysdate);
+INSERT INTO LECTURE VALUES (LECTURE_SEQ.nextval, 4, 4, 'SPRINGì„ ë°°ì›Œë³´ìž', ' ', 50000, 'ì´ˆê¸‰', ' ', sysdate);
 
 INSERT INTO CURRICULUM VALUES (CURRICULUM_SEQ.nextval, 1, ' ', ' ', ' ',  500);
 INSERT INTO CURRICULUM VALUES (CURRICULUM_SEQ.nextval, 1, ' ', ' ', ' ',  500);

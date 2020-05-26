@@ -7,7 +7,10 @@ kr\co\infStudy\model\TestCkVO.class
 kr\co\infStudy\dao\NoticeReplyDAO.class
 kr\co\infStudy\dao\PaidLecDAOImpl.class
 kr\co\infStudy\dao\QnaDAOImpl.class
+<<<<<<< HEAD
 kr\co\infStudy\interceptor\CoursesAsideInterceptor.class
+=======
+>>>>>>> cj0515
 kr\co\infStudy\service\NoticeServiceImpl.class
 kr\co\infStudy\dao\InstructorDAO.class
 kr\co\infStudy\dao\QnaReplyDAOImpl.class
@@ -21,6 +24,10 @@ kr\co\infStudy\service\CurriculumServiceImpl.class
 kr\co\infStudy\service\PaidLecServiceImpl.class
 kr\co\infStudy\model\ReviewReplyVO.class
 kr\co\infStudy\controller\HomeController.class
+<<<<<<< HEAD
+=======
+kr\co\infStudy\dto\qna\AllQnaDTO.class
+>>>>>>> cj0515
 kr\co\infStudy\service\LectureServiceImpl.class
 kr\co\infStudy\dao\InstructorDAOImpl.class
 kr\co\infStudy\dao\QnaDAO.class
@@ -67,6 +74,7 @@ kr\co\infStudy\service\QnaReplyServiceImpl.class
 kr\co\infStudy\dao\FinishDAO.class
 kr\co\infStudy\dao\TestCkDAO.class
 kr\co\infStudy\model\QnaVO.class
+kr\co\infStudy\model\QnaPagination.class
 kr\co\infStudy\dao\ReviewDAO.class
 kr\co\infStudy\controller\UserController.class
 kr\co\infStudy\dao\NoticeReplyDAOImpl.class

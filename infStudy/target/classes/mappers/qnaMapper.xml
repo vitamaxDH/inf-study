@@ -15,17 +15,41 @@
    				where q_t.u_no = u_t.u_no and q_t.l_no = l_t.l_no and q_t.q_no = #{q_no}
    </select>
 
-   <select id="getQnaList" resultType="kr.co.infStudy.dto.qna.QnaDTO" parameterType="java.util.HashMap">
-   		select q_t.q_no ,q_t.title as qna_title, u_t.nickname as qna_writer, u_t.img as qna_writer_img, 
-   				q_t.reg_dt as qna_reg_date, q_t.content as qna_content
-   				from qna q_t, users u_t, lecture l_t
-   				where q_t.u_no = u_t.u_no and q_t.l_no = l_t.l_no and l_t.title = #{lecture_title}
-   		<if test="search != null">
-   			 and content like '%' || #{search} || '%'
-   		</if>
-   			order by q_t.q_no
-   		
+  <select id="getAllQnaList" resultType = "kr.co.infStudy.dto.qna.AllQnaDTO">
+   		select 	q_t.q_no, 
+   				q_t.title as qna_title, 
+   				u_t.nickname as qna_writer, 
+   				q_t.reg_dt as qna_reg_dt,
+   				l_t.title as lec_title
+   		from qna q_t, 
+   			 users u_t, 
+   			 lecture l_t
+   		where q_t.l_no = l_t.l_no and 
+   		      q_t.u_no = u_t.u_no 
+   		order by q_t.reg_dt desc
    </select>
+   
+   <select id="qnaListPage" resultType="kr.co.infStudy.dto.qna.QnaDTO" parameterType="kr.co.infStudy.dto.qna.QnaCriteria">
+   		select 	q_t.q_no, 
+   				q_t.title as qna_title, 
+   				u_t.nickname as qna_writer, 
+   				q_t.reg_dt as qna_reg_dt,
+   				l_t.title as lec_title
+   		from qna q_t, 
+   			 users u_t, 
+   			 lecture l_t
+   		where q_t.l_no = l_t.l_no and 
+   		      q_t.u_no = u_t.u_no 
+   		order by q_t.reg_dt desc
+	</select>
+	
+	<select id="qnaListCount" resultType="int">
+		<![CDATA[
+			select count(q_no)
+				from qna
+			where q_no > 0
+		]]>
+	</select>
    
    <update id="update" parameterType="kr.co.infStudy.model.QnaVO">
    

@@ -2,11 +2,14 @@ package kr.co.infStudy.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.infStudy.dao.QnaDAO;
+import kr.co.infStudy.dto.qna.AllQnaDTO;
+import kr.co.infStudy.dto.qna.QnaCriteria;
 import kr.co.infStudy.dto.qna.QnaDTO;
 
 @Service
@@ -29,6 +32,24 @@ public class QnaServiceImpl implements QnaService {
 	public QnaDTO getQnaDetail(int q_no) {
 		
 		return dao.getQnaDetail(q_no);
+	}
+	
+	@Override
+	public ArrayList<AllQnaDTO> getAllQnaList() {
+		
+		return (ArrayList<AllQnaDTO>) dao.getAllQnaList();
+	}
+	
+	//게시물 목록 조회
+	@Override
+	public List<QnaDTO> qnaList(QnaCriteria cri) throws Exception{
+		return dao.qnaList(cri);
+	}
+
+	//게시물 총 갯수
+	@Override
+	public int qnaListCount() throws  Exception{
+		return dao.qnaListCount();
 	}
 
 }

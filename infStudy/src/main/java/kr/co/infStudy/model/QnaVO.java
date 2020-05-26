@@ -15,5 +15,4 @@ public class QnaVO {
 	private String title;
 	private String content;
 
-
 }

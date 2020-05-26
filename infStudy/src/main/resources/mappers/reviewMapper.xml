@@ -12,6 +12,40 @@
    
    </select>
    
+   
+  <select id="getAllReviewList" resultType = "kr.co.infStudy.dto.review.AllReviewDTO">
+   		select 
+			u_t.nickname as review_writer, 
+			r_t.reg_dt as review_dt, 
+			l_t.title as lec_title, 
+			r_t.rank as review_rank, 
+			r_t.content as review_content
+   		from review r_t, users u_t, lecture l_t
+   		where r_t.u_no = u_t.u_no and r_t.l_no = l_t.l_no 
+   		order by r_t.reg_dt desc
+   </select>
+   
+   <select id="reviewListPage" resultType="kr.co.infStudy.dto.review.AllReviewDTO" parameterType="kr.co.infStudy.dto.review.ReviewCriteria">
+   		select 
+			u_t.nickname as review_writer, 
+			r_t.reg_dt as review_dt, 
+			l_t.title as lec_title, 
+			r_t.rank as review_rank, 
+			r_t.content as review_content
+   		from review r_t, users u_t, lecture l_t
+   		where r_t.u_no = u_t.u_no and r_t.l_no = l_t.l_no 
+   		order by r_t.reg_dt desc
+	</select>
+	
+	<select id="reviewListCount" resultType="int">
+		<![CDATA[
+			select count(r_no)
+				from review
+			where r_no > 0
+		]]>
+	</select>
+   
+   
    <update id="update" parameterType="kr.co.infStudy.model.ReviewVO">
    
    </update>
