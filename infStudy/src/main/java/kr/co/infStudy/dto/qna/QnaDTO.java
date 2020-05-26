@@ -17,5 +17,6 @@ public class QnaDTO {
 	private String qna_writer_img;	
 	private Date qna_reg_date;
 	private String qna_content;
+	private int qr_count;
 		
 }

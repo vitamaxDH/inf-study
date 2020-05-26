@@ -1,7 +1,9 @@
 /************************************ home 화면 *********************************/
 body {
-    height: 100%;
+    position: absolute;
     width: 100%;
+    height: 1900px;
+    left:0;
     margin: 0;
 }
 .home_body {
@@ -36,30 +38,23 @@ body {
 .div2_1 {
     margin: 0 auto;
     width: 100%;
-    height: 180px;
+    height: 150px;
 }
-.div3_1,
-.div3_2 {
+.div3_1 {
     margin: 0 auto;
     float: left;
-    width: 48%;
+    width: 12.2%;
     height: 150px;
     margin: 1%;
 }
-.div4_1,
-.div4_2,
-.div4_3,
-.div4_4 {
+.div4_1 {
     margin: 0 auto;
     float: left;
     width: 23%;
     height: 380px;
     margin: 1%;
 }
-.div5_1,
-.div5_2,
-.div5_3,
-.div5_4 {
+.div5_1 {
     margin: 0 auto;
     float: left;
     width: 23%;
@@ -77,6 +72,7 @@ body {
 .div1_1 {
     background-image: url("../images/back1.png");
     background-size: contain;
+    background-position: center;
 }
 
 /************************************ div2 검색창 설정 *********************************/
@@ -131,28 +127,19 @@ body {
 }
 
 /************************************ div3 설정 *********************************/
-.div3_1,
-.div3_2 {
+.div3_1 {
     box-shadow: 1px 1px 3px 1px rgb(200,200,200);
-
+    text-align: center;
+    line-height: 150px;
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+    border-radius: 20px;
 }
-.div3_1:hover,
-.div3_2:hover {
+.div3_1:hover {
     box-shadow: 1px 1px 3px 1px rgb(50,50,50);
 }
-.div3_1_image,
-.div3_2_image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30%;
-    height: 100%;
-    background-image: url("../images/jsp.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.div3_1_text,
-.div3_2_text {
+.div3_1_text {
     position: absolute;
     top: 0;
     left: 30%;
@@ -161,18 +148,12 @@ body {
 }
 
 /************************************ div4 설정 *********************************/
-.div4_1,
-.div4_2,
-.div4_3,
-.div4_4 {
+.div4_1 {
     position: relative;
     color: rgb(50,50,50);
     box-shadow: 1px 1px 3px 1px rgb(200,200,200);
 }
-.div4_1_cover,
-.div4_2_cover,
-.div4_3_cover,
-.div4_4_cover {
+.div4_1_cover {
     display: none;
     color: white;
     position: absolute;
@@ -186,17 +167,11 @@ body {
     padding: 10px;
     overflow: hidden;
 }
-.div4_1:hover .div4_1_cover,
-.div4_2:hover .div4_2_cover,
-.div4_3:hover .div4_3_cover,
-.div4_4:hover .div4_4_cover {
+.div4_1:hover .div4_1_cover{
     display: block;
     box-shadow: 1px 1px 3px 1px rgb(50,50,50);
 }
-.div4_1_image,
-.div4_2_image,
-.div4_3_image,
-.div4_4_image {
+.div4_1_image {
     position: absolute;
     top: 0;
     left: 0;
@@ -205,11 +180,9 @@ body {
     background-image: url("../images/jsp.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
-.div4_1_text,
-.div4_2_text,
-.div4_3_text,
-.div4_4_text {
+.div4_1_text {
     position: absolute;
     top: 50%;
     left: 0;
@@ -221,18 +194,12 @@ body {
 }
 
 /************************************ div5 설정 *********************************/
-.div5_1,
-.div5_2,
-.div5_3,
-.div5_4 {
+.div5_1 {
     position: relative;
     color: rgb(50,50,50);
     box-shadow: 1px 1px 3px 1px rgb(200,200,200);
 }
-.div5_1_cover,
-.div5_2_cover,
-.div5_3_cover,
-.div5_4_cover {
+.div5_1_cover {
     display: none;
     color: white;
     position: absolute;
@@ -246,17 +213,11 @@ body {
     padding: 10px;
     overflow: hidden;
 }
-.div5_1:hover .div5_1_cover,
-.div5_2:hover .div5_2_cover,
-.div5_3:hover .div5_3_cover,
-.div5_4:hover .div5_4_cover {
+.div5_1:hover .div5_1_cover {
     display: block;
     box-shadow: 1px 1px 3px 1px rgb(50,50,50);
 }
-.div5_1_image,
-.div5_2_image,
-.div5_3_image,
-.div5_4_image {
+.div5_1_image {
     position: absolute;
     top: 0;
     left: 0;
@@ -265,11 +226,9 @@ body {
     background-image: url("../images/jsp.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
-.div5_1_text,
-.div5_2_text,
-.div5_3_text,
-.div5_4_text {
+.div5_1_text {
     position: absolute;
     top: 50%;
     left: 0;
@@ -278,4 +237,81 @@ body {
     word-break: break-word;
     padding: 10px;
     overflow: hidden;
+}
+
+/************************************ dto로 불러오는 값들 css *********************************/
+
+.div3_main_title{
+    padding:15px;
+    font-size: 20px;
+    font-weight: bold;
+    color:black;
+    overflow: hidden;
+    word-break: break-all;
+}
+
+
+.div4_main_title{
+    margin-top:5px;
+    font-size: 22px;
+    font-weight: bold;
+    color:black;
+    overflow: hidden;
+    word-break: break-all;
+}
+.div4_main_writer{
+    position: absolute;
+    bottom: 50px;
+    font-size: 15px;
+    color:gray;
+    overflow: hidden;
+    word-break: break-all;
+}
+.div4_main_rank{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    color: gold;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.div4_cover_main_title{
+    font-size: 22px;
+}
+.div4_cover_main_content{
+    margin-top: 10px;
+}
+
+
+.div5_main_title{
+    margin-top:5px;
+    font-size: 22px;
+    font-weight: bold;
+    color:black;
+    overflow: hidden;
+    word-break: break-all;
+}
+.div5_main_writer{
+    position: absolute;
+    bottom: 50px;
+    font-size: 15px;
+    color:gray;
+    overflow: hidden;
+    word-break: break-all;
+}
+.div5_main_rank{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    color: gold;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.div5_cover_main_title{
+    font-size: 22px;
+}
+.div5_cover_main_content{
+    margin-top: 10px;
 }

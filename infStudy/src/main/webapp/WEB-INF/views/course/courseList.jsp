@@ -219,7 +219,6 @@
 	
 <link href="resources/common/css/courseCss/courses.css" rel="stylesheet">
 <script	src="resources/common/js/ckeditor.js"></script>
-<%-- 
+
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>
 
- --%>

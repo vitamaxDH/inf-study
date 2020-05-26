@@ -287,8 +287,8 @@ window.addEventListener("scroll", function(){
 
 <link href="${root }/resources/common/css/courseCss/courseDetail.css" rel="stylesheet">	
 <script	src="${root }/resources/common/js/ckeditor.js"></script>
-<%-- 
+
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>
- --%>
+
  
  
