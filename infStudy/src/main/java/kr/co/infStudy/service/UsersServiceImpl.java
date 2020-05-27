@@ -1,9 +1,13 @@
 package kr.co.infStudy.service;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +46,55 @@ public class UsersServiceImpl implements UsersService {
 		
 		return myCoursesList;
 	}
+	
+	@Override
+	public void registerUser(UsersVO vo) throws Exception {
+		
+		String pw = vo.getPassword();
+		vo.setPassword(DigestUtils.sha256Hex(vo.getPassword()));
+//		System.out.println("encPW: " +vo.getPassword());
+//		System.out.println("chk: " +vo.getPassword().equals(DigestUtils.sha256Hex(pw)));
+		userDAO.registerUser(vo);
+	}
+
+	/*
+	 * @Override public UsersVO loginUser(UsersVO vo) throws Exception {
+	 * HashMap<String, String> map = new HashMap<>(); map.put("email",
+	 * vo.getEmail()); map.put("password",vo.getPassword());
+	 * 
+	 * return userDAO.loginUser(map); }
+	 */
+	
+	/**
+	 * 로그인
+	 */
+	@Override
+	public UsersVO loginUser(UsersVO vo) throws Exception {	
+//		System.out.println("서비스단의 vo:"+ vo);
+		String inputPw = DigestUtils.sha256Hex(vo.getPassword());
+		vo.setPassword(inputPw);
+//		System.out.println("chk: " +vo.getPassword().equals(DigestUtils.sha256Hex(inputPw)));
+
+		UsersVO login = userDAO.loginUser(vo);
+		
+		if(login == null) {			
+			return null;
+		}else {	
+			return login;
+		}
+	}
+
+	/**
+	 * 로그아웃
+	 */
+	@Override
+	public void logout(HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("location.href=document.referrer;");
+		out.println("</script>");
+		out.close();
+	}
+	
 }

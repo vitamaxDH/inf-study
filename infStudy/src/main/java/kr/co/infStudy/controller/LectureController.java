@@ -57,7 +57,6 @@ public class LectureController {
 												@RequestParam(required = false, defaultValue = "1") int page,
 												Model model) {
 		
-		request.getSession().setAttribute("login", new UsersVO(1, "aaa@aaa.aaa", "aaaaaa", "aaaaaa", "aaaaaa"));
 		
 		System.out.println(lecture_title);
 		ArrayList<LectureDTO> lectureList = lectureService.getLectureInfo(category_name, order, lecture_title, page);

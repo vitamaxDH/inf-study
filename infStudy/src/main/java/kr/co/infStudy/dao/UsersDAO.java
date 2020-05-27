@@ -8,8 +8,12 @@ import kr.co.infStudy.model.PaidLecVO;
 import kr.co.infStudy.model.UsersVO;
 
 public interface UsersDAO {
-	
+
 	public UsersVO selectUser(HashMap<String, Integer> map) throws Exception;
-	
+
 	public MyCoursesDTO selectMyCoursesDTO(PaidLecVO paidLecVO) throws Exception;
+
+	public void registerUser(UsersVO vo) throws Exception;
+
+	public UsersVO loginUser(UsersVO vo) throws Exception;
 }
