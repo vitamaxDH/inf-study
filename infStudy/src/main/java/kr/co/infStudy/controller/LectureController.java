@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.infStudy.dto.lecture.AddCurriculumDTO;
 import kr.co.infStudy.dto.lecture.LectureDTO;
 import kr.co.infStudy.dto.lecture.UploadLectureDTO;
+import kr.co.infStudy.model.CurriculumVO;
 import kr.co.infStudy.model.UsersVO;
 import kr.co.infStudy.pageBean.PageBean;
 import kr.co.infStudy.service.CurriculumService;
@@ -128,6 +131,29 @@ public class LectureController {
 		model.addAttribute("c_no", c_no);
 		
 		return "course/lecturePlay";
+	}
+	
+	@GetMapping(value = "/course/{lecture_title}/addCurriculum/{l_no}")
+	public String gotoAddCurriculumPg(@PathVariable String lecture_title,
+									  @PathVariable int l_no,
+									  @ModelAttribute(name = "addCurriculumVO") CurriculumVO addCurriculumVO,
+									  Model model){
+		
+		model.addAttribute("l_no", l_no);
+		model.addAttribute("lecture_title", lecture_title);
+		model.addAttribute("sectionList", curriculumService.getSectionList(l_no));
+		
+		return "course/addCurriculumPg";
+	}
+	
+	@PostMapping(value="/course/{lecture_title}/addCurriculum")
+	public String addCurriculum(@ModelAttribute(name = "addCurriculumVO") CurriculumVO addCurriculumVO) {
+		
+		System.out.println(addCurriculumVO);
+		
+//		curriculumService.addCurriculum(addCurriculumVO);
+		
+		return "course/addCurriculumSuccess";
 	}
 }
 

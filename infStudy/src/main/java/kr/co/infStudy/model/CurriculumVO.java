@@ -1,5 +1,6 @@
 package kr.co.infStudy.model;
 
+import kr.co.infStudy.dto.lecture.AddCurriculumDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 /**
@@ -14,6 +15,7 @@ public class CurriculumVO {
 	private int l_no;
 	private String section;
 	private String title;
-	private String content;
+	private String url;
 	private int playtime;
+
 }

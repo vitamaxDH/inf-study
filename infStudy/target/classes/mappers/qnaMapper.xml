@@ -8,6 +8,17 @@
    
    </insert>
    
+    <select id="getQnaList" resultType="kr.co.infStudy.dto.qna.QnaDTO" parameterType="java.util.HashMap">
+   		select q_t.q_no ,q_t.title as qna_title, u_t.nickname as qna_writer, u_t.img as qna_writer_img, 
+   				q_t.reg_dt as qna_reg_date, q_t.content as qna_content
+   				from qna q_t, users u_t, lecture l_t
+   				where q_t.u_no = u_t.u_no and q_t.l_no = l_t.l_no and l_t.title = #{lecture_title}
+   		<if test="search != null">
+   			 and content like '%' || #{search} || '%'
+   		</if>
+   			order by q_t.q_no
+   </select>
+   
    <select id="getQnaDetail" resultType="kr.co.infStudy.dto.qna.QnaDTO">
    		select q_t.q_no, q_t.title as qna_title, u_t.nickname as qna_writer, u_t.img as qna_writer_img, 
    				q_t.reg_dt as qna_reg_date, q_t.content as qna_content

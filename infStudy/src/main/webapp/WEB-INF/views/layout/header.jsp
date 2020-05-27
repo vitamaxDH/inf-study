@@ -12,27 +12,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link href="/resources/common/css/header.css" rel="stylesheet">
-    <link href="/resources/common/css/footer.css" rel="stylesheet">
+    <link href="${contextPath }/resources/common/css/header.css" rel="stylesheet">
+    <link href="${contextPath }/resources/common/css/footer.css" rel="stylesheet">
 
 </head>
 <body>
 <div class="container">
     <header class="head">
             <div class="header_div">
-<<<<<<< HEAD
                 <div class="box icon"><a href="/">InfStudy</a></div>
                 <div class="box text_hover lecture_list"><a href="${contextPath }/courses" class="list_a">강의들</a>
                     <ul>
-                    	<c:forEach var="list" items="${categoryList }">
-                        <li><a href="${contextPath }/courses?category_name=${list.name}">${list.name}</a></li>
-=======
-                <div class="box icon"><a href="${contextPath}">InfStudy</a></div>
-                <div class="box text_hover lecture_list"><a href="${contextPath }/courses" class="list_a">강의들</a>
-                    <ul>
-                    	<c:forEach var="list" items="${categoryList }">
-	                        <li><a href="${contextPath }/courses?category_name=${list.name}">${list.name }</a></li>
->>>>>>> 352139a99b62a66654aaefded2cb82fcd16de189
+                       <c:forEach var="list" items="${categoryList }">
+                           <li><a href="${contextPath }/courses?category_name=${list.name}">${list.name }</a></li>
                         </c:forEach>
                     </ul>
                     <div class="arrow"></div>

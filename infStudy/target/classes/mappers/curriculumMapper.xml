@@ -4,16 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.infStudy.curriculumMapper">
    
-   <insert id="insert" parameterType="kr.co.infStudy.model.CurriculumVO">
-   
+   <insert id="addCurriculum" parameterType="kr.co.infStudy.model.CurriculumVO">
+   		INSERT INTO CURRICULUM(C_NO, L_NO, SECTION, TITLE, URL, PLAYTIME) 
+   					VALUES(curriculum_seq.nextval, #{l_no}, #{section}, #{title}, #{url}, #{playtime})
    </insert>
    
    <select id="getCurriculumList" parameterType="java.lang.String" resultType="kr.co.infStudy.dto.lecture.LecturesCurriculumDTO">
    		select c_no, section, title as curriculum_title, playtime, url
 		from curriculum
  		where l_no = (select l_no from lecture where title = #{lecture_title})
-   		
+  		
    </select>
+   
+   <select id="getSectionList" parameterType="java.lang.Integer" resultType="kr.co.infStudy.model.CurriculumVO">
+		SELECT C_NO, SECTION FROM CURRICULUM 
+			WHERE SECTION IN (SELECT DISTINCT SECTION FROM CURRICULUM WHERE L_NO = #{l_no})
+			ORDER BY C_NO
+   </select>
+     
    
    <update id="update" parameterType="kr.co.infStudy.model.CurriculumVO">
    

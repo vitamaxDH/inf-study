@@ -3,9 +3,11 @@ package kr.co.infStudy.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import kr.co.infStudy.dto.lecture.AddCurriculumDTO;
 import kr.co.infStudy.dto.lecture.LectureDTO;
 import kr.co.infStudy.dto.lecture.LectureDetailDTO;
 import kr.co.infStudy.dto.lecture.UploadLectureDTO;
+import kr.co.infStudy.model.CurriculumVO;
 import kr.co.infStudy.pageBean.PageBean;
 
 public interface LectureService {
@@ -23,4 +25,5 @@ public interface LectureService {
 	void makeFolder(String rootPath, String remainPath);	
 	
 	public PageBean getLectureCnt(String lecture_title, int currentPage);
+
 }

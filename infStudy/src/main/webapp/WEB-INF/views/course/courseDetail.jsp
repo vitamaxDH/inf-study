@@ -8,7 +8,7 @@
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 
+<body>
 <div id="root">
 	<main id="main">
 		<section class="course_header_container">
@@ -34,6 +34,7 @@
 				<ul class="container">
 					<li class="curriculum reviews"><a href="${root }/course/${lecture_title}">강의소개</a></li>
 					<li class="questions"><a href="${root }/course/${lecture_title}/questions">질문 & 답변</a></li>
+					<li class="questions"><a href="${root }/course/${lecture_title}/addCurriculum/${lectureDetail.l_no}">강의 추가</a></li>
 				</ul>
 			</div>
 			
@@ -245,11 +246,10 @@
 					</div>
 				</div>
 			</div>
-		</nav>
-			
+		</nav>		
 	</main>	
 </div>
-
+</body>
 
 
 
@@ -287,8 +287,7 @@ window.addEventListener("scroll", function(){
 
 <link href="${root }/resources/common/css/courseCss/courseDetail.css" rel="stylesheet">	
 <script	src="${root }/resources/common/js/ckeditor.js"></script>
-
+<%-- 
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>
-
- 
+ --%> 
  

@@ -1,8 +1,6 @@
 package kr.co.infStudy.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.infStudy.dto.qna.QnaDTO;
-import kr.co.infStudy.dto.user.MyCoursesDTO;
 import kr.co.infStudy.model.UsersVO;
 import kr.co.infStudy.service.PaidLecService;
 import kr.co.infStudy.service.QnaService;

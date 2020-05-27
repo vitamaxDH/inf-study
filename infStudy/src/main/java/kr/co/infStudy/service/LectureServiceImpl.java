@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.infStudy.dao.LectureDAO;
+import kr.co.infStudy.dto.lecture.AddCurriculumDTO;
 import kr.co.infStudy.dto.lecture.LectureDTO;
 import kr.co.infStudy.dto.lecture.LectureDetailDTO;
 import kr.co.infStudy.dto.lecture.UploadLectureDTO;
+import kr.co.infStudy.model.CurriculumVO;
 import kr.co.infStudy.model.LectureVO;
 import kr.co.infStudy.pageBean.PageBean;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +32,7 @@ import lombok.RequiredArgsConstructor;
 public class LectureServiceImpl implements LectureService {
 	
 	private final LectureDAO dao;	
+	private final CurriculumService curriculumService;
 	
 	@Value("${page.listcnt}")
 	private int page_listcnt;
@@ -103,6 +106,9 @@ public class LectureServiceImpl implements LectureService {
 		dao.addLecture(new LectureVO(addLecture));		
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	public PageBean getLectureCnt(String category_name, int currentPage) {
 		
