@@ -34,10 +34,12 @@
         </div>
         <div class="col-sm-1 col-md-12 div_subTitle">둘러보기</div>
         <div class="row width1200">
-           <c:forEach var="list" items="${categoryList }" begin="0" end="6">
-               <a href="${contextPath }/courses?category_name=${list.name}">
-                   <div class="col-md-6 div3_1">${list.name}</div>
-               </a>
+
+        	<c:forEach var="list" items="${categoryList }" begin="0" end="6">
+	            <a href="${contextPath }/courses?category_name=${list.name}">
+	                <div class="col-md-6 div3_1">${list.name }</div>
+	            </a>
+
             </c:forEach>
         </div>
         <div class="col-sm-1 col-md-12 div_subTitle">InfStudy 신규강의</div>
