@@ -13,6 +13,7 @@ import kr.co.infStudy.dto.lecture.LectureReplyDTO;
 import kr.co.infStudy.dto.lecture.LectureReviewDTO;
 import kr.co.infStudy.dto.review.AllReviewDTO;
 import kr.co.infStudy.dto.review.ReviewCriteria;
+import kr.co.infStudy.model.ReviewVO;
 
 /**
  * 
@@ -68,5 +69,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public int reviewListCount() throws  Exception{
 		return dao.reviewListCount();
 	}
-
+	/**
+	 *  강의 리뷰 등록하기
+	 */
+	@Override
+	public void addReview(ReviewVO reviewVO) {
+		dao.addReview(reviewVO);
+	}
 }

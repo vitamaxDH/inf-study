@@ -34,7 +34,9 @@
 				<ul class="container">
 					<li class="curriculum reviews"><a href="${root }/course/${lecture_title}">강의소개</a></li>
 					<li class="questions"><a href="${root }/course/${lecture_title}/questions">질문 & 답변</a></li>
-					<li class="questions"><a href="${root }/course/${lecture_title}/addCurriculum/${lectureDetail.l_no}">강의 추가</a></li>
+					<c:if test="${auth eq 'instructor' }">
+						<li class="questions"><a href="${root }/course/${lecture_title}/addCurriculum/${lectureDetail.l_no}">강의 추가</a></li>
+					</c:if>
 				</ul>
 			</div>
 			
@@ -44,6 +46,9 @@
 						<div class="content">
 							<article class="description">
 								<h3>강의 설명</h3>
+								<div class="lecture_content">
+									${lectureDetail.content }
+								</div>
 							</article>
 							<article class="curriculum">
 								<h3>교육 과정</h3>
@@ -125,6 +130,7 @@
 								</div>
 							</article>
 							
+							
 							<article class="reviews" id="reviews">
 								<h4 class="sub_heading">수강 후기</h4>
 								<div class="review_summary">
@@ -159,6 +165,12 @@
 										</div>
 									</div>
 								</div>
+								
+								<c:if test="${login.auth == 'student' }">
+								<div class="addReviewBtn-container">
+									<button id="addReviewBtn">수강평 남기기</button>
+								</div>
+								</c:if>
 								<div class="article_list">
 								
 									
@@ -174,6 +186,9 @@
 													<span class="rating_star">별점</span>
 													<strong>${reviews.r_no} : ${reviews.reviewer }</strong>
 													<small class="updated_at"><span>${reviews.review_reg_dt }</span></small> <br />
+													<c:if test="${login.auth eq 'instructor' }">
+														<small class="instructor_review"><span onclick="addReviewReply('${reviews.r_no}')">답변달기</span></a></small> <br />
+													</c:if>
 													<div class="review_body">${reviews.review_content }</div>											
 												</div>
 																								
@@ -221,11 +236,13 @@
 			</div>
 		</section>
 		
+		
 		<!-- 사이드 메뉴 -->
+		<c:if test="${auth eq null }">
 		<nav id="sideMenu">
 			<div class="container">
 				<h2 class="price">${lectureDetail.price }원</h2>
-				<button class="take_lecture">수강신청</button> <br />
+				<button class="take_lecture" id="take_lecture">수강신청</button> <br />
 				<button class="wishcnt">${lectureDetail.wishlist_cnt } 위시</button> <br />
 				<div class="lec_summary">
 					<div class="lec_info_row">	
@@ -246,7 +263,8 @@
 					</div>
 				</div>
 			</div>
-		</nav>		
+		</nav>	
+		</c:if>
 	</main>	
 </div>
 </body>
@@ -255,6 +273,7 @@
 
 <script>
 
+//강의 커리큘럼 toggle
 var section_elem = document.querySelectorAll(".section_header");
 
 Array.from(section_elem).forEach(elem => {
@@ -265,14 +284,58 @@ Array.from(section_elem).forEach(elem => {
 })
 
 
-var sideMenu = document.querySelector("#sideMenu");
+try{
+	// 스크롤 이동할 때 사이드바 움직이게 하기
+	var sideMenu = document.querySelector("#sideMenu");
+	window.addEventListener("scroll", function(){
 
-window.addEventListener("scroll", function(){
+		var yTop = window.pageYOffset;
+		sideMenu.style.top = yTop + 100 + "px";
+	})
+}catch(e){
 
-    var yTop = window.pageYOffset;
-    sideMenu.style.top = yTop + 100 + "px";
+}
 
+try{
+// 수강신청
+document.getElementById("take_lecture").addEventListener("click", function(){
+
+		if(confirm("수강신청하시겠습니까?")){
+			location.href = "${root}/user/addPaidLecture?l_no=${lectureDetail.l_no}";
+		}
+	})
+}catch(e){}
+
+
+// 강의평가 달기
+try{
+document.getElementById('addReviewBtn').addEventListener('click', function(){
+	// window.open('${root}/review/addReivew');
+
+	var popupWidth = 400;
+	var popupHeight = 300;
+	var popupX =(window.screen.width / 2) - (popupWidth / 2)
+	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+
+	window.open('${root}/review/addReview?l_no=${lectureDetail.l_no}&lecture_title=${lectureDetail.lecture_title}', 
+				'window팝업','width=' + popupWidth, 'height=' + popupHeight, 'left = ' + popupX + ',top=' + popupY);
 })
+}catch(e){}
+
+//강의 평가 답변 달기
+try{
+	function addReviewReply(r_no){
+
+		var popupWidth = 400;
+		var popupHeight = 300;
+		var popupX =(window.screen.width / 2) - (popupWidth / 2);
+		var popupY= (window.screen.height / 2) - (popupHeight / 2);
+
+		window.open('${root}/review/addReviewReply?l_no=${lectureDetail.l_no}&lecture_title=${lectureDetail.lecture_title}&r_no=' + r_no, 
+					'window팝업','width=' + popupWidth, 'height=' + popupHeight, 'left = ' + popupX + ',top=' + popupY);
+	};
+
+}catch(e){}
 
 /*
   querySelectorAll() 함수는 유사배열을 반환한다.
@@ -281,6 +344,7 @@ window.addEventListener("scroll", function(){
 
  출처 : http://jeonghwan-kim.github.io/2018/01/25/before-jquery.html  
  */
+
  
 </script>
 

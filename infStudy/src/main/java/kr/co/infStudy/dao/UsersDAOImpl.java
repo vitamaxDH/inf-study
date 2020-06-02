@@ -29,4 +29,35 @@ public class UsersDAOImpl implements UsersDAO {
 		return session.selectOne(nameSpace + "getMyCourse", paidLecVO);
 	}
 	
+	@Override
+	public void registerUser(UsersVO vo) throws Exception {
+		session.insert(nameSpace + "registerUser",vo);
+	}
+ 
+	/**
+	 * 회원이 로그인할때 데이터베이스에서 출력하는 메소드
+	 */
+	@Override 
+	public UsersVO loginUser(UsersVO vo) throws Exception{
+//		System.out.println("dao의 vo"+vo);
+		 return session.selectOne(nameSpace+"loginUser",vo);
+	}
+	/**
+	 * 지식공유자 등록하기
+	 */
+	@Override
+	public void enrollInstructor(int u_no) {
+		session.insert(nameSpace + "enrollInstructor", u_no);
+	}
+	
+	@Override
+	public UsersVO getEmailUser(UsersVO vo) throws Exception {
+		
+	return session.selectOne(nameSpace+"getEmailUser", vo);
+	}
+	
+	@Override
+	public UsersVO getNickNameUser(UsersVO vo) throws Exception {
+		return session.selectOne(nameSpace+"getNickNameUser", vo);
+	}
 }

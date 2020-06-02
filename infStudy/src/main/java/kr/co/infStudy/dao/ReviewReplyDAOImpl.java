@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.infStudy.dto.lecture.LectureReplyDTO;
+import kr.co.infStudy.model.ReviewReplyVO;
 
 @Repository
 public class ReviewReplyDAOImpl implements ReviewReplyDAO {
@@ -19,5 +20,10 @@ public class ReviewReplyDAOImpl implements ReviewReplyDAO {
 	@Override
 	public List<LectureReplyDTO> getReviewReplies(String lecture_title) {
 		return session.selectList(nameSpace + "getReviewReplies", lecture_title);
+	}
+	
+	@Override
+	public void addReviewReply(ReviewReplyVO reviewReplyVO) {
+		session.insert(nameSpace + "addReviewReply", reviewReplyVO);
 	}
 }

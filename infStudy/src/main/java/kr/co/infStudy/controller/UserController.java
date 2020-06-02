@@ -1,17 +1,27 @@
 package kr.co.infStudy.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.infStudy.dto.lecture.LectureDTO;
+import kr.co.infStudy.dto.lecture.MyLecturesDTO;
+import kr.co.infStudy.dto.qna.AllQnaDTO;
+import kr.co.infStudy.dto.qna.QnaPageMaker;
+import kr.co.infStudy.dto.qna.QnaSearchCriteria;
 import kr.co.infStudy.model.UsersVO;
+import kr.co.infStudy.service.LectureService;
 import kr.co.infStudy.service.PaidLecService;
 import kr.co.infStudy.service.QnaService;
 import kr.co.infStudy.service.UsersService;
@@ -22,15 +32,21 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
 
 	private UsersService usersService;
-	private PaidLecService padiLecService;
+	private LectureService lectureService;
+	private PaidLecService paidLecService;
 	private QnaService qnaService;
 	private UsersVO usersVO;
-	private HttpSession session;
+	
+	@Lazy
+	@Resource(name = "login")
+	private UsersVO login;
+
 	
 	@Autowired
-	public UserController(UsersService usersService, PaidLecService padiLecService, QnaService qnaService) throws Exception {
+	public UserController(UsersService usersService, LectureService lectureService, PaidLecService paidLecService, QnaService qnaService) throws Exception {
 		this.usersService = usersService;
-		this.padiLecService = padiLecService;
+		this.lectureService = lectureService;
+		this.paidLecService = paidLecService;
 		this.qnaService = qnaService;
 	}
 
@@ -116,6 +132,97 @@ public class UserController {
 		model.addAttribute("bigTitle",bigTitle);
 		return "user/setting";
 	};
+	
+	@GetMapping(value = "/profile")
+	public String profile() throws Exception {
+		
+		return "profile";
+	}
+	
+	
+
+	@GetMapping(value = "/myLecture")
+	public String myLecture(@RequestParam(required = false) String category_name,
+							@RequestParam(required = false) String lecture_title,
+							@RequestParam(required = false, defaultValue = "1") int page,
+							Model model) throws Exception {
+
+		
+		ArrayList<MyLecturesDTO> myLectureList = lectureService.getMyLectureInfo(login.getU_no(), lecture_title, page);	
+		model.addAttribute("pageBean", lectureService.getMyLectureCnt(login.getU_no(), page));
+		
+		
+		model.addAttribute("myLectureList", myLectureList);
+		
+		return "myLecture";
+	}
+	
+	
+
+	@GetMapping(value = "/myQnA")
+	public String myQnA(Model model, QnaSearchCriteria scri,
+			  @RequestParam(name = "keyword", required = false) String keyword) throws Exception {
+
+		//데이터 값 뽑아오기
+		ArrayList<AllQnaDTO> myQnaDto = qnaService.getMyQnaList(login.getU_no(), keyword);
+		model.addAttribute("myQnaDto", myQnaDto);
+		
+		
+		if(keyword != null) {
+			scri.setKeyword(keyword);
+		}
+
+		System.out.println(scri);
+		
+		//한 페이지의 시작번호와 끝 번호
+		model.addAttribute("qnaList", qnaService.qnaList(scri));
+		
+		//페이지네이션
+		QnaPageMaker qnaPageMaker = new QnaPageMaker();
+		qnaPageMaker.setCri(scri);
+		qnaPageMaker.setTotalCount(qnaService.qnaListCounts(scri));
+		model.addAttribute("qnaPageMaker", qnaPageMaker);
+		
+		return "myQnA";
+	}
 
 
+	/**
+	 * 지식공유자되기 버튼 클릭 시 동작하는 핸들러. Instructor로 등록
+	 */
+	@GetMapping("/user/enrollInstructor")
+	public String enrollInstructor() {
+			
+		usersService.enrollInstrunctor(login.getU_no());
+
+		return "user/enrollInstructorSuccess";
+	}
+	
+	/**
+	 * 수강 신청
+	 */
+	@GetMapping("/user/addPaidLecture")
+	public String addPaidLecture(@RequestParam(name = "l_no") int l_no) {
+		
+		paidLecService.addPaidLecture(l_no);
+		
+		return "course/courseDetail";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,136 +1,135 @@
-@charset "UTF-8";
-
-li{
-    list-style: none;
-}
-a{
-    text-decoration: none;
-}
-*{
-	color: #ffffff;
-}
-
-#main{
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: #121212;
-	
-}
-
-section.lecture_container{
-	overflow: hidden;
-	position: fixed;
-	width: 1400px;
-	height: 1000px;
-}
-
-section.lecture_container aside.lecture_nav{
-    position: fixed;
+.container{
+    position: absolute;
     left: 0;
     top: 0;
-    width: 250px;
-    height: 1000px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    padding: 0;
+    overflow: hidden;
+}
+.nav{
+    position: fixed;
     float: left;
+    width: 330px;
+    height: 100%;
+    background-color: #171f27;
+    z-index:2;
 }
-
-section.lecture_container aside.lecture_nav{
-	background-color: #171f27;
-	transition: width 0.3s;
+.nav-head{
+    width: 100%;
+    height: 190px;
+    border-bottom:1px solid white;
+    padding:20px;
+    color: white;
 }
-
-
-section.lecture_container aside.lecture_nav>div.lecture_nav_header{
-	padding: 32px 16px;
+.nav-head-name{
+    font-size: 20px;
+    font-weight: bold;
+    height: 80px;
+    padding-top: 10px;
 }
-
-.lecture_nav_header h5{
-	font-size: 20px;
-	margin-top: 0px;
-	margin-bottom: 5px;
+.nav-head p{
+    font-size: 12px;
+    padding-top: 20px;
 }
-
-section.lecture_container aside.lecture_nav ul{
-	margin: 0px;
-	padding-left: 0px;
-	
+.nav-head progress{
+    height: 10px;
+    margin-top: 5px;
 }
-
-section.lecture_container aside.lecture_nav ul{
-	
-	cursor: pointer;
+.nav-ul{
+    height: calc(100% - 190px);
+    width: 330px;
 }
-
-section.lecture_container aside.lecture_nav ul li.unit_section{
-	background-color: #303e4d;
-	font-weight: 700;
-	padding: 4px 0;
+.nav-ul ul{
+    position: fixed;
+    height: calc(100% - 190px);
+    width: 330px;
+    list-style: none;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
-section.lecture_container aside.lecture_nav ul li{
-	transition: 0.2s;
+.nav-ul a{
+    text-decoration: none;
+    color: white;
 }
-
-section.lecture_container aside.lecture_nav ul li.unit_lecture:hover{
-    transition: 0.6s;
-    font-weight: 1000;
-    font-size: 30px;
+.nav-ul li{
+    text-decoration: none;
+    color: white;
+    height: 45px;
+    width: 100%;
+    line-height: 45px;
+    font-size: 16px;
+    padding-left: 20px;
+    border-bottom:1px solid rgb(25,25,25);
 }
-
-section.lecture_container aside.lecture_nav ul li.unit_section{
-	padding: 8px 16px;
+.li-head{
+    background-color: #303e4d;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-
-section.lecture_container aside.lecture_nav ul li.unit_lecture{
-	padding: 4px 0;
+.li-content:hover, .li-selected:hover{
+    color:rgb(180,180,180);
 }
-
-section.lecture_container aside.lecture_nav ul li.unit_lecture .unit_title{
-	padding: 8px 16px;
+.li-selected{
+    border-left: 8px solid rgb(0,196,113);
+    padding-left: 18px!important;
+    font-weight: bold;
 }
-
-
-section.lecture_container div.content_container.center{
-	position: fixed;
-	width: 1200px;
-	height: 1000px;
-	padding-left: 300px;
-	z-index: -100;
+.li-content, .li-selected{
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-
-.is_opened{
-	border-left: 5px solid chartreuse;
-	font-weight: 700;
+.content{
+    position: absolute;
+    float: right;
+    padding-left: 330px;
+    width: 100%;
+    height: 100%;
 }
-
-.content_container{
-	background-color: #121212;
+.content-head{   
+    position: relative;
+    width: 100%; 
 }
-
-
-.content_container .content_header_nav h1{
-	text-align: center;
+.content-head-title{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    color: white;
+    font-weight: bold;
+    font-size: 26px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 65px;
 }
-
-.content_container .content_header_nav .out{
-	position: absolute;
-	right: 30px;
-	top: 20px;
-	border: 2px solid white;
-	border-radius: 0.5rem;
-	padding: 10px 20px;
-	font-weight: bold;
-	cursor: pointer;
-	
+.content-head-exit{
+    position: absolute;
+    right: 0;
+    margin: 15px;
+    line-height: 35px;
+    height: 35px;
+    width: 40px;
+    color: white;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 20px;
 }
-
-.content_container .unit_body{
-	position: relative;
-	margin: 150px 225px;
+.vedio{    
+    padding: 65px 0 100px 0;
+    height: 100%;
 }
-
-
-
-
-
+.content-head a{
+    text-decoration: none;
+    color:white;
+}
+iframe{
+    width: 100%;
+    height: 100%;
+}

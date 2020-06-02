@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.infStudy.qnaReplyMapper">
    
-   <insert id="insert" parameterType="kr.co.infStudy.model.QnaReplyVO">
+   <insert id="zz" parameterType="kr.co.infStudy.model.QnaReplyVO">
    
    </insert>
    

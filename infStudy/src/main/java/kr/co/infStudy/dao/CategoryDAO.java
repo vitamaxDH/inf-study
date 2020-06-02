@@ -8,4 +8,6 @@ public interface CategoryDAO {
 
 	List<CategoryVO> getCategoryList();
 
+	void addCategory(String ctg_name);
+
 }

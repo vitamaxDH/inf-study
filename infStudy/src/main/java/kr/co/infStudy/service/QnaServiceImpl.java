@@ -11,6 +11,8 @@ import kr.co.infStudy.dao.QnaDAO;
 import kr.co.infStudy.dto.qna.AllQnaDTO;
 import kr.co.infStudy.dto.qna.QnaCriteria;
 import kr.co.infStudy.dto.qna.QnaDTO;
+import kr.co.infStudy.dto.qna.QnaSearchCriteria;
+import kr.co.infStudy.model.QnaVO;
 /**
  * 
  * @author hydes
@@ -44,9 +46,9 @@ public class QnaServiceImpl implements QnaService {
 	}
 	
 	@Override
-	public ArrayList<AllQnaDTO> getAllQnaList() {
+	public ArrayList<AllQnaDTO> getAllQnaLists() {
 		
-		return (ArrayList<AllQnaDTO>) dao.getAllQnaList();
+		return (ArrayList<AllQnaDTO>) dao.getAllQnaLists();
 	}
 	
 	//게시물 목록 조회
@@ -60,5 +62,25 @@ public class QnaServiceImpl implements QnaService {
 	public int qnaListCount() throws  Exception{
 		return dao.qnaListCount();
 	}
-
+	
+	@Override
+	public void addQna(QnaVO qnaVO) {
+		dao.addQna(qnaVO);
+	}
+	
+	@Override
+	public ArrayList<AllQnaDTO> getMyQnaList(int u_no, String keyword) {
+		
+		HashMap<String, String> hmap = new HashMap<String, String>();
+		hmap.put("keyword", keyword);
+		hmap.put("u_no", String.valueOf(u_no));
+	
+		return (ArrayList<AllQnaDTO>) dao.getMyQnaList(hmap);
+	}
+	
+	//게시물 총 갯수
+	@Override
+	public int qnaListCounts(QnaSearchCriteria scri) throws  Exception{
+		return dao.qnaListCounts(scri);
+	}
 }

@@ -98,6 +98,9 @@ body div{
     color:rgb(180,180,180);
     padding:0 10px;
 }
+.listTitle a{
+    color: rgb(180,180,180);
+}
 /************************************** board layout ************************************************/
 .qnaBoard{
     position: absolute;

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.infStudy.dto.lecture.LectureReviewDTO;
 import kr.co.infStudy.dto.review.AllReviewDTO;
 import kr.co.infStudy.dto.review.ReviewCriteria;
+import kr.co.infStudy.model.ReviewVO;
 
 @Repository
 public class ReviewDAOImpl implements ReviewDAO {
@@ -38,6 +39,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public int reviewListCount() throws  Exception{
 		return session.selectOne(nameSpace + "reviewListCount");
+	}
+	
+	/**
+	 * 강의 리뷰 등록
+	 */
+	@Override
+	public void addReview(ReviewVO reviewVO) {
+		session.insert(nameSpace + "addReview", reviewVO);
 	}
 	
 }

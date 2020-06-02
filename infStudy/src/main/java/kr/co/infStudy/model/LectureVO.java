@@ -21,10 +21,10 @@ public class LectureVO {
 	private int ctg_no;
 	private String title;
 	private int price;
-	private int rank;
 	private String difficulty;
 	private String img;
 	private Date rel_dt;
+	private String content;
 
 	public LectureVO(UploadLectureDTO addLecture) {
 		
@@ -32,8 +32,8 @@ public class LectureVO {
 		this.ctg_no = addLecture.getCtg_no();
 		this.title = addLecture.getTitle();
 		this.price = addLecture.getPrice();
-		this.rank = addLecture.getPrice();
 		this.difficulty = addLecture.getDifficulty();
 		this.img = addLecture.getImg();
+		this.content = addLecture.getContent();
 	}
 }

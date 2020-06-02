@@ -4,8 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.infStudy.qnaMapper">
    
-   <insert id="insert" parameterType="kr.co.infStudy.model.QnaVO">
-   
+   <insert id="addQna" parameterType="kr.co.infStudy.model.QnaVO">
+   		INSERT INTO QNA(q_no, u_no, l_no, reg_dt, title, content) 
+   				VALUES(qna_seq.nextval, #{u_no}, #{l_no}, sysdate, #{title}, #{content})
    </insert>
    
     <select id="getQnaList" resultType="kr.co.infStudy.dto.qna.QnaDTO" parameterType="java.util.HashMap">
@@ -26,7 +27,7 @@
    				where q_t.u_no = u_t.u_no and q_t.l_no = l_t.l_no and q_t.q_no = #{q_no}
    </select>
 
-  <select id="getAllQnaList" resultType = "kr.co.infStudy.dto.qna.AllQnaDTO">
+  <select id="getAllQnaLists" resultType = "kr.co.infStudy.dto.qna.AllQnaDTO">
    		select 	q_t.q_no, 
    				q_t.title as qna_title, 
    				u_t.nickname as qna_writer, 
@@ -37,6 +38,24 @@
    			 lecture l_t
    		where q_t.l_no = l_t.l_no and 
    		      q_t.u_no = u_t.u_no 
+   		order by q_t.reg_dt desc
+   </select>
+   
+   	  <select id="getMyQnaList" parameterType="java.util.HashMap" resultType = "kr.co.infStudy.dto.qna.AllQnaDTO">
+   		select 	q_t.q_no, 
+   				q_t.title as qna_title, 
+   				u_t.nickname as qna_writer, 
+   				l_t.title as lec_title
+   		from qna q_t, 
+   			 users u_t, 
+   			 lecture l_t
+   		where q_t.l_no = l_t.l_no and 
+   		      q_t.u_no = u_t.u_no and
+   		      q_t.u_no = #{u_no}
+ 			<if test="keyword != null">
+			  and q_t.title like '%' || #{keyword} || '%' 
+			</if>
+   		      
    		order by q_t.reg_dt desc
    </select>
    
@@ -61,6 +80,18 @@
 			where q_no > 0
 		]]>
 	</select>
+	
+
+   
+   	<select id="qnaListCounts" resultType="int">
+		<![CDATA[
+			select count(q_no)
+				   from qna
+			where q_no > 0
+				  and title like '%' || #{keyword} || '%' 
+		]]>
+	</select>
+   
    
    <update id="update" parameterType="kr.co.infStudy.model.QnaVO">
    

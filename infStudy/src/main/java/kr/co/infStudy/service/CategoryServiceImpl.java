@@ -1,6 +1,7 @@
 package kr.co.infStudy.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,9 @@ public class CategoryServiceImpl implements CategoryService {
 	public ArrayList<CategoryVO> getCategoryList() {
 		
 		return (ArrayList<CategoryVO>) dao.getCategoryList();
+	}
+	@Override
+	public void addCategory(String ctg_name) {
+		dao.addCategory(ctg_name);
 	}
 }

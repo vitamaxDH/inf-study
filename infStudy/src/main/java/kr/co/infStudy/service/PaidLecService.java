@@ -8,4 +8,6 @@ import kr.co.infStudy.model.UsersVO;
 public interface PaidLecService {
 	public List<PaidLecVO> getPaidLecList(int u_no) throws Exception;
 
+	public void addPaidLecture(int l_no);
+
 }

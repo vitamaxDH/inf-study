@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import kr.co.infStudy.dto.qna.AllQnaDTO;
 import kr.co.infStudy.dto.qna.QnaCriteria;
 import kr.co.infStudy.dto.qna.QnaDTO;
+import kr.co.infStudy.dto.qna.QnaSearchCriteria;
+import kr.co.infStudy.model.QnaVO;
 
 @Repository
 public class QnaDAOImpl implements QnaDAO {
@@ -30,9 +32,9 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 	
 	@Override
-	public List<AllQnaDTO> getAllQnaList() {
+	public List<AllQnaDTO> getMyQnaList(HashMap<String, String> hmap) {
 		
-		return session.selectList(nameSpace + "getAllQnaList");
+		return session.selectList(nameSpace + "getMyQnaList", hmap);
 	}
 	
 	//게시물 목록 조회
@@ -47,4 +49,22 @@ public class QnaDAOImpl implements QnaDAO {
 		return session.selectOne(nameSpace + "qnaListCount");
 	}
 	
+	//Qna 등록
+	@Override
+	public void addQna(QnaVO qnaVO) {
+		session.insert(nameSpace + "addQna", qnaVO);
+	}
+	
+	@Override
+	public List<AllQnaDTO> getAllQnaLists() {
+		
+		return session.selectList(nameSpace + "getAllQnaLists");
+	}
+	
+
+	//게시물 총 갯수
+	@Override
+	public int qnaListCounts(QnaSearchCriteria scri) throws  Exception{
+		return session.selectOne(nameSpace + "qnaListCounts", scri);
+	}
 }

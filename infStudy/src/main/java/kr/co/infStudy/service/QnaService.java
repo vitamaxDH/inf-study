@@ -6,6 +6,8 @@ import java.util.List;
 import kr.co.infStudy.dto.qna.AllQnaDTO;
 import kr.co.infStudy.dto.qna.QnaCriteria;
 import kr.co.infStudy.dto.qna.QnaDTO;
+import kr.co.infStudy.dto.qna.QnaSearchCriteria;
+import kr.co.infStudy.model.QnaVO;
 
 public interface QnaService {
 
@@ -13,11 +15,19 @@ public interface QnaService {
 
 	QnaDTO getQnaDetail(int q_no);
 
-	ArrayList<AllQnaDTO> getAllQnaList();
+	ArrayList<AllQnaDTO> getAllQnaLists();
 	
 	//게시물 목록 조회
 	public List<QnaDTO> qnaList(QnaCriteria cri) throws Exception;
 
 	//게시물 총 갯수
 	public int qnaListCount() throws  Exception;
+	
+	//게시물 총 갯수
+	public int qnaListCounts(QnaSearchCriteria scri) throws  Exception;
+
+	void addQna(QnaVO qnaVO);
+	
+
+	ArrayList<AllQnaDTO> getMyQnaList(int u_no, String keyword);
 }

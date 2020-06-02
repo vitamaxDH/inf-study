@@ -1,17 +1,14 @@
 drop table qna_reply;
-drop table notice_reply;
 drop table review_reply;
 drop table qna;
-drop table notice;
 drop table wish_list;
 drop table review;
 drop table paid_lec;
 drop table finish;
 drop table curriculum;
-drop table users;
 drop table lecture;
 drop table category;
-drop table instructor;
+drop table users;
 
 
 drop sequence users_seq;
@@ -23,8 +20,6 @@ drop sequence qna_reply_seq;
 drop sequence review_seq;
 drop sequence review_reply_seq;
 drop sequence wish_list_seq;
-drop sequence notice_seq;
-drop sequence notice_reply_seq;
 drop sequence category_seq;
 drop sequence lecture_seq;
 
@@ -34,16 +29,10 @@ drop sequence lecture_seq;
 create table users(
     u_no number(5) primary key,
     email varchar2(100) not null unique,
-    password varchar2(30) not null,
+    password varchar2(200) not null,
     nickname varchar2(50) not null,
-    img varchar2(500) not null
-);
-
-
-create table instructor(
-    i_no number(5) primary key,
-    name varchar(30) not null,
-    img varchar2(500) not null
+    img varchar2(500),
+    i_no number(5) unique
 );
 
 create table category(
@@ -62,7 +51,7 @@ create table lecture(
     img varchar2(500) not null,
     rel_dt date default sysdate,
     CONSTRAINT FK_I_NO FOREIGN KEY(i_no)
-    REFERENCES instructor(i_no),
+    REFERENCES users(i_no),
     constraint FK_CTG_NO FOREIGN KEY(ctg_no)
     REFERENCES category(ctg_no)
 );
@@ -164,27 +153,6 @@ create table finish(
     REFERENCES lecture(l_no)
 );
 
-create table notice(
-    n_no number(5) primary key,
-    u_no number(5) not null,
-    title varchar2(100) not null,
-    content clob not null,
-    reg_dt date default sysdate,
-    FOREIGN KEY(u_no)
-    REFERENCES users(u_no)
-);
-
-create table notice_reply(
-    nr_no number(5) primary key,
-    n_no number(5) not null,
-    u_no number(5) not null,
-    content varchar2(500) not null,
-    FOREIGN KEY(n_no)
-    REFERENCES notice(n_no),
-    FOREIGN KEY(u_no)
-    REFERENCES users(u_no)
-);   
-
 
 create sequence users_seq;
 create sequence lecture_seq;
@@ -196,8 +164,6 @@ create sequence qna_reply_seq;
 create sequence review_seq;
 create sequence review_reply_seq;
 create sequence wish_list_seq;
-create sequence notice_seq;
-create sequence notice_reply_seq;
 create sequence category_seq;
 
 

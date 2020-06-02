@@ -5,20 +5,24 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.stream.Collectors;
+
+import javax.annotation.Resource;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.infStudy.dao.LectureDAO;
-import kr.co.infStudy.dto.lecture.AddCurriculumDTO;
 import kr.co.infStudy.dto.lecture.LectureDTO;
 import kr.co.infStudy.dto.lecture.LectureDetailDTO;
+import kr.co.infStudy.dto.lecture.MyLecturesDTO;
 import kr.co.infStudy.dto.lecture.UploadLectureDTO;
-import kr.co.infStudy.model.CurriculumVO;
 import kr.co.infStudy.model.LectureVO;
+import kr.co.infStudy.model.UsersVO;
 import kr.co.infStudy.pageBean.PageBean;
 import lombok.RequiredArgsConstructor;
 /**
@@ -33,12 +37,17 @@ public class LectureServiceImpl implements LectureService {
 	
 	private final LectureDAO dao;	
 	private final CurriculumService curriculumService;
+	private final CategoryService categoryDao;
 	
 	@Value("${page.listcnt}")
 	private int page_listcnt;
 
 	@Value("${page.paginationcnt}")
 	private int page_paginationcnt;
+	
+	@Lazy
+	@Resource(name = "login")
+	private UsersVO login;
 	
 
 	/**
@@ -65,12 +74,23 @@ public class LectureServiceImpl implements LectureService {
 	@Override
 	public LectureDetailDTO getLectureDetail(String lecture_title) {
 		
-		return dao.getLectureDetail(lecture_title);
+		LectureDetailDTO lectureDetail = dao.getLectureDetail(lecture_title);
+					
+		if(login.getI_no() == lectureDetail.getI_no()) {
+			login.setAuth("instructor");
+		}else if(login.getClassList().contains(lectureDetail.getL_no())) {
+			login.setAuth("student");
+		}else {
+			login.setAuth(null);
+		}
+
+		return lectureDetail;
 	}
 	
 
 	/**
 	 * 강의 등록 
+	 * 트렌젝션 걸기
 	 */
 	@Override
 	public void addLecture(UploadLectureDTO addLecture) {
@@ -102,12 +122,25 @@ public class LectureServiceImpl implements LectureService {
 				e.printStackTrace();
 			}
 		}
+		//스트림
+		/*
+		 * 1. DB를 조회해서 categoryVO를 List로 뽑아낸다.
+		 * 2. stream()을 돌면서 categoryVO에서 categoryVO의 ctg_no를 매핑한다.(ctg_no만을 뽑아낸다.)
+		 * 3. ctg_no를 List로 만든다.
+		 * 4. 이렇게 해서 만들어진 List가 addLecture로 넘어온 ctg_no를 포함하고 있는지 확인한다.
+		 */
+		if(!categoryDao.getCategoryList().stream()
+  										 .map(o->o.getCtg_no())
+										 .collect(Collectors.toList()).contains(addLecture.getCtg_no())) {
+
+			categoryDao.addCategory(addLecture.getCtg_name());
+		}
 
 		dao.addLecture(new LectureVO(addLecture));		
 	}
 	
 	/**
-	 * 
+	 * 페이징 처리
 	 */
 	@Override
 	public PageBean getLectureCnt(String category_name, int currentPage) {
@@ -146,7 +179,30 @@ public class LectureServiceImpl implements LectureService {
 		if(!todayFoloder.isDirectory()) todayFoloder.mkdir();			//오늘 날짜의 폴더가 없으면 폴더를 생성한다.
 	}
 	
+	/**
+	 * 수강 중인 강의 리스트 불러오기
+	 */
+	@Override
+	public ArrayList<MyLecturesDTO> getMyLectureInfo(int u_no, String lecture_title, int page) throws Exception {
+		
+		HashMap<String, String> hmap = new HashMap<String, String>();
+		hmap.put("u_no", String.valueOf(u_no));
+		hmap.put("lecture_title", lecture_title);
+		
+		int start = (page-1)*page_listcnt;
+		
+		RowBounds rowBounds = new RowBounds(start, page_listcnt);
+		
+		return (ArrayList<MyLecturesDTO>) dao.getMyLectureInfo(hmap, rowBounds);
+	}
 	
+	@Override
+	public PageBean getMyLectureCnt(int u_no, int currentPage) {
+		
+		int content_cnt = dao.getMyLectureCnt(u_no);
+		
+		return new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
+	}
 }
 
 

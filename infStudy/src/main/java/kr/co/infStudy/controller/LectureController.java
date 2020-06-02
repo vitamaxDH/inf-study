@@ -1,10 +1,15 @@
 package kr.co.infStudy.controller;
 
 import java.util.ArrayList;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.infStudy.dto.lecture.AddCurriculumDTO;
 import kr.co.infStudy.dto.lecture.LectureDTO;
+import kr.co.infStudy.dto.lecture.LecturesCurriculumDTO;
 import kr.co.infStudy.dto.lecture.UploadLectureDTO;
 import kr.co.infStudy.model.CurriculumVO;
 import kr.co.infStudy.model.UsersVO;
@@ -40,6 +46,10 @@ public class LectureController {
 	private final CurriculumService curriculumService;
 	private final ReviewService reviewService;
 	
+	@Lazy
+	@Resource(name = "login")
+	private UsersVO login;
+	
 	/**
 	 * 
 	 * @param request 
@@ -53,14 +63,12 @@ public class LectureController {
 	 * 
 	 */
 	@GetMapping(value = "/courses", produces = "application/json; charset=utf-8")
-	public String getLectureInfo(HttpServletRequest request,
-												@RequestParam(required = false) String category_name,
-												@RequestParam(required = false) String lecture_title,
-												@RequestParam(required = false, defaultValue = "price") String order,
-												@RequestParam(required = false, defaultValue = "1") int page,
-												Model model) {
+	public String getLectureInfo(@RequestParam(required = false) String category_name,
+								 @RequestParam(required = false) String lecture_title,
+								 @RequestParam(required = false, defaultValue = "price") String order,
+								 @RequestParam(required = false, defaultValue = "1") int page,
+								 Model model) {
 		
-		request.getSession().setAttribute("login", new UsersVO(1, "aaa@aaa.aaa", "aaaaaa", "aaaaaa", "aaaaaa"));
 		
 		System.out.println(lecture_title);
 		ArrayList<LectureDTO> lectureList = lectureService.getLectureInfo(category_name, order, lecture_title, page);
@@ -68,6 +76,8 @@ public class LectureController {
 		model.addAttribute("lectureList", lectureList);
 		model.addAttribute("category_name", category_name);		
 		model.addAttribute("pageBean", lectureService.getLectureCnt(category_name, page));
+		
+		System.out.println(lectureList);
 		
 		return "course/courseList";
 	}
@@ -83,9 +93,11 @@ public class LectureController {
 	public String getLectureDetail(@PathVariable String lecture_title,
 								   Model model) throws Exception{
 		
-		model.addAttribute("lectureDetail", lectureService.getLectureDetail(lecture_title));
 		model.addAttribute("curriculum_list", curriculumService.getCurriculumList(lecture_title));
 		model.addAttribute("lectureReview", reviewService.getLectureReviews(lecture_title));
+		model.addAttribute("lectureDetail", lectureService.getLectureDetail(lecture_title));
+		model.addAttribute("auth", login.getAuth());			
+
 		
 		return "course/courseDetail";
 	}
@@ -126,10 +138,18 @@ public class LectureController {
 							  @PathVariable int c_no,
 							  Model model) {
 		
-		model.addAttribute("curriculum_list", curriculumService.getCurriculumList(lecture_title));
+		ArrayList<LecturesCurriculumDTO> curriculum_list = (ArrayList<LecturesCurriculumDTO>) curriculumService.getCurriculumList(lecture_title);
+		model.addAttribute("curriculum_list", curriculum_list);
 		model.addAttribute("lecture_title", lecture_title);
 		model.addAttribute("c_no", c_no);
-		
+
+		for(int i=0;i<curriculum_list.size();i++) {
+			if(curriculum_list.get(i).getC_no() == c_no) {
+				model.addAttribute("url", curriculum_list.get(i).getUrl());
+				break;
+			}
+		}
+				
 		return "course/lecturePlay";
 	}
 	
@@ -147,11 +167,14 @@ public class LectureController {
 	}
 	
 	@PostMapping(value="/course/{lecture_title}/addCurriculum")
-	public String addCurriculum(@ModelAttribute(name = "addCurriculumVO") CurriculumVO addCurriculumVO) {
+	public String addCurriculum(@ModelAttribute(name = "addCurriculumVO") CurriculumVO addCurriculumVO,
+								@PathVariable String lecture_title,
+								Model model) {
 		
 		System.out.println(addCurriculumVO);
 		
-//		curriculumService.addCurriculum(addCurriculumVO);
+		curriculumService.addCurriculum(addCurriculumVO);
+		model.addAttribute("lecture_title", lecture_title);
 		
 		return "course/addCurriculumSuccess";
 	}

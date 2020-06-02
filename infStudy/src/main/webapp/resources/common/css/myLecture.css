@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+.contentContainer{
+	display:grid;
+	grid-template-rows: 5% 5% 90%;
+}
+.searchBox{
+	top:35px;
+}
+
+.lecture-head p{
+	font-size: 25px;
+    line-height: 55px;
+    font-weight: bold;
+    color: gray;
+}
+
+/************************************* lecture content box 모양 잡기 *************************************************/
+.div4_1 {
+    margin: 0 auto;
+    float: left;
+    width: 23%;
+    height: 325px;
+    margin: 1%;
+}
+.div4_1 {
+    position: relative;
+    color: rgb(50,50,50);
+    box-shadow: 1px 1px 3px 1px rgb(200,200,200);
+}
+.div4_1_cover {
+    display: none;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.7;
+    word-break: break-word;
+    padding: 10px;
+    overflow: hidden;
+}
+.div4_1:hover .div4_1_cover{
+    display: block;
+    box-shadow: 1px 1px 3px 1px rgb(50,50,50);
+}
+.div4_1_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-image: url("../images/jsp.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.div4_1_text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    word-break: break-word;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.div4_main_title{
+    margin-top:5px;
+    font-size: 22px;
+    font-weight: bold;
+    color:black;
+    overflow: hidden;
+    word-break: break-all;
+}
+.div4_main_writer{
+    position: absolute;
+    bottom: 50px;
+    font-size: 15px;
+    color:gray;
+    overflow: hidden;
+    word-break: break-all;
+}
+.div4_main_rank{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    color: gold;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.div4_cover_main_title{
+    font-size: 22px;
+}
+.div4_cover_main_content{
+    margin-top: 10px;
+}
+/************************************* pagination *************************************************/
+.qnaBoqrdPaging{
+	position:absolute;
+	left:0;
+	right:0;
+	margin:0 auto;
+	bottom:0;
+    width: 100%;
+    height: 50px;
+}
+.qnaBoqrdPaging nav{
+    position: relative;
+}
+.pagination{
+    position: absolute;
+    margin:0 auto;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    width: fit-content;
+}
+.pagination li a{
+    margin:0 5px;
+    border-radius: 5px;
+    color: black;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination li a:focus{
+    background-color: rgb(0,196,113);
+    color: white;
+}
+nav{
+    
+    position: absolute;
+    margin:0 auto;
+    left: 0;
+    right: 0;
+}

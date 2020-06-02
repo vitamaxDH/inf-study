@@ -4,8 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.infStudy.reviewMapper">
    
-   <insert id="insert" parameterType="kr.co.infStudy.model.ReviewVO">
-   
+   <insert id="addReview" parameterType="kr.co.infStudy.model.ReviewVO">
+   		INSERT INTO REVIEW(R_NO, L_NO, U_NO, REG_DT, RANK, CONTENT)
+   			VALUES(review_seq.nextval, #{l_no}, #{u_no}, SYSDATE, #{rank}, #{content})
    </insert>
    
    <select id="getLectureReviews" parameterType="java.lang.String" resultType="kr.co.infStudy.dto.lecture.LectureReviewDTO">

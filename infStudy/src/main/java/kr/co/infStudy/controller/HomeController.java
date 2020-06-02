@@ -76,12 +76,8 @@ public class HomeController {
 	public String home(Model model) throws Exception {
 
 		ArrayList<HomeDTO> homeDto = homeService.getHomeList("date");
-		ArrayList<HomeDTO> homeDto2 = homeService.getHomeList("rank");
-		ArrayList<HomeDTO> homeDto3 = homeService.getHomeList("date_asc");
 
 		model.addAttribute("homeDto", homeDto);
-		model.addAttribute("homeDto2", homeDto2);
-		model.addAttribute("homeDto3", homeDto3);
 		return "home";
 	}
 	/*

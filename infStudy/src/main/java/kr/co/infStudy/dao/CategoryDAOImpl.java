@@ -19,4 +19,9 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<CategoryVO> getCategoryList() {
 		return session.selectList(nameSpace + "getCategoryList");
 	}
+	
+	@Override
+	public void addCategory(String ctg_name) {
+		session.insert(nameSpace + "addCategory", ctg_name);
+	}
 }

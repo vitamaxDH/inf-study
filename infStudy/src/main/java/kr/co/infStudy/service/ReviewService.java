@@ -8,6 +8,7 @@ import java.util.List;
 
 import kr.co.infStudy.dto.review.AllReviewDTO;
 import kr.co.infStudy.dto.review.ReviewCriteria;
+import kr.co.infStudy.model.ReviewVO;
 
 public interface ReviewService {
 
@@ -19,4 +20,6 @@ public interface ReviewService {
 
 	//게시물 총 갯수
 	public int reviewListCount() throws  Exception;
+
+	void addReview(ReviewVO reviewVO);
 }

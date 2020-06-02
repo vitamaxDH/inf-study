@@ -54,7 +54,7 @@
 						<div class="contentList">
 							<div class="contentLeft">
 								<div class="qnaTitle">
-									<a href="#"><span>Q. </span> ${list.qna_title}</a>
+									<a href="${root }/questions/${list.q_no}"><span>Q. </span> ${list.qna_title}</a>
 								</div>
 								<div class="qnaDetail">
 									<span>글쓴이 : ${list.qna_writer}</span> 

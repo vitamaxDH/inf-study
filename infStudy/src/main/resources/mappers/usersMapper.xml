@@ -4,8 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.infStudy.usersMapper">
    
-   <insert id="insertUser" parameterType="kr.co.infStudy.model.UsersVO">
-   		INSERT INTO USERS VALUES (U_NO_SEQ.NEXTVAL, #{email}, #{password}, #{nickname}, #{img})
+   <insert id="registerUser" parameterType="kr.co.infStudy.model.UsersVO">
+   		INSERT INTO USERS VALUES (users_seq.nextval,#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},null, null)
+   </insert>
+
+   <insert id="enrollInstructor" parameterType="java.lang.Integer">
+   		UPDATE USERS SET I_NO = INSTRUCTOR_SEQ.NEXTVAL WHERE U_NO = #{u_no} 
    </insert>
    
    <select id="getUsersList" resultType="kr.co.infStudy.model.UsersVO">
@@ -14,6 +18,11 @@
 
    <select id="getUser" parameterType="java.util.HashMap" resultType="kr.co.infStudy.model.UsersVO">
    		SELECT * FROM USERS WHERE U_NO = #{u_no}
+   </select>
+   
+   <select id="loginUser" resultType="kr.co.infStudy.model.UsersVO">
+   		SELECT U_NO, EMAIL, PASSWORD, NICKNAME, IMG, I_NO FROM USERS
+   			WHERE EMAIL=#{email} AND PASSWORD=#{password}
    </select>
    
    <update id="update" parameterType="kr.co.infStudy.model.UsersVO">
@@ -29,7 +38,13 @@
    </delete>
    
    
+   <select id="getEmailUser" resultType="kr.co.infStudy.model.UsersVO">
+         SELECT * FROM USERS WHERE EMAIL=#{email}
+   </select>
    
+   <select id="getNickNameUser" resultType="kr.co.infStudy.model.UsersVO">
+         SELECT * FROM USERS WHERE NICKNAME=#{nickname}
+   </select>
 
 
    <!-- my-courses -->

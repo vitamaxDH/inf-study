@@ -14,6 +14,7 @@ import lombok.Data;
 public class UploadLectureDTO {
 	private int i_no;
 	private int ctg_no;
+	private String ctg_name;
 	private String title;
 	private int price;
 	private int rank;
@@ -21,4 +22,5 @@ public class UploadLectureDTO {
 	private MultipartFile lectureImg;
 	private String img;
 	private Date rel_dt;
+	private String content;
 }

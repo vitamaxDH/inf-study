@@ -65,21 +65,31 @@ public class LectureControllerTest {
 				.getModel();
 	}
 	
+//	@Test
+//	public void 강의등록() throws Exception{
+//		String result = mockMvc.perform(MockMvcRequestBuilders.post("/course/{lecture_title}/addCurriculum", "testTitle1")
+//									.param("l_no", "1")
+//									.param("section", "999")
+//									.param("title", "강의넣기 테스트 코드")
+//									.param("url", "강의넣기 테스트 url 파라미터")
+//									.param("playtime","10000"))
+//								.andDo(print())
+//								.andReturn()
+//								.getModelAndView()
+//								.getViewName();
+//							
+//		log.info(result);
+//				
+//	}
+	
 	@Test
-	public void 강의등록() throws Exception{
-		String result = mockMvc.perform(MockMvcRequestBuilders.post("/course/{lecture_title}/addCurriculum", "testTitle1")
-									.param("l_no", "1")
-									.param("section", "999")
-									.param("title", "강의넣기 테스트 코드")
-									.param("url", "강의넣기 테스트 url 파라미터")
-									.param("playtime","10000"))
-								.andDo(print())
-								.andReturn()
-								.getModelAndView()
-								.getViewName();
-							
-		log.info(result);
-				
+	public void 강의_듣기() throws Exception{
+		mockMvc.perform(get("/course/{lecture_title}/lecture/{c_no}", "testTitle1", "7"))
+		.andDo(print())
+		.andExpect(status().isOk())
+		.andReturn()
+		.getModelAndView()
+		.getModel();
 	}
 
 }
