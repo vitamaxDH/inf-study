@@ -30,6 +30,8 @@ public class UsersVO {
 	private String passwordChk;
 	private String nickname;
 	private String img;
+	private String newPw;
+	private String newPwChk;
 	
 	private int i_no;
 	private String auth;	//LectureDetail에서 일반 사용자인지, 수강생인지, 지식공유자인지를 확인하기 위한 변수
@@ -56,5 +58,5 @@ public class UsersVO {
 		this.nickname = vo.getNickname();
 		this.i_no = vo.getI_no();
 	}
-
+	
 }

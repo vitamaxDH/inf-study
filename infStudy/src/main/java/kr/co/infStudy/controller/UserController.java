@@ -6,13 +6,17 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.infStudy.dto.lecture.LectureDTO;
@@ -134,9 +138,9 @@ public class UserController {
 	};
 	
 	@GetMapping(value = "/profile")
-	public String profile() throws Exception {
+	public String profile(@ModelAttribute("update") UsersVO vo) throws Exception {
 		
-		return "profile";
+		return "user/profile";
 	}
 	
 	
@@ -186,6 +190,37 @@ public class UserController {
 		return "myQnA";
 	}
 
+	@PostMapping(value="updateNick")
+	   public String updateNick(@ModelAttribute("update") UsersVO vo, Model model) throws Exception{
+	      
+	      vo.setEmail(login.getEmail());
+	      model.addAttribute("update",vo);
+
+	      if(vo.getEmail()!=null) {
+	         usersService.updateNickname(vo);
+	      }
+	      
+	      return "user/changeNick";
+	   }
+	   
+	   @PostMapping(value="updatePassword")
+	   public String updatePw(@ModelAttribute("update") UsersVO vo, Model model) throws Exception{
+	      
+	      vo.setEmail(login.getEmail());
+	      model.addAttribute("update", vo);
+	      System.out.println("비번변경에서의 model : " + model);
+	      String password = DigestUtils.sha256Hex(vo.getPassword());
+	      System.out.println("빨랑 암호화해!!!! "+password);
+	      if(login.getPassword().equals(password)) {
+	         usersService.updatePassword(vo);
+	      
+	         return "user/changePassword";
+	      } else {
+	         return "user/changeFail";
+	      }
+	      
+	      
+	   }
 
 	/**
 	 * 지식공유자되기 버튼 클릭 시 동작하는 핸들러. Instructor로 등록
@@ -209,6 +244,29 @@ public class UserController {
 		return "course/courseDetail";
 	}
 	
+	/**
+	 * 회원 탈퇴
+	 */
+       @GetMapping(value="byeUserForm")
+	   public String byeUser(@ModelAttribute("byeUserVO")UsersVO byeUserVO) throws Exception{
+		  return "user/byeUser";
+	   }
+	   
+	   @PostMapping(value="byeUser")
+	   public String byeUser(HttpSession session,@ModelAttribute("byeUserVO")UsersVO byeUserVO,Model model) throws Exception{
+	      
+	      model.addAttribute("byeUserVO", new UsersVO());
+	      
+	      usersService.byeUser(byeUserVO);
+	      
+	   
+	      session.invalidate();
+
+	      
+	      return "user/byeUserSuccess";
+	   }
+
+
 }
 
 

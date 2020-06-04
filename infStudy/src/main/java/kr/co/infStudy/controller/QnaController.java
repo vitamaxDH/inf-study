@@ -20,7 +20,9 @@ import kr.co.infStudy.dto.qna.QnaCriteria;
 import kr.co.infStudy.dto.qna.QnaDTO;
 import kr.co.infStudy.dto.qna.QnaPageMaker;
 import kr.co.infStudy.dto.qna.QnaReplyDTO;
+import kr.co.infStudy.model.QnaReplyVO;
 import kr.co.infStudy.model.QnaVO;
+import kr.co.infStudy.model.ReviewVO;
 import kr.co.infStudy.model.UsersVO;
 import kr.co.infStudy.service.LectureService;
 import kr.co.infStudy.service.QnaReplyService;
@@ -41,7 +43,11 @@ public class QnaController {
 	private UsersVO login;
 	
 	@GetMapping(value="/course/{lecture_title}/questions", produces = "application/json; charset=utf-8")
-	public String getQnaList(@PathVariable String lecture_title , @RequestParam(required = false) String search, Model model){
+	public String getQnaList(@PathVariable String lecture_title, 
+							 @RequestParam(required = false) String search,
+							 @ModelAttribute("qna") QnaVO qna,
+							 @ModelAttribute("qnaReply") QnaReplyVO qnaReply,
+							 Model model){
 		
 		model.addAttribute("qnaList", qnaService.getQnaList(lecture_title, search));
 		model.addAttribute("lectureDetail", lectureService.getLectureDetail(lecture_title));
@@ -119,10 +125,23 @@ public class QnaController {
 	 * 질문 등록하기
 	 */
 	@PostMapping(value = "/qna/enrollQna")
-	public void enrollQna(@ModelAttribute("qnaVO") QnaVO qnaVO) {
+	public String enrollQna(@ModelAttribute("qnaVO") QnaVO qnaVO,
+							@RequestParam("lecture_title") String lecture_title) {
 		
 		qnaService.addQna(qnaVO);
-
+		
+		return "redirect:/course/" + lecture_title + "/questions";
+	}
+	
+	@PostMapping(value = "/qna/enrollQnaReply")
+	public String enrollQnaReply(@ModelAttribute("qnaReply") QnaReplyVO qnaReply,
+								 @RequestParam("lecture_title") String lecture_title) {
+		
+		System.out.println(qnaReply);
+		qnaReplyService.addQnaReply(qnaReply);
+		System.out.println("QnAReply 등록 완료!!!");
+		
+		return "redirect:/course/" + lecture_title + "/questions";
 	}
 
 

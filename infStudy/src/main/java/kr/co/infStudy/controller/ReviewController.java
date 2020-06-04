@@ -57,29 +57,17 @@ public class ReviewController {
 	}
 
 	/**
-	 *  답변 달기 창 열기	 
-	 */
-	@GetMapping("/review/addReview")
-	public String addReview(@ModelAttribute("reviewVO") ReviewVO reviewVO,
-							@RequestParam(name = "l_no") int l_no,
-							@RequestParam(name="lecture_title") String lecture_title,
-							Model model) {
-
-		model.addAttribute("lecture_title", lecture_title);
-		model.addAttribute("l_no", l_no);
-		
-		return "course/addReview";
-	}
-	
-	/**
 	 * 
 	 *  답변 등록	 
 	 */
 	@PostMapping("/review/enrollReview")
-	public void enrollReview(@ModelAttribute("reviewVO") ReviewVO reviewVO) {
+	public String enrollReview(@ModelAttribute("review") ReviewVO review,
+							   @RequestParam("lecture_title") String lecture_title) {
 			
-		System.out.println(reviewVO);
-		reviewService.addReview(reviewVO);
+		System.out.println(review);
+		reviewService.addReview(review);
+		
+		return "redirect:/course/" + lecture_title;
 	}
 	
 	/**

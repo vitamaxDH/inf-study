@@ -66,16 +66,25 @@
 	<!-- 인터셉터 객체 생성 -->
 	<beans:bean id="loginInterceptor"
 		class="kr.co.infStudy.interceptor.LoginInterceptor"></beans:bean>
-	<!-- INterceptor설정 -->
-
-	<interceptors>
-		<interceptor>
-			<mapping path="/dashboard" />
-			<mapping path="/logout" />
-			<beans:ref bean="loginInterceptor" />
-		</interceptor>
-	</interceptors>
-
+	<beans:bean id="loginAfterInterceptor" class="kr.co.infStudy.interceptor.LoginAfterInterceptor"></beans:bean>
+	   <!-- INterceptor설정 -->
+	
+   <interceptors>
+      <interceptor>
+         <mapping path="/dashboard" />
+         <mapping path="/course/*/lecture/*" />
+         <mapping path="/logout" />
+         <mapping path="/profile"/>
+         <mapping path="/byeUserForm"/>
+         <beans:ref bean="loginInterceptor" />
+      </interceptor>
+      <interceptor>
+         <mapping path="/loginForm"/>
+         <mapping path="/signupForm"/>
+         <beans:ref bean="loginAfterInterceptor"/>
+      </interceptor>
+   </interceptors>
+   
 	<!-- 아래 내용은 로그아웃후 뒤로가기버튼눌렀을때 다시 로그인 되는것을 방지하기 위함. -->
 	<beans:bean id="webContentInterceptor"
 		class="org.springframework.web.servlet.mvc.WebContentInterceptor">

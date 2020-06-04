@@ -16,7 +16,9 @@ public class PaidLecDAOImpl implements PaidLecDAO {
 	@Autowired
 	private SqlSession session;
 	private String nameSpace = "kr.co.infStudy.paidLecMapper.";
-	
+	/**
+	 * 수강 중인 강의 조회
+	 */
 	@Override
 	public List<PaidLecVO> getPaidLecList(int u_no) throws Exception {
 		return session.selectList(nameSpace + "getPaidLecList", u_no);

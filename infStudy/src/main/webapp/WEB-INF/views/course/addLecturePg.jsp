@@ -220,8 +220,6 @@ body{
     margin:20px 0;
 }
 .insert-form{
-    width: 90%;
-    height: 80%;
     box-shadow: 1px 1px 3px 1px gray;
 }
 .insert-form form{

@@ -39,7 +39,7 @@ public class QnaControllerTest {
 	
 	@Test
 	public void 질문_조회() throws Exception{
-		mockMvc.perform(get("/course/{lecture_title}/questions", "testTitle1"))
+		mockMvc.perform(get("/course/{lecture_title}/questions", "159"))
 		.andDo(print())
 		.andExpect(status().isOk())
 		.andReturn()

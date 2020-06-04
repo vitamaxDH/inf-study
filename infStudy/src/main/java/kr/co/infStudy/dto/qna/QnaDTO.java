@@ -1,7 +1,9 @@
 package kr.co.infStudy.dto.qna;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
+import kr.co.infStudy.model.QnaReplyVO;
 import lombok.Data;
 /**
  * 
@@ -17,6 +19,6 @@ public class QnaDTO {
 	private String qna_writer_img;	
 	private Date qna_reg_date;
 	private String qna_content;
-	private int qr_count;
-		
+	private ArrayList<QnaReplyVO> qrList = new ArrayList<QnaReplyVO>();
+	
 }

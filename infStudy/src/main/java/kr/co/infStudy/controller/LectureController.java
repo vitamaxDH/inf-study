@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.infStudy.dto.lecture.AddCurriculumDTO;
 import kr.co.infStudy.dto.lecture.LectureDTO;
+import kr.co.infStudy.dto.lecture.LectureReviewDTO;
 import kr.co.infStudy.dto.lecture.LecturesCurriculumDTO;
 import kr.co.infStudy.dto.lecture.UploadLectureDTO;
 import kr.co.infStudy.model.CurriculumVO;
+import kr.co.infStudy.model.ReviewVO;
 import kr.co.infStudy.model.UsersVO;
 import kr.co.infStudy.pageBean.PageBean;
 import kr.co.infStudy.service.CurriculumService;
@@ -89,15 +91,20 @@ public class LectureController {
 	 * @throws Exception
 	 * 강의 상세 조회를 위한 핸들러
 	 */
-	@GetMapping(value = "/course/{lecture_title}", produces = "application/json; charset=utf-8")
+	@GetMapping(value = "/course/{lecture_title}")
 	public String getLectureDetail(@PathVariable String lecture_title,
+								   @ModelAttribute("review") ReviewVO review,
 								   Model model) throws Exception{
 		
+		ArrayList<LectureReviewDTO> lectureReview = (ArrayList<LectureReviewDTO>) reviewService.getLectureReviews(lecture_title);
+		int[] rankAvg = {0, 0, 0, 0, 0};
+		lectureReview.stream().map(o->{return o.getRank();}).forEach(o->{rankAvg[5-o]++;});
+		
 		model.addAttribute("curriculum_list", curriculumService.getCurriculumList(lecture_title));
-		model.addAttribute("lectureReview", reviewService.getLectureReviews(lecture_title));
+		model.addAttribute("lectureReview", lectureReview);
 		model.addAttribute("lectureDetail", lectureService.getLectureDetail(lecture_title));
 		model.addAttribute("auth", login.getAuth());			
-
+		model.addAttribute("rankAvg", rankAvg);
 		
 		return "course/courseDetail";
 	}

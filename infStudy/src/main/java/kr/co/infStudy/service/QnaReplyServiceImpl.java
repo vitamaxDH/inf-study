@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.infStudy.dao.QnaReplyDAO;
 import kr.co.infStudy.dto.qna.QnaReplyDTO;
+import kr.co.infStudy.model.QnaReplyVO;
 /**
  * 
  * @author hydes
@@ -25,5 +26,10 @@ public class QnaReplyServiceImpl implements QnaReplyService {
 	public ArrayList<QnaReplyDTO> getQnaReplyList(int q_no) {
 		
 		return (ArrayList<QnaReplyDTO>) dao.getQnaReplyList(q_no);
+	}
+	
+	@Override
+	public void addQnaReply(QnaReplyVO qnaReply) {
+		dao.addQnaReply(qnaReply);
 	}
 }

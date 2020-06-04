@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<<<<<<< HEAD
 <%@include file="/WEB-INF/views/layout/header.jsp"%>
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
@@ -52,39 +51,6 @@
 							<form class="searchBoxDiv" role="form" method="get" maxlength="11" placeholder="강의 검색하기" id="searchInput">
 								<input type="text" name="keyword" id="keywordInput">
 								<button type="button" id="searchBtn" id="findLec">검색</button>
-=======
-<%@ include file="/WEB-INF/views/layout/header.jsp"%> 
-<%@ include file="/WEB-INF/views/layout/footer.jsp"%> 
-<c:set var="root" value="${pageContext.request.contextPath }"/>
-
-<div id="root">
-	<main id="main">
-		<section id="courses_section" class="section">
-			<div class="container">
-				<div class="columns">
-					<aside class="column is-2 sidebar_left">
-						<nav class="accordions category_accordions">
-							<div class="accordion">
-								<a href="${root }/courses" class="accordion-header">전체 강의</a>
-							</div>
-							<div class="accordion-header">
-								<c:forEach var="asideList" items="${categoryList }">
-								<div class="accordion-body">
-									<a href="${root }/courses?category_name=${asideList.name}" class="accordion-content">${asideList.name }</a>
-								</div>
-								</c:forEach>
-								<div class="insert_lecture"><a href="${root }/course/gotoAddLecturePg">강의 넣기</a></div>
-							</div>
-						</nav>
-					</aside>
-					
-				
-					<div class="column courses_body">
-						<header class="courses_header">
-							<div class="search">
-								<input id="searchInput" type="text" class="input" maxlength="11" placeholder="강의 검색하기" />
-								<button type="button" class="button" id="findLec">검색</button> <br />
->>>>>>> 268b5db9f12a92ca18840dcb01c3340461eb6526
 								<div id="inputError"></div>	
 							</form>
 						</div>

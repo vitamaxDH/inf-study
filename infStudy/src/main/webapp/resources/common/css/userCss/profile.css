@@ -1,0 +1,99 @@
+body{
+   height: 1100px;
+}
+.qnaMain{
+   height: 100%;
+}
+.loginForm{
+    position: absolute;
+    top: 120px;
+    height: 500px;
+    width: 550px;
+    margin:0 auto;
+    left:0;
+    right:0;
+}
+.loginForm h1{
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 30px;
+}
+.form-group label{
+    width: 20%;
+    float: left;
+    margin: 17px;
+}
+.form-group input{
+    width: 70%;
+    float: right;
+    margin: 10px;
+}
+.form-group input:focus{
+    outline: none;
+    box-shadow: 0 0 3px 1px rgb(0,193,113);
+}
+.submitBtn{
+    width: 100%;
+    height: 50px;
+    margin-top: 50px;
+    background-color: rgb(0,193,113);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+
+.contentContainer{
+   display: grid;
+   grid-template-rows: 5% 3% 21% 3% 30% 3% 10% 25%;
+}
+.box-sd{
+   box-shadow: 1px 1px 3px 1px gray;
+}
+.pofile-box-head{    
+   font-size: 25px;
+    line-height: 55px;
+    font-weight: bold;
+    color: gray;
+}
+.pofile-box{
+   padding-top:20px;
+}
+.pofile-box p{
+   font-size: 20px;
+    line-height: 55px;
+    padding-left: 25px;
+    font-weight: bold;
+    color: gray;
+}
+.pofile-box label{
+   float:left;
+   margin: 17px 0 17px 50px;
+   width:15%;
+}
+.pofile-box input{
+   float:right;
+   margin: 10px 50px 10px 0;
+   width:70%;
+}
+.pofile-box button{
+   position: relative;
+    left: 35%;
+    width:30%;
+    bottom: 25px;
+}
+.pofile-box button:hover{
+   background-color:rgb(0,220,100);
+   color:white;
+}
+.pofile-box button:focus{
+   color:rgb(0,196,113);
+   background-color: white;
+}
+.pofile-box a{
+   color:gray;
+   text-decoration: none;
+    line-height: 77px;
+}

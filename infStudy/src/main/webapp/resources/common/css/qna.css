@@ -85,6 +85,9 @@ body div{
     color:rgb(78,83,108);
     padding:0 20px;
 }
+.listContent:hover{
+	color:black;
+}
 .listContent_selected{
     font-size:16px;
     color:rgb(0,196,113);

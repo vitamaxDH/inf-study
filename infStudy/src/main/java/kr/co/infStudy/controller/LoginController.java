@@ -216,16 +216,16 @@ public class LoginController {
 	 * @throws Exception
 	 */
 	@PostMapping("loginCheck")
-	public String loginCheck(HttpSession session, @ModelAttribute("loginUserVO") @Valid UsersVO loginUserVO,
+	public String loginCheck(@ModelAttribute("loginUserVO") @Valid UsersVO loginUserVO,
 			BindingResult result, Model model) throws Exception {
 
 		if (result.hasErrors()) {
 			model.addAttribute("pwErrorMsg", "비밀번호 입력 필수");
 			return "login/login";
 		}
-		login.setLoginInfo(usersService.loginUser(loginUserVO));
+		usersService.loginUser(loginUserVO);
 
-		if (login == null) {
+		if (login.getU_no() == 0) {
 
 			return "login/loginfail";
 

@@ -15,7 +15,7 @@ public interface UsersService {
 
 	public void registerUser(UsersVO vo) throws Exception;
 
-	public UsersVO loginUser(UsersVO vo) throws Exception;
+	public void loginUser(UsersVO vo) throws Exception;
 
 	public void logout(HttpServletResponse response) throws Exception;
 
@@ -24,5 +24,11 @@ public interface UsersService {
 	public UsersVO getEmailUser(UsersVO vo) throws Exception;
 
 	public UsersVO getNickNameUser(UsersVO vo) throws Exception;
+
+	public void byeUser(UsersVO byeUserVO) throws Exception;
+
+	public void updateNickname(UsersVO vo) throws Exception;
+
+	void updatePassword(UsersVO vo) throws Exception;
 	
 }

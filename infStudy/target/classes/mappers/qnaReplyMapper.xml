@@ -4,8 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.infStudy.qnaReplyMapper">
    
-   <insert id="zz" parameterType="kr.co.infStudy.model.QnaReplyVO">
-   
+   <insert id="addQnaReply" parameterType="kr.co.infStudy.model.QnaReplyVO">
+   		INSERT INTO QNA_REPLY(QR_NO, Q_NO, U_NO, REG_DT, CONTENT)
+   				VALUES(qna_reply_seq.nextval, #{q_no}, #{u_no}, sysdate, #{content})
    </insert>
    
    <select id="getQnaReplyList" resultType="kr.co.infStudy.dto.qna.QnaReplyDTO">
@@ -17,6 +18,16 @@
    		
    </select>
    
+   <select id="getLectureQrList" resultType="kr.co.infStudy.model.QnaReplyVO">
+   		
+   		SELECT QR_NO, Q_NO, U_NO, REG_DT, CONTENT FROM QNA_REPLY
+   			WHERE Q_NO IN
+   		<foreach collection="list" item="item" index="idx" separator="," open="(" close=")">
+   			#{item}
+   		</foreach>
+   		ORDER BY Q_NO DESC, QR_NO DESC
+   </select>
+
    <update id="update" parameterType="kr.co.infStudy.model.QnaReplyVO">
    
    </update>

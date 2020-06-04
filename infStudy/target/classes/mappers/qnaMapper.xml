@@ -17,7 +17,7 @@
    		<if test="search != null">
    			 and content like '%' || #{search} || '%'
    		</if>
-   			order by q_t.q_no
+   			order by q_t.q_no desc
    </select>
    
    <select id="getQnaDetail" resultType="kr.co.infStudy.dto.qna.QnaDTO">

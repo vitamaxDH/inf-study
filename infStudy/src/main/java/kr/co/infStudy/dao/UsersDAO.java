@@ -22,4 +22,10 @@ public interface UsersDAO {
 	public UsersVO getEmailUser(UsersVO vo) throws Exception;
 
 	public UsersVO getNickNameUser(UsersVO vo) throws Exception;
+
+	public void byeUser(UsersVO vo) throws Exception;
+
+	public void updatePassword(UsersVO vo) throws Exception;
+
+	public void updateNickname(UsersVO vo) throws Exception;
 }

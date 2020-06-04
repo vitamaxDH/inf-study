@@ -1,275 +1,180 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <%@ include file="/WEB-INF/views/layout/header.jsp"%> 
-<c:set var="root" value="${pageContext.request.contextPath }"/>
+<%-- <%@include file="/WEB-INF/views/layout/footer.jsp"%> --%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="${contextPath}/resources/common/css/courseCss/lectureQna.css" rel="stylesheet">
+	<link href="${contextPath}/resources/common/css/courseCss/courseDetail.css" rel="stylesheet">
+	<script	src="${contextPath}/resources/common/js/ckeditor.js"></script>
+   	<link href="${contextPath}/resources/common/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <body>
-<div id="root">
-	<main id="main">
-		<section class="course_header_container">
-			<div class="container">
-				<div class="columns">
-					<div class="column img_container">
-						<img alt="강의 이미지" src="/uploadFile/${lectureDetail.img }">	
-					</div>
-					<div class="column course_title">
-						<h1>${lectureDetail.lecture_title }</h1>
-						<span>
-							<div class="rating_star">별점 : ${lectureDetail.rank_avg }</div>
-							<small>(${lectureDetail.review_cnt }개의 수강평)</small> <br />
-						</span>
-						<small class="student_cnt">${lectureDetail.student_cnt }명의 수강생</small> <br />
-						<small class="course_skills">${lectureDetail.category }</small> <br />
-					</div>
-				</div>
-			</div>
-		</section>	
-		<section class="course_description_container">
-			<div class="tabs">
-				<ul class="container">
-					<li class="curriculum reviews"><a href="${root }/course/${lecture_title}">강의소개</a></li>
-					<li class="questions"><a href="${root }/course/${lecture_title}/questions">질문 & 답변</a></li>
+    <div class="detail-headBox">
+        <div class="detail-head">
+            <div class="box detail-imageBox">
+                <div class="detail-image" style="background-image:url('/uploadFile/${lectureDetail.img }')"></div>
+            </div>
+            <div class="box detail-head-content">
+                <div class="box"></div>
+                <div class="box detail-head-name">${lectureDetail.lecture_title }</div>
+                <div class="box detail-head-review">${lectureDetail.review_cnt }개의 수강평</div>
+                <div class="box detail-head-review">${lectureDetail.student_cnt }명의 수강생</div>
+                <div class="box detail-head-review">${lectureDetail.category }</div>
+                <div class="box detail-head-text">${lectureDetail.content }</div>
+                <div class="box"></div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-bodyBox">
+	    <div class="detail-body">
+	        <div class="detail-nav">
+	            <ul>
+	            	<li class="nav-selected"><a href="${contextPath }/course/${lecture_title}">강의소개</a></li>
+					<li><a href="${contextPath }/course/${lecture_title}/questions">질문&답변</a></li>
 					<c:if test="${auth eq 'instructor' }">
-						<li class="questions"><a href="${root }/course/${lecture_title}/addCurriculum/${lectureDetail.l_no}">강의 추가</a></li>
-					</c:if>
-				</ul>
-			</div>
-			
-			<div class="container">
-				<div class="course_description">
-					<div class="columns">
-						<div class="content">
-							<article class="description">
-								<h3>강의 설명</h3>
-								<div class="lecture_content">
-									${lectureDetail.content }
-								</div>
-							</article>
-							<article class="curriculum">
-								<h3>교육 과정</h3>
-								<div class="curriculum_accordion">
-									<div class="curriculm_header">
-										<span class="curriculum_runtime">
-										 	강의 시간 : <i class="fa fa-clock-o" aria-hidden="true"></i> ${lectureDetail.total_runtime }
-										 </span>
-										<span class="curriculum_length">강의 수 : ${lectureDetail.curriculum_cnt }</span>
-										<span class="select_all">모두 펼치기</span>
-									</div>
-									
-									<!-- 강의 목록 보여주기  -->
-									<!-- 클릭 이벤트 넣기 클릭 시 open 클래스 추가해서 하위 항목을 보여주도록  -->
-									<c:forEach var="list" items="${curriculum_list }" varStatus="status">
-																			
-										<c:if test="${status.count == 1 }">
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_right">${curriculum_list[0].section }</div>
-												<div class="section_header_left">
-													<span class="unit_length">강의수</span>
-													<span class="unit_runtime"><i class="fa fa-clock-o" aria-hidden="true"></i> 강의시간</span>
-												</div>	
-											</div>
-											
-											<!-- /course/${lecture_title}/lecture/${curriculum_no} -->
-											<div class="lecture_cover">
-												<a href="${root }/course/${lectureDetail.lecture_title}/lecture/${list.c_no}">
-												<div class="unit_item">
-													<div class="unit_item_left"> 
-														<i class="fa fa-play-circle-o" aria-hidden="true"></i> ${curriculum_list[0].curriculum_title }
-													</div>
-													<div class="unit_item_right"><i class="fa fa-clock-o" aria-hidden="true"></i> ${curriculum_list[0].playtime }</div>
-												</div>
-												</a>							
-			
-										</c:if>
-										
-										<c:if test="${status.count ne fn:length(curriculum_list)}">
-											<c:if test="${curriculum_list[status.count-1].section ne curriculum_list[status.count].section}">
-											</div>
-											<div class="section_cover">
-												<div class="section_header">
-													<div class="section_header_right">${curriculum_list[status.count].section }</div>
-													<div class="section_header_left">
-														<span class="unit_length">강의수</span>
-														<span class="unit_runtime"><i class="fa fa-clock-o" aria-hidden="true"></i> 강의시간</span>
-													</div>
-												</div>
-												</div><div class="lecture_cover">
-											</c:if>
-											
-											<!-- /course/${lecture_title}/lecture/${curriculum_no} -->											
-											
-											<a href="${root }/course/${lectureDetail.lecture_title}/lecture/${list.c_no}">
-											<div class="unit_item">
-												<div class="unit_item_left"> 
-													<i class="fa fa-play-circle-o" aria-hidden="true"></i> 
-													${curriculum_list[status.count].curriculum_title }
-												</div>
-												<div class="unit_item_right">
-													<i class="fa fa-clock-o" aria-hidden="true"></i>
-													 ${curriculum_list[status.count].playtime }
-												</div>
-											</div>
-											</a>
-										</c:if>
-									</c:forEach>
-									</div>
-									</div>
-								</div>	 
-							</article>
-							
-							<article class="course_date">
-								<h4 class="sub_heading">공개일자</h4>
-								<div>
-									OOOO년 OO월 OO일<span class="last_update_date">(마지막 업데이트 일자 : OOOO년 OO월 OO일)</span>
-								</div>
-							</article>
-							
-							
-							<article class="reviews" id="reviews">
-								<h4 class="sub_heading">수강 후기</h4>
-								<div class="review_summary">
-									<div class="average">
-										<span class="average_num">평점</span>
-										<span class="average_star"></span>
-										<h5 class="review_total">${fn:length(lectureReview) }개의 수강평</h5>
-									</div>
-									
-									<!-- max에는 수강평 개수 value에는 해당 점수의 평점 개수 -->
-									<!-- for문으로 돌리면 될 듯 -->
-									<div class="progress_bars">
-										<div class="review_counting">
-											<label>5점</label>
-											<progress class="progress link" max="7" value="6"></progress>
-										</div>
-										<div class="review_counting">
-											<label>4점</label>
-											<progress class="progress link" max="7" value="1"></progress>
-										</div>
-										<div class="review_counting">
-											<label>3점</label>
-											<progress class="progress link" max="7" value="0"></progress>
-										</div>
-										<div class="review_counting">
-											<label>2점</label>
-											<progress class="progress link" max="7" value="0"></progress>
-										</div>
-										<div class="review_counting">
-											<label>1점</label>
-											<progress class="progress link" max="7" value="0"></progress>
-										</div>
-									</div>
-								</div>
-								
-								<c:if test="${login.auth == 'student' }">
-								<div class="addReviewBtn-container">
-									<button id="addReviewBtn">수강평 남기기</button>
-								</div>
-								</c:if>
-								<div class="article_list">
-								
-									
-									<c:forEach var="reviews" items="${lectureReview }" varStatus="status">
-									
-									<div class="article_container">
-										<article class="review_item">
-											<figure class="image">
-												<img src="/uploadFile/${reviews.reviewer_img }" alt="유저 이미지" />
-											</figure>
-											<div class="media-content">
-												<div class="content">
-													<span class="rating_star">별점</span>
-													<strong>${reviews.r_no} : ${reviews.reviewer }</strong>
-													<small class="updated_at"><span>${reviews.review_reg_dt }</span></small> <br />
-													<c:if test="${login.auth eq 'instructor' }">
-														<small class="instructor_review"><span onclick="addReviewReply('${reviews.r_no}')">답변달기</span></a></small> <br />
-													</c:if>
-													<div class="review_body">${reviews.review_content }</div>											
-												</div>
-																								
-												<c:forEach var="comments" items="${reviews.replies }">
-												<div class="review_comments">
-													<div class="article_container">
-														<article class="comment">
-															<figure class="image">
-																<img src="/uploadFile/${reviews.reviewer_img }" alt="강사 이미지" />
-															</figure>
-															<div class="media-content">
-																<div class="content">
-																	<p>
-																		<small>
-																			<span class="author">${comments.rr_no} : ${comments.replier }</span>
-																			<span class="updated_at">${comments.reply_reg_dt }</span>
-																		</small> <br />
-																		<span class="article_body">${comments.reply_content }</span>
-																	</p>
-																</div>
-															</div>
-														</article>
-													</div>
-												</div>
-												</c:forEach>
-												
-												
-												
-											</div>
-										</article>
-									</div>
-									
-									
-									</c:forEach>
-									
-									
-									
-								</div>
-																
-							</article>
-							
+	           			<li><a href="${contextPath }/course/${lecture_title}/addCurriculum/${lectureDetail.l_no}">강의추가</a></li>
+	           		</c:if>
+	        </div>
+
+           <div class="curriculum">
+              <div class="curriculumTitle">교육과정</div>
+              <div class="curriculumTotal">
+                 <span>전체 강의 수 : 8</span>&nbsp; / &nbsp;<span>전체 강의 시간 : 80 분</span>
+              </div>
+              <ul class="curriculumUl">
+              	<c:forEach var="list" items="${curriculum_list }" varStatus="status">
+              		<c:if test="${status.count == 1 }">
+              			<a href="#">
+              				<li class="liTitle">${curriculum_list[0].section }<span>+</span></li>
+           				</a>
+						<a href="${root }/course/${lectureDetail.lecture_title}/lecture/${list.c_no}">
+              				<li>&nbsp; ${curriculum_list[0].curriculum_title }<span>${curriculum_list[0].playtime }</span></li>
+              			</a>
+              		</c:if>
+              		
+              
+              		<c:if test="${status.count ne fn:length(curriculum_list)}">
+              			<c:if test="${curriculum_list[status.count-1].section ne curriculum_list[status.count].section}">
+              				<a href="#"><li class="liTitle">${curriculum_list[status.count].section }<span>+</span></li></a>
+              			</c:if>
+              			<a href="${root }/course/${lectureDetail.lecture_title}/lecture/${curriculum_list[status.count].c_no}">
+              				<li>&nbsp; ${curriculum_list[status.count].curriculum_title }
+              					<span>${curriculum_list[status.count].playtime }</span>
+           					</li>
+              			</a>
+              		</c:if>
+
+              	</c:forEach>
+	        	</ul>
+	        	<div class="curriculumDate">
+	        		<h1>공개일자</h1>
+	        		<p>0000년 00월 00일<p>
+	        	</div>
+	        </div>
+	        <div class="review">
+	        	<div class="reviewTitle">수강후기</div>
+	        	<div class="reviewRank">
+	        		<div></div>
+	        		<c:set var="rankTotal" value="${rankAvg[0]*5+rankAvg[1]*4+rankAvg[2]*3+rankAvg[3]*2+rankAvg[4]*1 }"/>
+	        		<div style="text-align: center;">
+	        			<h1>평점 : <fmt:formatNumber value="${rankTotal/(fn:length(lectureReview)) }" pattern=".00"/></h1>
+
+	        			<p>${fn:length(lectureReview) }개의 수강평</p>
+	        			
+	        		</div>
+
+	        		<ul>
+	        			<li>5점 <progress class="progress link" max="${fn:length(lectureReview) }" value="${rankAvg[0] }"></progress></li>
+	        			<li>4점 <progress class="progress link" max="${fn:length(lectureReview) }" value="${rankAvg[1] }"></progress></li>
+	        			<li>3점 <progress class="progress link" max="${fn:length(lectureReview) }" value="${rankAvg[2] }"></progress></li>
+	        			<li>2점 <progress class="progress link" max="${fn:length(lectureReview) }" value="${rankAvg[3] }"></progress></li>
+	        			<li>1점 <progress class="progress link" max="${fn:length(lectureReview) }" value="${rankAvg[4] }"></progress></li>	        			
+	        		</ul>
+	        		<div></div>
+	        	</div>
+	        	<div class="reviewButton">
+	        		<button id="addReviewBtn">수강평 남기기</button>
+	        	</div>
+	        	
+	        	<div class="rBox close" id="rBox">
+	        		<form:form modelAttribute="review" id="myForm">
+	        			<form:hidden path="l_no" value="${lectureDetail.l_no }"/>
+	        			<form:hidden path="u_no" value="${login.u_no }"/>
+						<div class="rBoxRank">
+							<form:select path="rank">
+								<form:option value="1" selected="selected">★ ☆ ☆ ☆ ☆ </form:option>
+								<form:option value="2">★ ★ ☆ ☆ ☆</form:option>
+								<form:option value="3">★ ★ ★ ☆ ☆</form:option>
+								<form:option value="4">★ ★ ★ ★ ☆</form:option>
+								<form:option value="5">★ ★ ★ ★ ★</form:option>
+							</form:select>
+							<span>평점 : </span>
 						</div>
-					</div>
+						<form:textarea path="content" id="review_content" class="rBoxContentText" type="Text" placeholder="수강평을 입력하세요."></form:textarea>
+						<div id="reviewMsg"></div>
+						<div class="rBoxBtn">
+							<form:button id="submitBtn">작성하기</form:button>
+						</div>
+					</form:form>
 				</div>
+	        	
+	        	<c:forEach var="reviews" items="${lectureReview }" varStatus="status">	        		
+		        	<div class="rBox">
+						<div class="rBoxRank">
+							<c:forEach begin="1" end="${reviews.rank }">
+								★ 
+							</c:forEach>
+						</div>
+						<div class="rBoxContentText">
+							${reviews.review_content }
+						</div>	
+						<div class="rBoxDetail">
+							<span>글쓴이 : ${reviews.reviewer }</span>&nbsp;&nbsp;&nbsp;
+							<span>작성 시간 : ${reviews.review_reg_dt }</span>&nbsp;&nbsp;&nbsp;
+							<span>강의명 : ${lectureDetail.lecture_title }</span>&nbsp;&nbsp;&nbsp;
+						</div>			
+					</div>
+	        	</c:forEach>
+				
+	        </div>
+	        <div class="blank"></div>
+        </div>
+        
+        <c:if test="${login.auth eq null }">
+        <!-- 사이드 메뉴 -->
+        <%-- <c:if test="${auth eq null }"> --%>
+			<div class="sideMenu" id="sideMenu">
+				<div class="side1">${lectureDetail.lecture_title }</div>
+				<button class="side2">수강신청</button>
+				<button class="side3">${lectureDetail.wishlist_cnt } 위시</button>
+				<div class="side4">지식공유자 : ${lectureDetail.teacher }</div>
+				<div class="side4">${lectureDetail.curriculum_cnt }회 수업 , 총 ${lectureDetail.total_runtime } 수업</div>
+				<div class="side4">평생 무제한 시청</div>
+				<div class="side4">수강 난이도 : ${lectureDetail.difficulty }급 &nbsp;이상</div>
 			</div>
-		</section>
-		
-		
-		<!-- 사이드 메뉴 -->
-		<c:if test="${auth eq null }">
-		<nav id="sideMenu">
-			<div class="container">
-				<h2 class="price">${lectureDetail.price }원</h2>
-				<button class="take_lecture" id="take_lecture">수강신청</button> <br />
-				<button class="wishcnt">${lectureDetail.wishlist_cnt } 위시</button> <br />
-				<div class="lec_summary">
-					<div class="lec_info_row">	
-						<i class="fa fa-user" aria-hidden="true"></i> <span>지식공유자 : <a href="#">${lectureDetail.teacher }</a></span>
-					</div>
-					
-					<div class="lec_info_row">					
-						<span>
-							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							${lectureDetail.curriculum_cnt }회 수업 , 총 ${lectureDetail.total_runtime } 수업
-						</span>
-					</div>
-					<div class="lec_info_row">					
-						<span>평생 무제한 시청</span>
-					</div>
-					<div class="lec_info_row">					
-						<span>수강 난이도 :  ${lectureDetail.difficulty }급 &nbsp;이상</span>
-					</div>
-				</div>
-			</div>
-		</nav>	
-		</c:if>
-	</main>	
-</div>
+		<%-- </c:if> --%>
+        </c:if>
+        
+        
+    </div>
+    
+    
+
 </body>
-
-
+</html>
 
 <script>
 
@@ -288,9 +193,9 @@ try{
 	// 스크롤 이동할 때 사이드바 움직이게 하기
 	var sideMenu = document.querySelector("#sideMenu");
 	window.addEventListener("scroll", function(){
-
+ 
 		var yTop = window.pageYOffset;
-		sideMenu.style.top = yTop + 100 + "px";
+		sideMenu.style.top = yTop - 200 + "px";
 	})
 }catch(e){
 
@@ -306,7 +211,7 @@ document.getElementById("take_lecture").addEventListener("click", function(){
 	})
 }catch(e){}
 
-
+/*
 // 강의평가 달기
 try{
 document.getElementById('addReviewBtn').addEventListener('click', function(){
@@ -321,7 +226,7 @@ document.getElementById('addReviewBtn').addEventListener('click', function(){
 				'window팝업','width=' + popupWidth, 'height=' + popupHeight, 'left = ' + popupX + ',top=' + popupY);
 })
 }catch(e){}
-
+*/
 //강의 평가 답변 달기
 try{
 	function addReviewReply(r_no){
@@ -344,6 +249,34 @@ try{
 
  출처 : http://jeonghwan-kim.github.io/2018/01/25/before-jquery.html  
  */
+
+
+document.getElementById('addReviewBtn').addEventListener('click', function(e){
+	
+	document.getElementById('rBox').classList.toggle('close');
+})
+
+
+document.getElementById('submitBtn').addEventListener('click', function(e){
+	e.preventDefault();
+	var review_content = document.getElementById('review_content').value;
+	var state = true;
+	
+	if(review_content.trim().length == 0){
+		alert("수강평을 입력해주세요");
+		state = false;
+	}
+
+	if(state){
+		if(confirm("수강평을 등록하시겠습니까?")){
+			var myForm = document.getElementById("myForm");
+			myForm.setAttribute("action", "${contextPath}/review/enrollReview?lecture_title=${lectureDetail.lecture_title}");
+			myForm.setAttribute("method", "post");
+			myForm.submit();
+		}
+	}
+
+})
 
  
 </script>

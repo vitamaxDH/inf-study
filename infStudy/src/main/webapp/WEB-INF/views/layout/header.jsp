@@ -17,7 +17,13 @@
 
 </head>
 <body>
-<c:if test="${!empty login}">
+<%
+ // 브라우저 캐시 미저장 설정. 로그아웃(세션삭제) 후 뒤로가기 등 페이지 접근 막기 위함.
+ response.setHeader("Cache-Control","no-store");
+ response.setHeader("Pragma", "no-store, no-cache, must-revalidate");
+ response.setDateHeader("Expires",0);
+ %>
+<c:if test="${login.u_no!=0 and login ne null}">
 <div class="container">
     <header class="head">
             <div class="header_div">
@@ -65,7 +71,7 @@
         </header>
        </div>
        </c:if>
-       <c:if test="${empty login}">
+       <c:if test="${login.u_no==0 or login eq null}">
     <div class="container2">
         <header class="head2">
             <div class="header_div2">

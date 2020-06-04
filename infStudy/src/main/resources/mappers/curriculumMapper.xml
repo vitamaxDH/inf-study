@@ -13,7 +13,7 @@
    		select c_no, section, title as curriculum_title, playtime, url
 		from curriculum
  		where l_no = (select l_no from lecture where title = #{lecture_title})
-  		
+  		ORDER BY SECTION, C_NO ASC
    </select>
    
    <select id="getSectionList" parameterType="java.lang.Integer" resultType="kr.co.infStudy.model.CurriculumVO">

@@ -49,13 +49,6 @@
 				          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="닉네임을 입력하세요">
 					      <button type="submit" class="btn btn-default submitBtn">저장하기</button>
 					</form>
-					<div class="box"></div>
-					<form class="box box-sd pofile-box">
-						<p>이메일</p>
-				        <label for="exampleInputEmail1">이메일</label>
-				        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="이메일을 입력하세요">
-						<button type="submit" class="btn btn-default submitBtn">저장하기</button>
-				   	</form>
 				   	<div class="box"></div>
 					<div class="box box-sd">
 				        <form class="pofile-box">

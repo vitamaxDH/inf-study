@@ -60,4 +60,21 @@ public class UsersDAOImpl implements UsersDAO {
 	public UsersVO getNickNameUser(UsersVO vo) throws Exception {
 		return session.selectOne(nameSpace+"getNickNameUser", vo);
 	}
+	
+	@Override
+	   public void updateNickname(UsersVO vo) throws Exception {
+	      
+	      session.update(nameSpace+"updateNickname", vo);
+	   }
+
+	   @Override
+	   public void updatePassword(UsersVO vo) throws Exception {
+	      session.update(nameSpace+"updatePassword", vo);
+	   }
+	
+	@Override
+	public void byeUser(UsersVO vo) throws Exception {
+		session.delete(nameSpace + "byeUser", vo);
+	}
+	
 }

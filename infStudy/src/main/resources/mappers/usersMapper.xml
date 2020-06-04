@@ -25,19 +25,13 @@
    			WHERE EMAIL=#{email} AND PASSWORD=#{password}
    </select>
    
-   <update id="update" parameterType="kr.co.infStudy.model.UsersVO">
-   		UPDATE TABLE USERS 
-   			SET EMAIL = #{email},
-				PASSWORD = #{password},
-				NICKNAME = #{nickname}
-   			WHERE ID  = #{u_no}	
+   <update id="updateNickname" parameterType="kr.co.infStudy.model.UsersVO">
+         UPDATE USERS SET NICKNAME=#{nickname} WHERE EMAIL=#{email}
    </update>
    
-   <delete id="delete" parameterType="int">
-   		DELETE USERS WHERE U_NO = #{u_no}
-   </delete>
-   
-   
+   <update id="updatePassword" parameterType="kr.co.infStudy.model.UsersVO">
+         UPDATE USERS SET PASSWORD=#{password} WHERE EMAIL=#{email}
+   </update>   
    <select id="getEmailUser" resultType="kr.co.infStudy.model.UsersVO">
          SELECT * FROM USERS WHERE EMAIL=#{email}
    </select>
@@ -46,6 +40,9 @@
          SELECT * FROM USERS WHERE NICKNAME=#{nickname}
    </select>
 
+   <delete id="byeUser" parameterType="kr.co.infStudy.model.UsersVO">
+         DELETE USERS WHERE EMAIL=#{email} and PASSWORD=#{password}
+   </delete>
 
    <!-- my-courses -->
    <select id="getMyCourse" parameterType="kr.co.infStudy.model.PaidLecVO" resultType="kr.co.infStudy.dto.user.MyCoursesDTO">
@@ -63,6 +60,5 @@
 			         AND F.L_NO = #{l_no}
         group by l.title, l.img, c.url, f.finish_time
    </select>
-   
    
 </mapper>

@@ -73,24 +73,25 @@ public class UsersServiceImpl implements UsersService {
 	 */
 	
 	/**
-	 * 로그인
+	 * 로그인 
 	 */
 	@Override
-	public UsersVO loginUser(UsersVO vo) throws Exception {	
-//		System.out.println("서비스단의 vo:"+ vo);
+	public void loginUser(UsersVO vo) throws Exception {	
+
 		String inputPw = DigestUtils.sha256Hex(vo.getPassword());
 		vo.setPassword(inputPw);
-//		System.out.println("chk: " +vo.getPassword().equals(DigestUtils.sha256Hex(inputPw)));
 
-		login.setLoginInfo(userDAO.loginUser(vo));
-		paidLecDAO.getPaidLecList(login.getU_no()).stream()
-												  .forEach(o -> login.getClassList()
-														  			.add(o.getL_no()));
-		if(login == null) {			
-			return null;
-		}else {	
-			return login;
+		UsersVO tempVO = userDAO.loginUser(vo);
+		
+		if(tempVO != null) {
+			
+			login.setLoginInfo(tempVO);
+			
+			paidLecDAO.getPaidLecList(login.getU_no()).stream()
+													  .forEach(o -> login.getClassList()
+															  			 .add(o.getL_no()));
 		}
+		
 	}
 	
 	/**
@@ -126,4 +127,31 @@ public class UsersServiceImpl implements UsersService {
       // TODO Auto-generated method stub
       return userDAO.getNickNameUser(vo);
    }
+   
+   @Override
+   public void updateNickname(UsersVO vo) throws Exception {
+      userDAO.updateNickname(vo);
+   }
+
+   @Override
+   public void updatePassword(UsersVO vo) throws Exception {
+      // TODO Auto-generated method stub
+      String encrypt = DigestUtils.sha256Hex(vo.getNewPw());
+      vo.setPassword(encrypt);
+      System.out.println(vo);
+      userDAO.updatePassword(vo);
+   }
+   
+   /**
+    * 회원 탈퇴
+    */
+   @Override
+	public void byeUser(UsersVO vo) throws Exception {
+		
+	   vo.setPassword(DigestUtils.sha256Hex(vo.getPassword()));
+	   
+	   userDAO.byeUser(vo);
+	}
+   
+   
 }
