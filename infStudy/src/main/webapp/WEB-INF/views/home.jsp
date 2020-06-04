@@ -45,7 +45,7 @@
         <div class="col-sm-1 col-md-12 div_subTitle">InfStudy 신규강의</div>
         <div class="row width1200">
            <c:forEach var="list" items="${homeDto}" begin="0" end="3">
-               <a href="#">
+               <a href="${contextPath }/course/${list.main_title}">
                    <div class="col-md-3 div4_1">
                        <div class="div4_1_image" style="background-image: url('/uploadFile/${list.main_imageLink}');"></div>
                        <div class="div4_1_text">

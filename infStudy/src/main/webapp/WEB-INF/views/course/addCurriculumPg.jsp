@@ -147,7 +147,7 @@
    
          if(submitStatus){
             var submit = document.getElementById('myForm');
-            submit.setAttribute("action", "/course/${lecture_title}/addCurriculum");
+            submit.setAttribute("action", "${root}/course/${lecture_title}/addCurriculum");
             submit.setAttribute("method", "post");
             submit.submit();
          }

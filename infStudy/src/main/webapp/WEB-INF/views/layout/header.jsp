@@ -27,7 +27,7 @@
 <div class="container">
     <header class="head">
             <div class="header_div">
-                <div class="box icon"><a href="/">InfStudy</a></div>
+                <div class="box icon"><a href="${contextPath }">InfStudy</a></div>
                 <div class="box text_hover lecture_list"><a href="${contextPath }/courses" class="list_a">강의들</a>
                     <ul>
                        <c:forEach var="list" items="${categoryList }">
@@ -36,10 +36,10 @@
                     </ul>
                     <div class="arrow"></div>
                 </div>
-                <div class="box text_hover commu_list"><a href="qna" class="list_a">커뮤니티</a>
+                <div class="box text_hover commu_list"><a href="${contextPath }/qna" class="list_a">커뮤니티</a>
                     <ul>
-                        <li><a href="qna"><span class="glyphicon glyphicon-comment" /> 묻고답하기</a></li>
-                        <li><a href="review"><span class="glyphicon glyphicon-star" /> 수강평모아보기</a></li>
+                        <li><a href="${contextPath }/qna"><span class="glyphicon glyphicon-comment" /> 묻고답하기</a></li>
+                        <li><a href="${contextPath }/review"><span class="glyphicon glyphicon-star" /> 수강평모아보기</a></li>
                     </ul>
                     <div class="arrow2"></div>
                 </div>
@@ -51,18 +51,20 @@
                     </form>
                     <div class="glass"></div>
                 </div>
-                <div class="box profile profile_list"><button>Profile</button></a>
+                <div class="box profile profile_list"><button onclick="location.href='${contextPath }/profile'">Profile</button></a>
                         <div class="profile_list_div">
                             <ul class="profile_list_div_ul">
                                 <li><a href="${contextPath }/profile"><span class="glyphicon glyphicon-user" /> 내프로필보기</a></li>
                                 <li><a href="${contextPath }/myLecture"><span class="glyphicon glyphicon-tasks" /> 수강중인강의</a></li>
                                 <li><a href="${contextPath }/myQnA"><span class="glyphicon glyphicon-comment" /> 내질문답변</a></li>
                                 <c:choose>
-                                	<c:when test="${login.i_no > 0 }"></c:when>
+                                	<c:when test="${login.i_no > 0 }">
+                                		<li><a href="${contextPath}/course/gotoAddLecturePg"><span class="glyphicon glyphicon-expand" /> 강의넣기</a></li>
+                                	</c:when>
                                 	<c:otherwise>
 	 	                               <li><a href="#"><span class="glyphicon glyphicon-comment" id="enrollInstructor"> 지식공유자신청</a></li>
                                 	</c:otherwise>
-                                </c:choose>
+                   					 </c:choose>
                                 <li><a href="${contextPath}/logout"><span class="glyphicon glyphicon-off" /> 로그아웃</a></li>
                             </ul>
                         </div>

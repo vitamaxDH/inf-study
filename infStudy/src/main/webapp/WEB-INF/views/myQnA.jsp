@@ -64,7 +64,7 @@
 							<div class="contentList">
 								<div class="contentLeft">
 									<div class="qnaTitle">
-										<a href="${pageContext.request.contextPath }/questions/${list.q_no}"><span>Q. </span> ${list.qna_title}</a>
+										<a href="${pageContext.request.contextPath }/course/${list.lec_title}/questions"><span>Q. </span> ${list.qna_title}</a>
 									</div>
 									<div class="qnaDetail">
 										<span>글쓴이 : ${list.qna_writer}</span> 

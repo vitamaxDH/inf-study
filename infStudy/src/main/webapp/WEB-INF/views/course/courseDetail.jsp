@@ -57,20 +57,21 @@
               <ul class="curriculumUl">
               	<c:forEach var="list" items="${curriculum_list }" varStatus="status">
               		<c:if test="${status.count == 1 }">
-              			<a href="#">
-              				<li class="liTitle">${curriculum_list[0].section }<span>+</span></li>
-           				</a>
-						<a href="${root }/course/${lectureDetail.lecture_title}/lecture/${list.c_no}">
-              				<li>&nbsp; ${curriculum_list[0].curriculum_title }<span>${curriculum_list[0].playtime }</span></li>
+              			<li class="liTitle">${curriculum_list[0].section }<span>+</span></li>
+						<a href="${contextPath}/course/${lectureDetail.lecture_title}/lecture/${list.c_no}">
+              				<li>
+              					&nbsp; ${curriculum_list[0].curriculum_title }
+              					<span>${curriculum_list[0].playtime }</span>
+              				</li>
               			</a>
               		</c:if>
               		
               
               		<c:if test="${status.count ne fn:length(curriculum_list)}">
               			<c:if test="${curriculum_list[status.count-1].section ne curriculum_list[status.count].section}">
-              				<a href="#"><li class="liTitle">${curriculum_list[status.count].section }<span>+</span></li></a>
+              				<li class="liTitle">${curriculum_list[status.count].section }<span>+</span></li>
               			</c:if>
-              			<a href="${root }/course/${lectureDetail.lecture_title}/lecture/${curriculum_list[status.count].c_no}">
+              			<a href="${contextPath}/course/${lectureDetail.lecture_title}/lecture/${curriculum_list[status.count].c_no}">
               				<li>&nbsp; ${curriculum_list[status.count].curriculum_title }
               					<span>${curriculum_list[status.count].playtime }</span>
            					</li>

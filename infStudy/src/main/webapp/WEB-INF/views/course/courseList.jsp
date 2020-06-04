@@ -34,8 +34,6 @@
                    	<c:forEach var="asideList" items="${categoryList }">
 	                    <a href="${root }/courses?category_name=${asideList.name}"><li class="listContent">${asideList.name }</li></a>
                     </c:forEach>
-                    <br>
-					<li class="listTitle"><a href="${root }/course/gotoAddLecturePg">강의 넣기</a></li>
 				</ul>
 			</div>
 			<div class="qnaBoard">
@@ -57,7 +55,7 @@
 					</div>
 					<div class="box contentBox">
 						<c:forEach var="lectureList" items="${lectureList }">
-				            <a href="${root }/course/${lectureList.title}"">
+				            <a href="${root }/course/${lectureList.title}">
 				                <div class="col-md-3 div4_1">
 				                    <div class="div4_1_image" style="background-image: url('/uploadFile/${lectureList.img}');"></div>
 				                    <div class="div4_1_text">

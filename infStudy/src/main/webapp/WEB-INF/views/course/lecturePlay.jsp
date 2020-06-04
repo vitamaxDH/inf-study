@@ -22,8 +22,7 @@
         <div class="nav">
             <div class="nav-head">
                 <div class="nav-head-name">${lecture_title }</div>
-                <p>진도율 : 00강 / ${fn:length(curriculum_list)}강 (00.00%) | 시간 : 000분 / 000분</p>
-                <progress class="progress is-primary" value="00.00%" max="100" style=" width: 100%;">00.00%</progress>
+                <p>시간 : 000분 / 000분</p>
             </div>
             <div class="nav-ul">
                 <ul>
