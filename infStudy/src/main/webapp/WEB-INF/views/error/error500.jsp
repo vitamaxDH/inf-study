@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>500 error</title>
+   <link href="resources/common/css/error.css" rel="stylesheet">
 </head>
 <body>
-	<h1>500Error</h1>
-
-	<button id="backBtn">이전페이지로 돌아가기</button>
-
+	<h3>InfStudy</h3>
+	<h1>500 Error</h1>
+	<button id="backBtn">이전 페이지로 돌아가기</button>
 <script>
 
 	document.getElementById('backBtn').addEventListener('click', function(){
