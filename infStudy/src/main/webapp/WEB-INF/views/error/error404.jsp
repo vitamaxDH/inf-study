@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>404 error</title>
-   <link href="resources/common/css/error.css" rel="stylesheet">
+   <link href="/resources/common/css/error.css" rel="stylesheet">
 </head>
 <body>
 	<h3>InfStudy</h3>
