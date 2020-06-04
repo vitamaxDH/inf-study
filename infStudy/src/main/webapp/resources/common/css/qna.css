@@ -86,7 +86,7 @@ body div{
     padding:0 20px;
 }
 .listContent:hover{
-	color:black;
+    color:rgb(0,196,113);
 }
 .listContent_selected{
     font-size:16px;
@@ -97,7 +97,7 @@ body div{
     text-decoration: none !important;
 }
 .listTitle{
-    font-size: 13px;
+    font-size: 16px;
     color:rgb(180,180,180);
     padding:0 10px;
 }

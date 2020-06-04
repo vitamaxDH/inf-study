@@ -161,7 +161,10 @@ public class UserController {
 		return "myLecture";
 	}
 	
-	
+	@GetMapping("loginAfter")
+	public String loginAfter() throws Exception {
+		return "loginAfter";
+	}
 
 	@GetMapping(value = "/myQnA")
 	public String myQnA(Model model, QnaSearchCriteria scri,

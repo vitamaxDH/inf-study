@@ -239,6 +239,7 @@ body {
 }
 
 .profile_list button {
+	margin-top:14px;
 	width: 85px;
 	height: 35px;
 	line-height: 35px;
@@ -503,6 +504,7 @@ body {
 }
 
 .profile_list2 button {
+	margin-top:14px;
 	width: 85px;
 	height: 35px;
 	line-height: 35px;

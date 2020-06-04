@@ -5,6 +5,6 @@
 
 <script>
 	alert("로그인 성공!");
-	location.href="${root}dashboard";
+	location.href="${root}";
 		
 </script>
