@@ -34,7 +34,6 @@ public class ReviewServiceImpl implements ReviewService {
 	 * 강의 review를 보여줄 때 강의 평가(review)와 강사의 답변(review_reply)를 
 	 * 계층형으로 보여주기 위해 lectureReview에 reply를 list형태로 넣어서 반환하는 메소드
 	 */
-	@Transactional
 	@Override
 	public ArrayList<LectureReviewDTO> getLectureReviews(String lecture_title) {
 		

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.infStudy.dao.LectureDAO;
@@ -93,6 +94,7 @@ public class LectureServiceImpl implements LectureService {
 	 * 트렌젝션 걸기
 	 */
 	@Override
+	@Transactional
 	public void addLecture(UploadLectureDTO addLecture) {
 		
 		MultipartFile upload_file = addLecture.getLectureImg();		
@@ -135,7 +137,8 @@ public class LectureServiceImpl implements LectureService {
 
 			categoryDao.addCategory(addLecture.getCtg_name());
 		}
-
+		//Transaction Test
+		//System.out.println(1/0);
 		dao.addLecture(new LectureVO(addLecture));		
 	}
 	

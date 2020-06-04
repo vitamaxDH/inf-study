@@ -37,13 +37,15 @@
 	            <ul>
 	            	<li><a href="${contextPath }/course/${lecture_title}">강의소개</a></li>
 					<li class="nav-selected"><a href="${contextPath }/course/${lecture_title}/questions">질문&답변</a></li>
+    				<c:if test="${login.auth eq 'instructor' }">					
 					<li><a href="${contextPath }/course/${lecture_title}/addCurriculum/${lectureDetail.l_no}">강의추가</a></li>
+					</c:if>
 	        </div>
 	        <div class="detail-questionAndSearch">
 	            <div class="box insertQ">
-	            	<%-- <c:if test="${login.auth eq 'student' }"> --%>
+	            	<c:if test="${login.auth eq 'student' }">
 						<button id="write-question-btn">질문작성</button>
-					<%-- </c:if> --%>
+					</c:if>
 	            </div>
 	            <div class="box searchBox">
 					<form class="searchBoxDiv"  method="get">
@@ -90,9 +92,11 @@
 			                <div class="qBoxContentText">${qna.qna_content}</div>
 			            </div>
        					<div class="box"></div>
-						<div class="box qBoxBtn">
- 							<button class="aBtn">답변달기</button>
-						</div>
+       					<c:if test="${login.auth eq 'instructor' }">
+							<div class="box qBoxBtn">
+	 							<button class="aBtn">답변달기</button>
+							</div>
+						</c:if>
 			        </div>
 			        <!-- 답변하기 작성창 -->
 					<div class="qBox aBox closeHere">
@@ -133,7 +137,7 @@
         
         
         <!-- 사이드 메뉴 -->
-        <%-- <c:if test="${auth eq null }"> --%>
+        <c:if test="${auth eq null }">
 			<div class="sideMenu" id="sideMenu">
 				<div class="side1">${lectureDetail.lecture_title }</div>
 				<button class="side2">수강신청</button>
@@ -143,7 +147,7 @@
 				<div class="side4">평생 무제한 시청</div>
 				<div class="side4">수강 난이도 : ${lectureDetail.difficulty }급 &nbsp;이상</div>
 			</div>
-		<%-- </c:if> --%>
+		</c:if>
         
         
         
@@ -159,18 +163,20 @@
  
  
 <script>
-
-	document.getElementById('write-question-btn').addEventListener('click', function(){
-		document.getElementById('question_window').classList.toggle("closeHere")
-	})
-
-
-	Array.from(document.getElementsByClassName('aBtn')).forEach(function(elem){
-		elem.addEventListener('click', function(){
-			this.closest('.qBox').nextSibling.nextSibling.nextSibling.nextSibling.classList.toggle('closeHere');
+	try{
+		document.getElementById('write-question-btn').addEventListener('click', function(){
+			document.getElementById('question_window').classList.toggle("closeHere")
 		})
-	})
+	}catch(e){}
 
+	try{
+		Array.from(document.getElementsByClassName('aBtn')).forEach(function(elem){
+			elem.addEventListener('click', function(){
+				this.closest('.qBox').nextSibling.nextSibling.nextSibling.nextSibling.classList.toggle('closeHere');
+			})
+		})
+	}catch(e){}
+	
 	try{
 		document.getElementById('myQBtn').addEventListener("click", function(e){
 			e.preventDefault();
@@ -213,52 +219,54 @@
 	}catch(e){}
 	
 
-
-	document.getElementById('qTitle').addEventListener('keyup', function(){
-
-		var qVal = this.value;
-		if(qVal.length > 100){
-			document.getElementById('qTitleError').innerHTML = "<p><small style='color:red'>제목은 100자까지 입력이 가능합니다.</small></p>"
-		}else{
-			document.getElementById('qTitleError').innerHTML = "";
-
-		}
-	})
-
-	document.getElementById('qContent').addEventListener('keyup', function(){
-
-		var qVal = this.value;
-		if(qVal.length > 1000){
-			document.getElementById('qContentError').innerHTML = "<p><small style='color:red font-weight:bold'>질문은 1000자까지 입력이 가능합니다.</small></p>"
-		}else{
-			document.getElementById('qContentError').innerHTML = "";
-
-		}
-	})
-
-
-
-	Array.from(document.getElementsByClassName('replyForm')).forEach(function(elem){
-		
-		elem.childNodes[7].childNodes[1].addEventListener('click', function(e){
-			e.preventDefault();
-			var rContent = elem.childNodes[5].childNodes[1];
-			var status = true;
-			if(rContent.value.trim().length == 0){
-				alert("답변을 입력해주세요");
-				status = false;
-				return false;
-			}
-
-			if(status){
-				elem.setAttribute('action', '${contextPath}/qna/enrollQnaReply?lecture_title=${lectureDetail.lecture_title}');
-				elem.setAttribute('method', 'post');
-				elem.submit();
+	try{
+		document.getElementById('qTitle').addEventListener('keyup', function(){
+	
+			var qVal = this.value;
+			if(qVal.length > 100){
+				document.getElementById('qTitleError').innerHTML = "<p><small style='color:red'>제목은 100자까지 입력이 가능합니다.</small></p>"
+			}else{
+				document.getElementById('qTitleError').innerHTML = "";
+	
 			}
 		})
+	}catch(e){}
 
-	})
+	try{
+		document.getElementById('qContent').addEventListener('keyup', function(){
+	
+			var qVal = this.value;
+			if(qVal.length > 1000){
+				document.getElementById('qContentError').innerHTML = "<p><small style='color:red font-weight:bold'>질문은 1000자까지 입력이 가능합니다.</small></p>"
+			}else{
+				document.getElementById('qContentError').innerHTML = "";
+	
+			}
+		})
+	}catch(e){}
 
+	try{
+		Array.from(document.getElementsByClassName('replyForm')).forEach(function(elem){
+			
+			elem.childNodes[7].childNodes[1].addEventListener('click', function(e){
+				e.preventDefault();
+				var rContent = elem.childNodes[5].childNodes[1];
+				var status = true;
+				if(rContent.value.trim().length == 0){
+					alert("답변을 입력해주세요");
+					status = false;
+					return false;
+				}
+	
+				if(status){
+					elem.setAttribute('action', '${contextPath}/qna/enrollQnaReply?lecture_title=${lectureDetail.lecture_title}');
+					elem.setAttribute('method', 'post');
+					elem.submit();
+				}
+			})
+	
+		})
+	}catch(e){}
 
 
 </script>

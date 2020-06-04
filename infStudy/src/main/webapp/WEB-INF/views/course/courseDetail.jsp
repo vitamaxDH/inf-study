@@ -189,95 +189,57 @@ Array.from(section_elem).forEach(elem => {
 })
 
 
-try{
 	// 스크롤 이동할 때 사이드바 움직이게 하기
-	var sideMenu = document.querySelector("#sideMenu");
-	window.addEventListener("scroll", function(){
- 
-		var yTop = window.pageYOffset;
-		sideMenu.style.top = yTop - 200 + "px";
-	})
-}catch(e){
+	try{
+		var sideMenu = document.querySelector("#sideMenu");
+		window.addEventListener("scroll", function(){
+	 
+			var yTop = window.pageYOffset;
+			sideMenu.style.top = yTop - 200 + "px";
+		})
+	}catch(e){}
 
-}
+	// 수강신청
+	try{
+		document.getElementById("take_lecture").addEventListener("click", function(){
+		
+				if(confirm("수강신청하시겠습니까?")){
+					location.href = "${root}/user/addPaidLecture?l_no=${lectureDetail.l_no}";
+				}
+		})
+	}catch(e){}
 
-try{
-// 수강신청
-document.getElementById("take_lecture").addEventListener("click", function(){
+	//수강평 창 열고 닫기
+	try{
+		document.getElementById('addReviewBtn').addEventListener('click', function(e){
+			
+			document.getElementById('rBox').classList.toggle('close');
+		})
+	}catch(e){}
 
-		if(confirm("수강신청하시겠습니까?")){
-			location.href = "${root}/user/addPaidLecture?l_no=${lectureDetail.l_no}";
-		}
-	})
-}catch(e){}
-
-/*
-// 강의평가 달기
-try{
-document.getElementById('addReviewBtn').addEventListener('click', function(){
-	// window.open('${root}/review/addReivew');
-
-	var popupWidth = 400;
-	var popupHeight = 300;
-	var popupX =(window.screen.width / 2) - (popupWidth / 2)
-	var popupY= (window.screen.height / 2) - (popupHeight / 2);
-
-	window.open('${root}/review/addReview?l_no=${lectureDetail.l_no}&lecture_title=${lectureDetail.lecture_title}', 
-				'window팝업','width=' + popupWidth, 'height=' + popupHeight, 'left = ' + popupX + ',top=' + popupY);
-})
-}catch(e){}
-*/
-//강의 평가 답변 달기
-try{
-	function addReviewReply(r_no){
-
-		var popupWidth = 400;
-		var popupHeight = 300;
-		var popupX =(window.screen.width / 2) - (popupWidth / 2);
-		var popupY= (window.screen.height / 2) - (popupHeight / 2);
-
-		window.open('${root}/review/addReviewReply?l_no=${lectureDetail.l_no}&lecture_title=${lectureDetail.lecture_title}&r_no=' + r_no, 
-					'window팝업','width=' + popupWidth, 'height=' + popupHeight, 'left = ' + popupX + ',top=' + popupY);
-	};
-
-}catch(e){}
-
-/*
-  querySelectorAll() 함수는 유사배열을 반환한다.
-  Array의 프로토타입 함수를 사용하려면 Array.form() 함수를 이용해서 유사배열을 배열로 변환해야한다. 
-   이후에 Array.protototype.foreEach() 함수를 이용해 li 엘리먼트를 순회할 수 있다.
-
- 출처 : http://jeonghwan-kim.github.io/2018/01/25/before-jquery.html  
- */
-
-
-document.getElementById('addReviewBtn').addEventListener('click', function(e){
-	
-	document.getElementById('rBox').classList.toggle('close');
-})
-
-
-document.getElementById('submitBtn').addEventListener('click', function(e){
-	e.preventDefault();
-	var review_content = document.getElementById('review_content').value;
-	var state = true;
-	
-	if(review_content.trim().length == 0){
-		alert("수강평을 입력해주세요");
-		state = false;
-	}
-
-	if(state){
-		if(confirm("수강평을 등록하시겠습니까?")){
-			var myForm = document.getElementById("myForm");
-			myForm.setAttribute("action", "${contextPath}/review/enrollReview?lecture_title=${lectureDetail.lecture_title}");
-			myForm.setAttribute("method", "post");
-			myForm.submit();
-		}
-	}
-
-})
-
+	// 수강평 남기기
+	try{
+		document.getElementById('submitBtn').addEventListener('click', function(e){
+			e.preventDefault();
+			var review_content = document.getElementById('review_content').value;
+			var state = true;
+			
+			if(review_content.trim().length == 0){
+				alert("수강평을 입력해주세요");
+				state = false;
+			}
+		
+			if(state){
+				if(confirm("수강평을 등록하시겠습니까?")){
+					var myForm = document.getElementById("myForm");
+					myForm.setAttribute("action", "${contextPath}/review/enrollReview?lecture_title=${lectureDetail.lecture_title}");
+					myForm.setAttribute("method", "post");
+					myForm.submit();
+				}
+			}
+		
+		})
+	}catch(e){}
  
 </script>
 

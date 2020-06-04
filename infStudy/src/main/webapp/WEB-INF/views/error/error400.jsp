@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>500Error</h1>
-
+	<h1>400 Error</h1>
+	
 	<button id="backBtn">이전페이지로 돌아가기</button>
 
 <script>
@@ -16,7 +16,7 @@
 	document.getElementById('backBtn').addEventListener('click', function(){
 		history.back(1);
 	})
-</script>
 
+</script>
 </body>
 </html>

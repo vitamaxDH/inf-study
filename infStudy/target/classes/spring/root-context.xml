@@ -28,6 +28,8 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>
     
+    
+    
     <bean class="kr.co.infStudy.model.UsersVO" id='login' scope='session'/>				   
   
 </beans>

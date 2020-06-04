@@ -105,6 +105,7 @@ public class UsersServiceImpl implements UsersService {
 	/**
 	 * 로그아웃
 	 */
+	
 	@Override
 	public void logout(HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=utf-8");

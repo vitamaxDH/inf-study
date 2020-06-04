@@ -233,8 +233,6 @@ public class LoginController {
 			
 			return "login/loginSuccess";
 		}
-//		System.out.println("Vo"+loginUserVO);
-//		System.out.println("result"+result);
 
 	}
 
@@ -249,7 +247,6 @@ public class LoginController {
 	public void logout(HttpSession session, HttpServletResponse response) throws Exception {
 		session.invalidate();
 		usersService.logout(response);
-		response.sendRedirect("login/logoutCheck");
 
 	}
 
