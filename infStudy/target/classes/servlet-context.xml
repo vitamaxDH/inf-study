@@ -74,6 +74,8 @@
 	         <mapping path="/logout" />
 	         <mapping path="/profile"/>
 	         <mapping path="/byeUserForm"/>
+	         <mapping path="/myLecture"/>
+	         <mapping path="/myQnA"/>
 	         <beans:ref bean="loginInterceptor" />
          </interceptor>
          <interceptor>
