@@ -7,6 +7,7 @@ kr\co\infStudy\model\TestCkVO.class
 kr\co\infStudy\dao\NoticeReplyDAO.class
 kr\co\infStudy\dao\PaidLecDAOImpl.class
 kr\co\infStudy\controller\LoginController.class
+kr\co\infStudy\interceptor\LoginAfterInterceptor.class
 kr\co\infStudy\dao\QnaDAOImpl.class
 kr\co\infStudy\interceptor\CoursesAsideInterceptor.class
 kr\co\infStudy\service\NoticeServiceImpl.class
@@ -49,6 +50,7 @@ kr\co\infStudy\service\CurriculumService.class
 kr\co\infStudy\dto\lecture\UploadLectureDTO.class
 kr\co\infStudy\dto\lecture\LectureReplyDTO.class
 kr\co\infStudy\controller\LectureController.class
+kr\co\infStudy\dto\qna\QnaSearchCriteria.class
 kr\co\infStudy\service\HomeServiceImpl.class
 kr\co\infStudy\controller\test.class
 kr\co\infStudy\service\QnaService.class
@@ -62,6 +64,7 @@ kr\co\infStudy\dto\lecture\LectureDetailDTO.class
 kr\co\infStudy\dao\LectureDAOImpl.class
 kr\co\infStudy\dao\UsersDAO.class
 kr\co\infStudy\service\QnaReplyService.class
+kr\co\infStudy\dto\lecture\MyLecturesDTO.class
 kr\co\infStudy\service\FinishServiceImpl.class
 kr\co\infStudy\dao\CurriculumDAOImpl.class
 kr\co\infStudy\service\UsersServiceImpl.class

@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>405 error</title>
+	<title>404 error</title>
    <link href="/resources/common/css/error.css" rel="stylesheet">
 </head>
 <style>
@@ -47,14 +47,13 @@ button:hover{
 </style>
 <body>
 	<h3>InfStudy</h3>
-	<h1>405 Error</h1>
+	<h1>404 Error</h1>
 	<button id="backBtn">이전 페이지로 돌아가기</button>
+</body>
+</html>
 <script>
 
 	document.getElementById('backBtn').addEventListener('click', function(){
 		history.back(1);
 	})
 </script>
-	
-</body>
-</html>

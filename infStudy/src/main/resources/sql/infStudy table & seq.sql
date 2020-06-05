@@ -44,7 +44,7 @@ create table lecture(
     l_no number(5) primary key,
     i_no number(5) not null,
     ctg_no number(5) not null,
-    title varchar2(50) not null,
+    title varchar2(50) unique not null,
     content CLOB not null,
     price number(10) not null,
     difficulty varchar(10) not null,
