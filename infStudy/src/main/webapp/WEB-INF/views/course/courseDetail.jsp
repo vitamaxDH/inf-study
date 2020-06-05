@@ -107,7 +107,9 @@
 	        		<div></div>
 	        	</div>
 	        	<div class="reviewButton">
-	        		<button id="addReviewBtn">수강평 남기기</button>
+	        		<c:if test="${login.auth eq 'student' }">
+	        			<button id="addReviewBtn">수강평 남기기</button>
+	        		</c:if>
 	        	</div>
 	        	
 	        	<div class="rBox close" id="rBox">
