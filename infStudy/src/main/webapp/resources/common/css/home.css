@@ -67,7 +67,6 @@ body {
 
 /************************************ div1 상단 이미지 설정 *********************************/
 .div1_1 {
-    background-image: url("../images/back1.png");
     background-size: contain;
     background-position: center;
 }
@@ -311,4 +310,21 @@ body {
 }
 .div5_cover_main_content{
     margin-top: 10px;
+}
+
+
+
+/****************************************************************************************************/
+
+
+.swiper-container{
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide{
+    background-size: contain;
+    background-position: center;
+}
+.home_body{
+	padding:0;
 }
