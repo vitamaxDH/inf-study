@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: sammy
 Build-Jdk: 1.8.0_231
-=======
-Built-By: chanju
-Build-Jdk: 1.8.0_201
->>>>>>> 20fe98e7f27a83ceb6fe06678f2fa27f0ba89f54
 Created-By: Maven Integration for Eclipse
 
