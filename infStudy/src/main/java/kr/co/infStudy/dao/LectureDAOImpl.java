@@ -80,4 +80,12 @@ public class LectureDAOImpl implements LectureDAO {
 		return session.selectOne(nameSpace + "getMyLectureCnt", u_no);
 	}
 
+	/**
+	 * 강의 제목 중복 체크
+	 */
+	@Override
+	public String chkTitle(String lecture_title) {
+		return session.selectOne(nameSpace + "chkTitle", lecture_title);
+	}
+	
 }

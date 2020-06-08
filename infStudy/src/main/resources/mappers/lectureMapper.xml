@@ -17,7 +17,7 @@
 			select lec_t.title, lec_t.content, lec_t.price, lec_t.img, ctg_t.name as category, u_t.nickname as teacher
 				from lecture lec_t, users u_t, category ctg_t
 			where lec_t.i_no = u_t.i_no and lec_t.ctg_no = ctg_t.ctg_no 
-			]]>
+			]]>  
 			<if test="category_name != null">
 				and ctg_t.name = #{category_name}
 			</if>
@@ -84,6 +84,10 @@
 	]]>
    </select>
    
+   <select id="chkTitle" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT TITLE FROM LECTURE WHERE TITLE = #{lecture_title}
+   </select>
+
    <select id="getLectureFileNames" parameterType="java.util.HashMap" resultType="java.lang.String">
 	
    </select>

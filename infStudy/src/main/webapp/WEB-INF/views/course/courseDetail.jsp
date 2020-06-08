@@ -106,10 +106,11 @@
 	        		</ul>
 	        		<div></div>
 	        	</div>
+	        	<c:if test="${login.auth eq 'student' }">
 	        	<div class="reviewButton">
 	        		<button id="addReviewBtn">수강평 남기기</button>
 	        	</div>
-	        	
+	        	</c:if>
 	        	<div class="rBox close" id="rBox">
 	        		<form:form modelAttribute="review" id="myForm">
 	        			<form:hidden path="l_no" value="${lectureDetail.l_no }"/>
@@ -159,7 +160,7 @@
         <%-- <c:if test="${auth eq null }"> --%>
 			<div class="sideMenu" id="sideMenu">
 				<div class="side1">${lectureDetail.lecture_title }</div>
-				<button class="side2">수강신청</button>
+				<button class="side2" id="take_lecture">수강신청</button>
 				<button class="side3">${lectureDetail.wishlist_cnt } 위시</button>
 				<div class="side4">지식공유자 : ${lectureDetail.teacher }</div>
 				<div class="side4">${lectureDetail.curriculum_cnt }회 수업 , 총 ${lectureDetail.total_runtime } 수업</div>
@@ -179,7 +180,7 @@
 
 <script>
 
-//강의 커리큘럼 toggle
+//강의 커리큘럼 toggle 기능 삭제하기
 var section_elem = document.querySelectorAll(".section_header");
 
 Array.from(section_elem).forEach(elem => {
@@ -218,6 +219,22 @@ Array.from(section_elem).forEach(elem => {
 		})
 	}catch(e){}
 
+	//수강평 글자수 제한하기
+	try{
+		var rContent = document.getElementById('review_content');
+		rContent.addEventListener('keyup', function(e){
+			var reviewMsg = document.getElementById('reviewMsg');
+			if(rContent.value.length >500){
+				reviewMsg.innerHTML = "<p style='color:red; font-weight:bold'>수강평은 500자까지 입력이 가능합니다.(" + rContent.value.length + "자/500자)</p>";
+
+				if(rContent.value.length >510){
+					rContent.value = rContent.value.substring(0, 510);
+				}
+
+			}
+		})
+	}catch(e){}
+
 	// 수강평 남기기
 	try{
 		document.getElementById('submitBtn').addEventListener('click', function(e){
@@ -227,6 +244,11 @@ Array.from(section_elem).forEach(elem => {
 			
 			if(review_content.trim().length == 0){
 				alert("수강평을 입력해주세요");
+				state = false;
+			}
+
+			if(review_content.length > 500){
+				alert("수강평은 500자까지 입력이 가능합니다.");
 				state = false;
 			}
 		

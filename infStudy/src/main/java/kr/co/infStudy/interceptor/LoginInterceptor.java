@@ -33,9 +33,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		System.out.println("인터셉터에서 loginVO : "+login);
 		System.out.println("url 내놔!! : " +url);
 		
+
 		if(login==null || login.getU_no()==0) {
-				response.sendRedirect("interLogin");
+
+			
+			response.sendRedirect("interLogin");
+			return false;			
 		}
+		
 		return true;
 	}
 

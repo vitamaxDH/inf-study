@@ -132,8 +132,8 @@ public class LectureServiceImpl implements LectureService {
 		 * 4. 이렇게 해서 만들어진 List가 addLecture로 넘어온 ctg_no를 포함하고 있는지 확인한다.
 		 */
 		if(!categoryDao.getCategoryList().stream()
-  										 .map(o->o.getCtg_no())
-										 .collect(Collectors.toList()).contains(addLecture.getCtg_no())) {
+  										 .map(o->o.getName())
+										 .collect(Collectors.toList()).contains(addLecture.getCtg_name())) {
 
 			categoryDao.addCategory(addLecture.getCtg_name());
 		}
@@ -205,6 +205,19 @@ public class LectureServiceImpl implements LectureService {
 		int content_cnt = dao.getMyLectureCnt(u_no);
 		
 		return new PageBean(content_cnt, currentPage, page_listcnt, page_paginationcnt);
+	}
+	
+	/**
+	 * 강의 제목 중복 체크
+	 */
+	@Override
+	public String chkTitle(String lecture_title) {
+		
+		if(dao.chkTitle(lecture_title) != null) {
+			return "occupied";
+		}else {
+			return "available";
+		}	
 	}
 }
 

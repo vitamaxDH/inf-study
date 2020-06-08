@@ -28,6 +28,9 @@ public interface LectureDAO {
 	
 	//수강 중인 강의 수 구하기
 	int getMyLectureCnt(int u_no);
+	
+	//강의 제목 중복 체크
+	String chkTitle(String lecture_title);
 
 
 }

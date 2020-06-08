@@ -185,6 +185,13 @@ public class LectureController {
 		
 		return "course/addCurriculumSuccess";
 	}
+	
+	@GetMapping(value="/lecture/chkTitle/{lecture_title}")
+	@ResponseBody
+	public String chkTitle(@PathVariable("lecture_title") String lecture_title) {
+		 
+		return lectureService.chkTitle(lecture_title);
+	}
 }
 
 

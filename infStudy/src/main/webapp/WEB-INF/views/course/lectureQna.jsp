@@ -109,6 +109,7 @@
 				        		<form:hidden path="u_no" value="${login.u_no }"/>
 								<div class="qBoxContentText">
 									<form:textarea path="content" class="rContent" placeholder="답변 내용을 입력하세요."></form:textarea>
+									<div></div>
 								</div>
 								<div class="box qBoxBtn">
 									<form:button class="replyBtn">작성하기</form:button>
@@ -237,7 +238,11 @@
 	
 			var qVal = this.value;
 			if(qVal.length > 1000){
-				document.getElementById('qContentError').innerHTML = "<p><small style='color:red font-weight:bold'>질문은 1000자까지 입력이 가능합니다.</small></p>"
+				document.getElementById('qContentError').innerHTML = "<p style='color:red; font-weight:bold;'><small>질문은 1000자까지 입력이 가능합니다.(" + qVal.length + "/1000자)</small></p>"
+				
+				if(qVal.length >1010){
+					document.getElementById('qContent').value = qVal.substring(0, 1010);
+				}
 			}else{
 				document.getElementById('qContentError').innerHTML = "";
 	
@@ -247,11 +252,27 @@
 
 	try{
 		Array.from(document.getElementsByClassName('replyForm')).forEach(function(elem){
+			var rContent = elem.childNodes[5].childNodes[1];
+			var status = true;
 			
+			rContent.addEventListener('keyup', function(e){
+
+				if(rContent.value.length >500){
+					rContent.nextSibling.nextSibling.innerHTML = "<p style='color:red; font-weight:bold'>답변은 500자까지 작성이 가능합니다.(" + rContent.value.length + "/500자)</p>";
+					status = false;
+
+					if(rContent.value.length >=510){
+						rContent.value = rContent.value.substring(0, 510);
+					}
+
+				}else{
+					rContent.nextSibling.nextSibling.innerHTML = "";
+					status = true;
+				}
+			})
+
 			elem.childNodes[7].childNodes[1].addEventListener('click', function(e){
 				e.preventDefault();
-				var rContent = elem.childNodes[5].childNodes[1];
-				var status = true;
 				if(rContent.value.trim().length == 0){
 					alert("답변을 입력해주세요");
 					status = false;
@@ -268,6 +289,7 @@
 		})
 	}catch(e){}
 
+	
 
 </script>
  

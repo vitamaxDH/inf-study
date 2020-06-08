@@ -38,30 +38,35 @@
                        	 <form:label path="ctg_no" class="form-left">카테고리</form:label>
 							<form:select path="ctg_no" class="form-right selectInsert" id="ctg_no">
 								<c:forEach var="category" items="${categoryList }">
-                            		<form:option value="${category.ctg_no }">${category.name }</form:option>
+                            		<form:option value="0">${category.name }</form:option>
                       		  </c:forEach>
                              <form:option value="${fn:length(categoryList)+1 }" id="directInput">직접입력</form:option>                         
                           </form:select>
 <%--                           <c:forEach var="category" items="${categoryList }">
                           	<form:hidden path="${category.name }"/>
                           </c:forEach> --%>
-                          <form:input class="form-right directInsert" type="text" path="ctg_name" disabled="true" id="ctg_name"/>                          
+                          <form:input class="form-right directInsert" type="text" path="ctg_name" maxlength="22" disabled="true" id="ctg_name"/> <br />
+                          <div id="ctg_errorMsg"></div>                         
                       </div>
                       <div class="box form-div">
                           <form:label path="title" class="form-left">강의 제목</form:label>
-                          <form:input path="title" id="title" class="form-right" type="text"/>
+                          <form:input path="title" id="title" maxlength="53" class="form-right" type="text"/> <br />
+                          <div id="title_errorMsg"></div>
                       </div>
                       <div class="box form-div">
                           <form:label path="price" class="form-left">가격</form:label>
-                          <form:input path="price" id="price" class="form-right" type="text"/>
+                          <form:input path="price" id="price" class="form-right" type="text"/> <br />
+                          <div id="price_errorMsg"></div>
                       </div>
                       <div class="box form-div">
                           <form:label path="difficulty" class="form-left">난이도</form:label>
-                          <form:input path="difficulty" id="difficulty" class="form-right" type="text"/>
+                          <form:input path="difficulty" id="difficulty" class="form-right" type="text"/> <br />
+                          <div id="diff_errorMsg"></div>
                       </div>
                       <div class="box form-div">
                           <form:label path="content" class="form-left">강의 소개</form:label>
                           <form:textarea path="content" id="content" class="form-right"></form:textarea>
+                          <div id="content_errorMsg"></div>
                       </div>
                       <div class="box form-div">
                           <form:label path="lectureImg" class="form-left">강의 프로필</form:label>
@@ -94,7 +99,15 @@ window.onload = function(){
     var difficulty = document.getElementById('difficulty');
     var content = document.getElementById('content');
     var lectureImg = document.getElementById('lectureImg');
-    
+
+    var title_errorMsg = document.getElementById('title_errorMsg');
+    var price_errorMsg = document.getElementById('price_errorMsg');
+    var diff_errorMsg = document.getElementById('diff_errorMsg');
+    var content_errorMsg = document.getElementById('content_errorMsg');
+
+    var titleAvailable = true;
+
+
     showSection();
  
     ctg_no.addEventListener('change', showSection);
@@ -117,6 +130,50 @@ window.onload = function(){
        }
     }
 
+    // 카테고리 에러메세지 출력
+    ctg_name.addEventListener("keyup", function(e){
+        var ctg_errorMsg = document.getElementById('ctg_errorMsg');
+    
+        if(ctg_name.value.length > 20){
+            ctg_errorMsg.innerHTML = "<p style='color:red; font-weight:bold'>카테고리는 20자까지 입력이 가능합니다.</p>";
+            
+        }else{
+            ctg_errorMsg.innerHTML = ""
+        }
+    })
+    
+    
+    title.addEventListener("keyup", function(e){
+        var title_errorMsg = document.getElementById('title_errorMsg');
+    
+        $.ajax({
+            url: "${contextPath}/lecture/chkTitle/" + title.value,
+            method: 'get',
+            dataType: 'text',
+            success: function(msg){
+                if(msg.trim() == 'available'){
+                    
+                    if(title.value.length > 50){
+                        
+                        title_errorMsg.innerHTML = "<p style='color:red; font-weight:bold'>강의 제목은 50자까지 입력이 가능합니다. (현재 글자수 : " + title.value.length + "자)</p>";
+                        titleAvailable = false;
+                    }else{
+                        
+                        title_errorMsg.innerHTML = "<p style='color:blue; font-weight:bold'>사용 가능한 강의 제목입니다.</p>";
+                        titleAvailable = true;        				
+                    }
+                                
+                }else{
+                    
+                    title_errorMsg.innerHTML = "<p style='color:red; font-weight:bold'>이미 사용중인 강의 제목입니다.</p>";
+                   	titleAvailable = false;
+                }
+            }
+        })
+    })
+
+
+
     // 전송
     document.getElementById('submitBtn').addEventListener('click', function(e){
 
@@ -130,47 +187,54 @@ window.onload = function(){
 
        if(inputStatus && ctg_name.value.trim().length == 0){
           msg = "카테고리값을 입력해주세요";
-          var submitStatus = false;
+          submitStatus = false;
           alert(msg);
           return false;
        }
        
         if(!title.value){
           msg = "강의 제목을 입력해주세요";
-          var submitStatus = false;
+          submitStatus = false;
           alert(msg);
           return false;
        }
  
        if(!price.value){
           msg = "가격을 입력해주세요";
-          var submitStatus = false;
+          submitStatus = false;
           alert(msg);
           return false;
        }
  
        if(!difficulty.value){
           msg = "난이도를 입력해주세요";
-          var submitStatus = false;
+          submitStatus = false;
           alert(msg);
           return false;
        }
 
        if(!content.value){
           msg = "강의 소개를 입력해주세요";
-          var submitStatus = false;
+          submitStatus = false;
           alert(msg);
           return false;
        }
 
        if(!lectureImg.value){
           msg = "강의 프로필을 추가해주세요";
-          var submitStatus = false;
+          submitStatus = false;
           alert(msg);
           return false;
        }
+
+       if(!titleAvailable){
+            msg = "사용할 수 없는 강의제목입니다.";
+            submitStatus = false;
+            alert(msg);
+            return false;
+       }
  
-       if(submitStatus){
+       if(submitStatus && titleAvailable){
           var submit = document.getElementById('myForm');
           submit.setAttribute("action", "${root }/course/addLecture");
           submit.setAttribute("method", "post");
@@ -185,6 +249,8 @@ window.onload = function(){
        history.back();
     });
 }
+
+
 
 </script>
 

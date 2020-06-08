@@ -4,11 +4,20 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>400 error</title>
-
-   <link href="/resources/common/css/error.css" rel="stylesheet">
-
+	<title>404 error</title>
 </head>
+<body>
+	<h3>InfStudy</h3>
+	<h1>404 Error</h1>
+	<button id="backBtn">이전 페이지로 돌아가기</button>
+</body>
+</html>
+<script>
+
+	document.getElementById('backBtn').addEventListener('click', function(){
+		history.back(1);
+	})
+</script>
 <style>
 body{
     width: 100%;
@@ -52,17 +61,3 @@ button:focus {
     border: 5px solid green;
 }
 </style>
-<body>
-	<h3>InfStudy</h3>
-	<h1>400 Error</h1>
-	<button id="backBtn">이전 페이지로 돌아가기</button>
-<script>
-
-	document.getElementById('backBtn').addEventListener('click', function(){
-		history.back(1);
-	})
-
-</script>
-</body>
-</html>
-<style>

@@ -22,7 +22,6 @@
         <div class="nav">
             <div class="nav-head">
                 <div class="nav-head-name">${lecture_title }</div>
-                <p>시간 : 000분 / 000분</p>
             </div>
             <div class="nav-ul">
                 <ul>

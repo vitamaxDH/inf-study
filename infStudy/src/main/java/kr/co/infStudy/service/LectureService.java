@@ -37,5 +37,8 @@ public interface LectureService {
 	
 	// 나의 강의 조회를 위한 페이징 처리
 	PageBean getMyLectureCnt(int u_no, int page);
+	
+	// 강의 제목 중복 체크
+	String chkTitle(String lecture_title);
 
 }
