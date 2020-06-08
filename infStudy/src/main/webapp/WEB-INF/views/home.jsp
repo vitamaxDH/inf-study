@@ -48,8 +48,8 @@
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide" style="background-image: url('resources/common/images/back1.png')"></div>
-						<div class="swiper-slide" style="background-image: url('resources/common/images/back2.jpg"></div>
-						<div class="swiper-slide" style="background-image: url('resources/common/images/back3.jpg"></div>
+						<div class="swiper-slide" style="background-image: url('resources/common/images/back2.jpg')"></div>
+						<div class="swiper-slide" style="background-image: url('resources/common/images/back3.jpg')"></div>
 					</div>
 				</div>
 			</div>
