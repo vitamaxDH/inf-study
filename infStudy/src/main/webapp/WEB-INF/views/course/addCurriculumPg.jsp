@@ -34,7 +34,7 @@
                   <form:form id="myForm" modelAttribute="addCurriculumVO">
                      <form:hidden path="l_no" value="${l_no }"/>
                          <div class="box form-div">
-                             <form:label path="section" class="form-left">카테고리</form:label>
+                             <form:label path="section" class="form-left">섹션</form:label>
                              <form:select class="form-right selectInsert" path="section" id="section">
                                 <c:forEach var="list" items="${sectionList }" varStatus="status">
                                     <form:option value="${list }"></form:option>

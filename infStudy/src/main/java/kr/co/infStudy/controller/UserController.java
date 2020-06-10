@@ -240,11 +240,12 @@ public class UserController {
 	 * 수강 신청
 	 */
 	@GetMapping("/user/addPaidLecture")
-	public String addPaidLecture(@RequestParam(name = "l_no") int l_no) {
+	public String addPaidLecture(@RequestParam(name = "l_no") int l_no,
+								 @RequestParam(name = "lecture_title") String lecture_title) {
 		
 		paidLecService.addPaidLecture(l_no);
 		
-		return "course/courseDetail";
+		return "redirect:/course/" + lecture_title;
 	}
 	
 	/**

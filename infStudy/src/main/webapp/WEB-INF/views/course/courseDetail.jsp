@@ -52,7 +52,12 @@
            <div class="curriculum">
               <div class="curriculumTitle">교육과정</div>
               <div class="curriculumTotal">
-                 <span>전체 강의 수 : 8</span>&nbsp; / &nbsp;<span>전체 강의 시간 : 80 분</span>
+              	 <!-- 전체 강의 시간을 구하는 코드 -->
+              	 <c:set var="totalTime" value="0"/>
+              	 <c:forEach var="curriculum" items="${curriculum_list }">
+              	 	<c:set var="totalTime" value="${totalTime + curriculum.playtime }"></c:set>
+              	 </c:forEach>
+                 <span>전체 강의 수 : ${fn:length(curriculum_list) }</span>&nbsp; / &nbsp;<span>전체 강의 시간 : ${totalTime } 분</span>
               </div>
               <ul class="curriculumUl">
               	<c:forEach var="list" items="${curriculum_list }" varStatus="status">
@@ -208,7 +213,7 @@ Array.from(section_elem).forEach(elem => {
 		document.getElementById("take_lecture").addEventListener("click", function(){
 		
 				if(confirm("수강신청하시겠습니까?")){
-					location.href = "${root}/user/addPaidLecture?l_no=${lectureDetail.l_no}";
+					location.href = "${contextPath}/user/addPaidLecture?l_no=${lectureDetail.l_no}&lecture_title=${lectureDetail.lecture_title}";
 				}
 		})
 	}catch(e){}
