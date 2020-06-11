@@ -3,7 +3,7 @@
 <script>
 
 	alert("지식공유자가 되신걸 환영합니다.");
-	location.href = "/";
+	location.href = "${pageContext.request.contextPath}";
 
 </script>
 

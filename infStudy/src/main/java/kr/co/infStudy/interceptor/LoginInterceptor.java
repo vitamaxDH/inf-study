@@ -36,7 +36,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 		if(login==null || login.getU_no()==0) {
 	
-			response.sendRedirect("interLogin");
+			response.sendRedirect(request.getContextPath() + "/interLogin");
 			return false;			
 		}
 		
