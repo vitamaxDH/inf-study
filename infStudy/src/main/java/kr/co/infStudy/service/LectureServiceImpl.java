@@ -133,7 +133,8 @@ public class LectureServiceImpl implements LectureService {
 		 */
 		if(!categoryDao.getCategoryList().stream()
   										 .map(o->o.getName())
-										 .collect(Collectors.toList()).contains(addLecture.getCtg_name())) {
+										 .collect(Collectors.toList()).contains(addLecture.getCtg_name())
+										 && addLecture.getCtg_name() != null) {
 
 			categoryDao.addCategory(addLecture.getCtg_name());
 		}

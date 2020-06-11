@@ -38,9 +38,9 @@
                        	 <form:label path="ctg_no" class="form-left">카테고리</form:label>
 							<form:select path="ctg_no" class="form-right selectInsert" id="ctg_no">
 								<c:forEach var="category" items="${categoryList }">
-                            		<form:option value="0">${category.name }</form:option>
+                            		<form:option value="${category.ctg_no }">${category.name }</form:option>
                       		  </c:forEach>
-                             <form:option value="${fn:length(categoryList)+1 }" id="directInput">직접입력</form:option>                         
+                             <form:option value="0" id="directInput">직접입력</form:option>                         
                           </form:select>
 <%--                           <c:forEach var="category" items="${categoryList }">
                           	<form:hidden path="${category.name }"/>

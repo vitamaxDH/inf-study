@@ -4,9 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.infStudy.lectureMapper">
    
-   <insert id="addLecture" parameterType="kr.co.infStudy.model.LectureVO">
+   <insert id="addLecture" parameterType="kr.co.infStudy.model.LectureVO">  
    		INSERT INTO LECTURE(L_NO, I_NO, CTG_NO, TITLE, PRICE, DIFFICULTY, IMG, REL_DT, CONTENT)
-   		VALUES(LECTURE_SEQ.NEXTVAL, #{i_no}, #{ctg_no}, #{title}, #{price}, #{difficulty}, #{img, jdbcType=VARCHAR}, SYSDATE, #{content, jdbcType=VARCHAR})
+   		<choose>
+   			<when test="ctg_no > 0">
+		   		VALUES(LECTURE_SEQ.NEXTVAL, #{i_no}, #{ctg_no}, #{title}, #{price}, #{difficulty}, #{img, jdbcType=VARCHAR}, SYSDATE, #{content, jdbcType=VARCHAR})			
+   			</when>
+   			<otherwise>
+		   		VALUES(LECTURE_SEQ.NEXTVAL, #{i_no}, category_seq.currval, #{title}, #{price}, #{difficulty}, #{img, jdbcType=VARCHAR}, SYSDATE, #{content, jdbcType=VARCHAR})	
+   			</otherwise>
+   		</choose>
+   		
+   		
    </insert>
    
    <!-- 

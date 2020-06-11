@@ -5,6 +5,8 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 /**
  * 
  * @author hydes
